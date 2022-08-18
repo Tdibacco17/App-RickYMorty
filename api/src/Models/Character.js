@@ -6,11 +6,15 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING,
         },
-    //     species: {},
-    //     origin: {},
-    //     image: {},
-    //     created: {},
-    // }, {
-    //     timestamps: false,
+        // status: {},
+        // species: {},
+        // gender: {},
+        // origin: {},
+        // location: {},
+        // episode: {}
+        // image: {},
+        // created: {},
+    }, {
+        timestamps: false,
     });
 };
