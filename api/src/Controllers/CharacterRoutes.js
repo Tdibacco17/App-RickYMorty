@@ -1,4 +1,4 @@
-const {getAllCharactersCounters, getAllEpisodesCounters, getAllLocationsCounters} = require("./FunctionController");
+const {getAllCharacters, getAllEpisodes, getAllLocations} = require("./FunctionController");
 
 // const respuesta = async (req, res) => {
 //     const { buscador } = req.body;
@@ -44,7 +44,7 @@ const {getAllCharactersCounters, getAllEpisodesCounters, getAllLocationsCounters
 // };
 
 const ejercicio1 = async (req, res) => {
-    const hola = await getAllCharactersCounters()
+    const hola = await getAllCharacters()
     try{
 
         return res.json(hola)
@@ -54,7 +54,7 @@ const ejercicio1 = async (req, res) => {
 };
 
 const ejercicio2 = async (req, res) => {
-    const hola = await getAllEpisodesCounters()
+    const hola = await getAllEpisodes()
 
     try {
         
@@ -65,7 +65,7 @@ const ejercicio2 = async (req, res) => {
 }
 
 const ejercicio3 = async (req, res) => {
-    const hola = await getAllLocationsCounters()
+    const hola = await getAllLocations()
 
     try {
         

@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-async function getAllCharactersCounters() {
+async function getAllCharacters() {
 
     const { data } = await axios.get(`https://rickandmortyapi.com/api/character`);
 
@@ -25,10 +25,11 @@ async function getAllCharactersCounters() {
             }
         });
     });
-    return Promise.all(returncharacters)
+    
+    return Promise.all(returncharacters);
 }
 
-async function getAllEpisodesCounters() {
+async function getAllEpisodes() {
 
     const { data } = await axios.get(`https://rickandmortyapi.com/api/episode`);
 
@@ -49,7 +50,7 @@ async function getAllEpisodesCounters() {
     return Promise.all(returnepisodes)
 }
 
-async function getAllLocationsCounters() {
+async function getAllLocations() {
 
     const { data } = await axios.get(`https://rickandmortyapi.com/api/location`);
 
@@ -70,4 +71,4 @@ async function getAllLocationsCounters() {
     return Promise.all(returnLocation)
 }
 
-module.exports = { getAllCharactersCounters, getAllEpisodesCounters, getAllLocationsCounters };
+module.exports = { getAllCharacters, getAllEpisodes, getAllLocations };
