@@ -1,0 +1,18 @@
+.ContenedorDetail{
+    display: flex;
+    justify-content: center;
+    margin: 175px;
+}
+
+.CardDetail{
+    background-color: var(--color-card);
+    width: 700px;
+    height: 400px;
+    padding: 50px 50px 50px 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.CardDetail img{
+    width: 400px;
+    height: 400px;
+}

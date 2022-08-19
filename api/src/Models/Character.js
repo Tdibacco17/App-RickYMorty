@@ -2,18 +2,30 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('Character', {
-    //     id: {},
+        // characterId: {
+        //     type: DataTypes.INTEGER,
+        // },
         name: {
             type: DataTypes.STRING,
         },
-        // status: {},
-        // species: {},
-        // gender: {},
-        // origin: {},
-        // location: {},
-        // episode: {}
-        // image: {},
-        // created: {},
+        status: {
+            type: DataTypes.STRING,
+        },
+        species: {
+            type: DataTypes.STRING,
+        },
+        gender: {
+            type: DataTypes.STRING,
+        },
+        // // origin: {},
+        // // location: {},
+        // // episode: {}
+        image: {
+            type: DataTypes.STRING,
+        },
+        created: {
+            type: DataTypes.STRING,
+        },
     }, {
         timestamps: false,
     });

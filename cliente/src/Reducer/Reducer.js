@@ -1,7 +1,6 @@
 const initialState = {
     characters: [],
-    episodes: [],
-    locations: [],
+    details: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -11,15 +10,10 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 characters: action.payload
             }
-        case "GET_ALL_EPISODES":
+        case "GET_CHARACTER_BY_ID":
             return {
                 ...state,
-                episodes: action.payload
-            }
-        case "GET_ALL_LOCATIONS":
-            return {
-                ...state,
-                locations: action.payload
+                details: action.payload
             }
         default:
             return state;

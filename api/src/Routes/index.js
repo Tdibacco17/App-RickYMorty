@@ -1,11 +1,15 @@
 const { Router } = require("express");
-const {ejercicio1, ejercicio2, ejercicio3} = require("../Controllers/CharacterRoutes")
+const { routeGetAllCharacters , routeGetCharacterDetail} = require("../Controllers/CharacterRoutes")
 
 const router = Router();
 
-router.get("/hola1", ejercicio1);
-router.get("/hola2", ejercicio2);
-router.get("/hola3", ejercicio3)
+router.get("/Characters", routeGetAllCharacters);
+router.get("/Details/:id", routeGetCharacterDetail);
 
+
+// //------------------------------------------------------------
+// const {characterDataBase} = require("../Controllers/DataBase")  // base de datos "no tocar xd"
+
+// router.get("/hola4", characterDataBase) // base de datos "no tocar xd"
 
 module.exports = router;

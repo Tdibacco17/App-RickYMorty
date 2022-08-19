@@ -13,6 +13,6 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(cors());
-app.use(CharacterRoutes)
+app.use("/", CharacterRoutes)
 
 module.exports = app;

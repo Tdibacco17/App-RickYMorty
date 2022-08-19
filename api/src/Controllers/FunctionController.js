@@ -1,5 +1,7 @@
 const axios = require("axios");
 
+//para cargar la base de datos
+
 async function getAllCharacters() {
 
     const { data } = await axios.get(`https://rickandmortyapi.com/api/character`);
@@ -8,12 +10,12 @@ async function getAllCharacters() {
 
     let arraycharacter = new Array(numberOfPages).fill()
 
-    const returncharacters = arraycharacter.map(async (e, index) => {
+    const returnCharacters = arraycharacter.map(async (e, index) => {
         const { data } = await axios.get(`https://rickandmortyapi.com/api/character?page=${1 + index}`);
 
-        let hola = data.results.map(j => {
+        return await data.results.map(j => {
             return {
-                id: j.id,
+                characterId: j.id,
                 name: j.name,
                 status: j.status,
                 species: j.species,
@@ -25,11 +27,10 @@ async function getAllCharacters() {
                 created: j.created,
             }
         });
-        return hola
     });
-   
 
-    return Promise.all(returncharacters);
+
+    return Promise.all(returnCharacters);
 }
 
 async function getAllEpisodes() {
@@ -37,22 +38,25 @@ async function getAllEpisodes() {
     const { data } = await axios.get(`https://rickandmortyapi.com/api/episode`);
 
     const numberOfPages = data.info.pages// 3
-   
-    var arrayepisode =  new Array(numberOfPages).fill() 
 
-    const returnepisodes = arrayepisode.map(async (e, index) => {
+    var arrayepisode = new Array(numberOfPages).fill()
+
+    const returnEpisodes = arrayepisode.map(async (e, index) => {
         const { data } = await axios.get(`https://rickandmortyapi.com/api/episode?page=${1 + index}`);
 
-        let hola = data.results.map(j => {
+        let episodeDB = data.results.map(j => {
+
+        })
+
+        return await data.results.map(j => {
             return {
-                id: j.id,
+                episodeId: j.id,
                 name: j.name,
                 // characters: j.characters,
             }
         });
-        return hola
     });
-    return Promise.all(returnepisodes)
+    return Promise.all(returnEpisodes)
 }
 
 async function getAllLocations() {
@@ -68,7 +72,7 @@ async function getAllLocations() {
 
         return await data.results.map(j => {
             return {
-                id: j.id,
+                locationId: j.id,
                 name: j.name,
                 // residents: j.residents,
             }

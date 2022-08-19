@@ -1,5 +1,5 @@
 .Card{
-    background-color:rgb(31, 29, 54);
+    background-color: var(--color-card);
     width: 300px;
     margin: 10px;
     padding: 5px 20px 20px 20px;

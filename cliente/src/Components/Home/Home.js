@@ -8,21 +8,21 @@ export default function Home() {
 
     const dispatch = useDispatch()
 
-    const getAlllChar = useSelector(state => state.characters)
-
     useEffect(() => {
         dispatch(getAllCharacters())
     }, [dispatch])
+    const getAlllChar = useSelector(state => state.characters)
+
 
 
     return (
         <div className="CentradoCards">
             {
-                getAlllChar.length > 0 ? getAlllChar.map(e => e.map(j => {
+                getAlllChar.length > 0 ? getAlllChar.map(j => {
                     return (
-                        <Card key={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} />
+                        <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} />
                     )
-                })) : "Loading..."
+                }) : "Loading..."
             }
         </div>
     )
