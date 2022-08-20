@@ -5,14 +5,27 @@
 }
 
 .CardDetail{
-    background-color: var(--color-card);
-    width: 700px;
-    height: 400px;
-    padding: 50px 50px 50px 50px;
     display: flex;
+    width: 800px;
     justify-content: space-between;
 }
 .CardDetail img{
     width: 400px;
     height: 400px;
+}
+
+.CardDetail div.h5{
+    display: flex;
+    justify-content: center;
+}
+.CardDetail p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 45px;
+}
+
+.CardDetail h5{
+
+    margin-top: 25px;
 }

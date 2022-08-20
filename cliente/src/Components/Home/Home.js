@@ -16,6 +16,7 @@ export default function Home() {
 
 
     return (
+        <div>
         <div className="CentradoCards">
             {
                 getAlllChar.length > 0 ? getAlllChar.map(j => {
@@ -24,6 +25,7 @@ export default function Home() {
                     )
                 }) : "Loading..."
             }
+        </div>
         </div>
     )
 }

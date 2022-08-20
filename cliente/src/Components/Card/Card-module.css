@@ -1,6 +1,11 @@
-.Card{
-    background-color: var(--color-card);
-    width: 300px;
-    margin: 10px;
-    padding: 5px 20px 20px 20px;
+.Tarjetas{
+    /* background-color: var(--color-card); */
+    width: 14rem;
+    /* margin: 10px;
+    padding: 5px 20px 20px 20px; */
 }
+
+/* .Fondo{
+    background-color: var(--color-card);
+} */
+

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCharacterById } from "../../Actions/index"
-import { Link } from "react-router-dom";
+import { getCharacterById } from "../../Actions/index";
+import Card from 'react-bootstrap/Card';
 import "./Details-module.css"
 
 export default function Details() {
@@ -19,24 +19,25 @@ export default function Details() {
 
     return (
         <div>
-            <Link to="/"><button>Back</button></Link>
             {
-                CharacterDetail.id ?
-                    <div className="ContenedorDetail">
+                CharacterDetail.id ? <div className="ContenedorDetail">
+                    <Card>
                         <div className="CardDetail">
-                            <div>
-                                <img src={CharacterDetail.image} alt="Imagen Rick Y Morty" />
-                            </div>
-                            <div>
-                                <h2>{CharacterDetail.name}</h2>
-                                <h4>{CharacterDetail.status}</h4>
-                                <h4>{CharacterDetail.species}</h4>
-                                <h4>{CharacterDetail.gender}</h4>
-                                <h4>{CharacterDetail.created}</h4>
-                            </div>
+                            <Card.Img variant="top" src={CharacterDetail.image} alt="Imagen Rick Y Morty" />
+                                <Card.Body>
+                                    <Card.Title>{CharacterDetail.name}</Card.Title>
+                                    <Card.Text>
+                                            <h5>{CharacterDetail.status}</h5>
+                                            <h5>{CharacterDetail.species}</h5>
+                                            <h5>{CharacterDetail.gender}</h5>
+                                            <h5>{CharacterDetail.created}</h5>
+                                    </Card.Text>
+                                </Card.Body>
                         </div>
-                    </div> : "Loading"
+                    </Card>
+                </div> : "Loading"
             }
+            
         </div>
     )
 }
