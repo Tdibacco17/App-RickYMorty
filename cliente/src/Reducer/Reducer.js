@@ -15,6 +15,11 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 details: action.payload
             }
+        case "GET_SEARCHBAR":
+            return {
+                ...state,
+                characters: action.payload
+            }
         default:
             return state;
     }

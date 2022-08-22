@@ -15,8 +15,6 @@ export default function Details() {
         dispatch(getCharacterById(id))
     }, [dispatch, id])
 
-
-
     return (
         <div>
             {

@@ -9,8 +9,8 @@ export default function Cards({ id, name, status, species, gender, image, create
         <Card className="Tarjetas">
             <Card.Img variant="top" src={image} alt="Imagen Rick Y Morty" />
             <Card.Body className="Fondo">
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>
+                <Card.Title style={{ fontSize: "15.5px" }} >{name}</Card.Title>
+                <Card.Text style={{ fontSize: "13.5px" }}>
                    Descripcion?
                 </Card.Text>
                 <Link to={`/Details/${id}`} ><Button variant="primary">Go to Details</Button></Link>

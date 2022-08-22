@@ -1,7 +1,22 @@
 const { Character, Episode, Location } = require('../../db');
+const { Op } = require("sequelize");
 
 const routeGetAllCharacters = async (req, res) => {
+    const { nameCharacter } = req.query
+
     try {
+        let result;
+        if (nameCharacter) {
+            result = await Character.findAll({
+                where: {
+                    name: {
+                        [Op.iLike]: `%${nameCharacter}%`,
+                    }
+                }
+            })
+            return res.json(result)
+        }
+        
         result = await Character.findAll()
 
         return res.json(result)

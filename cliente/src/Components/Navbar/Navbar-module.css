@@ -1,0 +1,38 @@
+.titulo{
+    font-size: 16px;
+
+}
+
+
+@media screen and (max-width: 991px)  {
+    #boton1{
+        margin-bottom: 10px;
+        margin-left: 10px
+    }
+    
+    #boton2{
+        margin-top: 10px;
+        margin-left: 10px
+    }
+}
+
+@media screen and (max-width: 600px)  {
+    .titulo{
+    margin-right: 15px;
+
+    }
+}
+@media screen and (max-width: 450px)  {
+    .titulo{
+    margin-right: 55px;
+
+    }
+}
+
+@media screen and (max-width: 385px)  {
+    .titulo{
+        margin-left: -40px;
+        margin-right: 0px;
+    }
+}
+

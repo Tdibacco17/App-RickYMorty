@@ -1,5 +1,5 @@
 // const { getAllCharacters } = require("./FunctionController");
-// const { Character } = require('../../db');
+// const { Character } = require('../../../db');
 
 // const characterDataBase = async (req, res) => {
 //     const characters = await getAllCharacters();
