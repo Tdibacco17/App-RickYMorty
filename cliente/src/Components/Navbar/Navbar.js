@@ -11,8 +11,9 @@ import "./Navbar-module.css"
 // import titulo from "../../Imagenes/titutlo.png"
 import { getSearchbar } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
+import swal from 'sweetalert';
 
-export default function Header() {
+export default function Header({ setPage }) {
 
     const dispatch = useDispatch()
     const [nameCharacter, setNameCharacter] = useState("");
@@ -20,14 +21,17 @@ export default function Header() {
 
     function handleInputChange(e) {
         setNameCharacter(e.target.value);
-        console.log(e.target.value)
     }
+
     function handleSubmit(e) {
         e.preventDefault();
-        if (nameCharacter.length > 0 && nameCharacter[0] !== ' '){
+        if (nameCharacter.length === 0 || nameCharacter[0] === ' ') {
+            swal('Ohh no!', 'No se permiten espacios en la primera posición', 'warning');
+        } else {
             navigate('/')
             dispatch(getSearchbar(nameCharacter));
             setNameCharacter("");
+            setPage(1)
         }
     }
 
@@ -38,10 +42,15 @@ export default function Header() {
         setNameCharacter("");
     }
 
+    function handleEnter(e) {
+        if (e.key === "Enter") {
+            handleSubmit(e)
+        }
+    }
 
     return (
         <div>
-            <Navbar bg="light" expand="lg">
+            <Navbar id="ContentNavbar"  bg="light" expand="lg">
                 <Container fluid>
                     <Link to="/"><img src={logoRyM} style={{ width: "5rem" }} alt="Imagen Rick Y Morty" /></Link>
                     <h5 className="titulo">Rick Y Morti App</h5>
@@ -62,6 +71,7 @@ export default function Header() {
                             onChange={(e) => handleInputChange(e)}
                             style={{ width: '250px', marginLeft: '8px' }}
                             value={nameCharacter}
+                            onKeyPress={handleEnter}
                         />
                         <Button id="boton2" onClick={(e) => handleSubmit(e)} type="button" variant="outline-primary">Search</Button>
                     </Navbar.Collapse>

@@ -35,4 +35,17 @@
         margin-right: 0px;
     }
 }
+@media screen and (max-width: 340px)  {
+    .titulo{
+        margin-left: -20px;
+        margin-right: 0px;
+    }
+}
+
+@media screen and (max-width: 300px)  {
+    .titulo{
+        display: none;
+    }
+}
+
 
