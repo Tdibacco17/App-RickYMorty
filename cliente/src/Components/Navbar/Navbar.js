@@ -9,11 +9,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import logoRyM from "../../Imagenes/logo.png"
 import "./Navbar-module.css"
 // import titulo from "../../Imagenes/titutlo.png"
-import { getSearchbar } from "../../Actions/index"
+import { getSearchbar, getStatus } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 
-export default function Header({ setPage, nameCharacter, setNameCharacter }) {
+export default function Header({ setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName }) {
 
     const dispatch = useDispatch()
     let navigate = useNavigate();
@@ -26,17 +26,25 @@ export default function Header({ setPage, nameCharacter, setNameCharacter }) {
         e.preventDefault();
         if (nameCharacter.length === 0 || nameCharacter[0] === ' ') {
             swal('Ohh no!', 'No se permiten espacios en la primera posición', 'warning');
+        } else if (statusTrue === true) {
+            setStatusTrue(false);
+            dispatch(getStatus({ status: statusName, nameCharacter }))
+        } else if (statusName === "Alive" || statusName === "Dead" || statusName === "Unknown" ) {
+            setStatusName("")
+            dispatch(getStatus({ status: statusName, nameCharacter }))
         } else {
             navigate('/')
             dispatch(getSearchbar(nameCharacter));
-             // setNameCharacter("");  si lo activono me filtra con la busqueda
+            // setNameCharacter("");  si lo activono me filtra con la busqueda
             setPage(1)
         }
     }
 
     function handleReloadClick(e) {
         e.preventDefault();
-        navigate('/')
+        setStatusName("");
+        setStatusTrue(false);
+        navigate('/');
         dispatch(getSearchbar(""));
         setNameCharacter("");
     }
@@ -49,7 +57,7 @@ export default function Header({ setPage, nameCharacter, setNameCharacter }) {
 
     return (
         <div>
-            <Navbar id="ContentNavbar"  bg="light" expand="lg">
+            <Navbar id="ContentNavbar" bg="light" expand="lg">
                 <Container fluid>
                     <Link to="/"><img src={logoRyM} style={{ width: "3.2rem", }} alt="Imagen Rick Y Morty" /></Link>
                     <h5 className="titulo">Rick Y Morti App</h5>

@@ -11,11 +11,27 @@ function App() {
 
   const [nameCharacter, setNameCharacter] = useState("");
 
+  const [statusTrue, setStatusTrue] = useState(false)
+  const [statusName, setStatusName] = useState("")
+
   return (
     <div>
-      <Navbar setPage={setPage} nameCharacter={nameCharacter} setNameCharacter={setNameCharacter}/>
+      <Navbar
+        setPage={setPage}
+        nameCharacter={nameCharacter}
+        setNameCharacter={setNameCharacter}
+        statusTrue={statusTrue}
+        setStatusTrue={setStatusTrue}
+        statusName={statusName}
+        setStatusName={setStatusName} />
       <Routes>
-        <Route exact path="/" element={<Home page={page} setPage={setPage} nameCharacter={nameCharacter}/>} />
+        <Route exact path="/" element={
+          <Home
+            page={page}
+            setPage={setPage}
+            nameCharacter={nameCharacter}
+            setStatusTrue={setStatusTrue}
+            setStatusName={setStatusName}/>} />
         <Route exact path="/Details/:id" element={<Details />} />
       </Routes>
     </div>

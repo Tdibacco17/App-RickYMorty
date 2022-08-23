@@ -4,12 +4,14 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import { getStatus } from "../../Actions/index"
 import { useDispatch } from "react-redux";
 
-export default function Filters({nameCharacter}) {
+export default function Filters({nameCharacter, setStatusTrue, setStatusName}) {
 
     const dispatch= useDispatch()
 
     function handleState(e){
         e.preventDefault();
+        setStatusTrue(true);
+        setStatusName(e.target.name)
         dispatch(getStatus({status: e.target.name, nameCharacter}))
     }
 

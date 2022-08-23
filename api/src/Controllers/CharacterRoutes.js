@@ -16,7 +16,7 @@ const routeGetAllCharacters = async (req, res) => {
             })
             return res.json(result)
         }
-        
+
         result = await Character.findAll()
 
         return res.json(result)
@@ -39,26 +39,39 @@ const routeGetCharacterDetail = async (req, res) => {
 
 const routeGetStatus = async (req, res) => {
     const { status } = req.params;
-    const {nameCharacter} = req.query
-    console.log(nameCharacter)
-    console.log(status)
+    const { nameCharacter } = req.query
+
     let result;
     try {
-        if(status !== "All"){
+        if (status !== "All") {
             result = await Character.findAll({
                 where: {
-                    status: {
-                        [Op.iLike]: status, 
+                    [Op.and]: [{
+                        name: {
+                            [Op.iLike]: `%${nameCharacter}%`,
+                        }
+                    }, {
+                        status: {
+                            [Op.iLike]: status,
+                        }
+                    }]
+                }
+            })
+
+            return res.json(result)
+        } else {
+            result = await Character.findAll({
+                where: {
+                    name: {
+                        [Op.iLike]: `%${nameCharacter}%`,
                     }
                 }
             })
+
             return res.json(result)
         }
-        result = await Character.findAll()
-
-        return res.json(result)
     } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` }); 
+        return res.status(400).json({ msg: `Error 404 - ${e}` });
     };
 }
 
