@@ -9,11 +9,13 @@ function App() {
 
   const [page, setPage] = useState(1);
 
+  const [nameCharacter, setNameCharacter] = useState("");
+
   return (
     <div>
-      <Navbar setPage={setPage}/>
+      <Navbar setPage={setPage} nameCharacter={nameCharacter} setNameCharacter={setNameCharacter}/>
       <Routes>
-        <Route exact path="/" element={<Home page={page} setPage={setPage}/>} />
+        <Route exact path="/" element={<Home page={page} setPage={setPage} nameCharacter={nameCharacter}/>} />
         <Route exact path="/Details/:id" element={<Details />} />
       </Routes>
     </div>

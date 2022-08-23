@@ -20,6 +20,16 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 characters: action.payload
             }
+        case "GET_STATUS":
+            return {
+                ...state,
+                characters: action.payload
+            }
+        case "GET_SPECIES":
+            return {
+                ...state,
+                characters: action.payload
+            }
         default:
             return state;
     }

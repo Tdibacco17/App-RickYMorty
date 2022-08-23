@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card"
 import { getAllCharacters } from "../../Actions/index";
-import Paginado from "../Paginado/Paginado"
-import Loading from "../Spiner/Spiner"
+import Paginado from "../Paginado/Paginado";
+import Loading from "../Spiner/Spiner";
+import Filters from "../Filters/Filters";
 import "./Home-module.css"
 
 
-export default function Home({page, setPage}) {
+export default function Home({page, setPage, nameCharacter}) {
 
     const dispatch = useDispatch()
     const getAllChar = useSelector(state => state.characters)
@@ -27,6 +28,7 @@ export default function Home({page, setPage}) {
 
     return (
         <div>
+            <Filters nameCharacter={nameCharacter}/>
             <Paginado pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
             <br />
             <div className="CentradoCards">

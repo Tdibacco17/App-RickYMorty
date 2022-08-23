@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -13,10 +13,9 @@ import { getSearchbar } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 
-export default function Header({ setPage }) {
+export default function Header({ setPage, nameCharacter, setNameCharacter }) {
 
     const dispatch = useDispatch()
-    const [nameCharacter, setNameCharacter] = useState("");
     let navigate = useNavigate();
 
     function handleInputChange(e) {
@@ -30,7 +29,7 @@ export default function Header({ setPage }) {
         } else {
             navigate('/')
             dispatch(getSearchbar(nameCharacter));
-            setNameCharacter("");
+             // setNameCharacter("");  si lo activono me filtra con la busqueda
             setPage(1)
         }
     }

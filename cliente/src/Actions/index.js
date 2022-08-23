@@ -33,3 +33,24 @@ export function getSearchbar(nameCharacter) {
         }
     };
 };
+
+export function getStatus({status, nameCharacter}) {
+    return async function (dispatch) {
+        let json = await axios.get(`/Status/${status}?nameCharacter=${nameCharacter}`);
+        return dispatch({
+            type: 'GET_STATUS',
+            payload: json.data
+        });
+    };
+};
+
+
+export function getSpecies(species) {
+    return async function (dispatch) {
+        let json = await axios.get("/Species", species);
+        return dispatch({
+            type: 'GET_SPECIES',
+            payload: json.data
+        });
+    };
+};

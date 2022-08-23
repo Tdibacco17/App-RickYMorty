@@ -37,4 +37,47 @@ const routeGetCharacterDetail = async (req, res) => {
     };
 };
 
-module.exports = { routeGetAllCharacters, routeGetCharacterDetail };
+const routeGetStatus = async (req, res) => {
+    const { status } = req.params;
+    const {nameCharacter} = req.query
+    console.log(nameCharacter)
+    console.log(status)
+    let result;
+    try {
+        if(status !== "All"){
+            result = await Character.findAll({
+                where: {
+                    status: {
+                        [Op.iLike]: status, 
+                    }
+                }
+            })
+            return res.json(result)
+        }
+        result = await Character.findAll()
+
+        return res.json(result)
+    } catch (e) {
+        return res.status(400).json({ msg: `Error 404 - ${e}` }); 
+    };
+}
+
+const routeGetSpecies = async (req, res) => {
+    const { species } = req.body
+
+    try {
+        result = await Character.findAll({
+            where: {
+                species: {
+                    [Op.iLike]: species,
+                }
+            }
+        })
+
+        return res.json(result)
+    } catch (e) {
+        return res.status(400).json({ msg: `Error 404 - ${e}` });
+    };
+}
+
+module.exports = { routeGetAllCharacters, routeGetCharacterDetail, routeGetStatus, routeGetSpecies };
