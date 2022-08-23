@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
-import logoRyM from "../../Imagenes/logo ricky y morty 1.png"
+import logoRyM from "../../Imagenes/logo.png"
 import "./Navbar-module.css"
 // import titulo from "../../Imagenes/titutlo.png"
 import { getSearchbar } from "../../Actions/index"
@@ -52,7 +52,7 @@ export default function Header({ setPage }) {
         <div>
             <Navbar id="ContentNavbar"  bg="light" expand="lg">
                 <Container fluid>
-                    <Link to="/"><img src={logoRyM} style={{ width: "5rem" }} alt="Imagen Rick Y Morty" /></Link>
+                    <Link to="/"><img src={logoRyM} style={{ width: "3.2rem", }} alt="Imagen Rick Y Morty" /></Link>
                     <h5 className="titulo">Rick Y Morti App</h5>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">

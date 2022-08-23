@@ -1,31 +1,58 @@
+.Ubicacion {
+    display: flex;
+    justify-content: center;
+    margin-top: 175px;
+}
+.CentradoDetailsLoading{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 190px;
+}
+
 .ContenedorDetail{
     display: flex;
-    justify-content: center;
-    margin: 175px;
-}
-
-.CardDetail{
-    display: flex;
-    width: 800px;
     justify-content: space-between;
 }
-.CardDetail img{
-    width: 400px;
-    height: 400px;
+.imagenDetail{
+    border-radius: 5px 0px 0px 5px;
+    width: 375px;
+    height: 375px;
 }
-
-.CardDetail div.h5{
-    display: flex;
-    justify-content: center;
-}
-.CardDetail p{
+.cuerpo{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 45px;
+    margin: 35px;
+}  
+
+.cuerpo h4{
+    padding-bottom: 5px;
 }
 
-.CardDetail h5{
+.cuerpo h5{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 
-    margin-top: 25px;
+@media screen and (max-width: 720px)  {
+    .ContenedorDetail{
+        flex-direction: column;
+
+    }
+    
+}
+
+@media screen and (max-width: 435px)  {
+    .ContenedorDetail{
+        width: 255px;
+        height: 535px;
+    }
+    
+    .imagenDetail{
+        
+        width: 255px;
+        height: 255px;
+    }
+    
 }

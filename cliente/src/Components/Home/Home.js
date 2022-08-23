@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card"
 import { getAllCharacters } from "../../Actions/index";
 import Paginado from "../Paginado/Paginado"
+import Loading from "../Spiner/Spiner"
 import "./Home-module.css"
 
 
@@ -34,7 +35,7 @@ export default function Home({page, setPage}) {
                         return (
                             <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} />
                         )
-                    }) : "Loading..."
+                    }) : <Loading/>
                 }
             </div>
         </div>
