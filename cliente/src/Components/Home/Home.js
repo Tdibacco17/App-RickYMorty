@@ -8,8 +8,8 @@ import Filters from "../Filters/Filters";
 import "./Home-module.css"
 
 
-export default function Home({page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName}) {
-
+export default function Home({page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName}) {
+    
     const dispatch = useDispatch()
     const getAllChar = useSelector(state => state.characters)
 
@@ -29,7 +29,18 @@ export default function Home({page, setPage, nameCharacter, setStatusTrue, statu
 
     return (
         <div>
-            <Filters setStatusName={setStatusName} statusName={statusName} setStatusTrue={setStatusTrue} nameCharacter={nameCharacter}/>
+            <Filters page={page}
+            setPage={setPage}
+            nameCharacter={nameCharacter}
+            setNameCharacter={setNameCharacter}
+            statusTrue={statusTrue}
+            setStatusTrue={setStatusTrue}
+            statusName={statusName}
+            setStatusName={setStatusName}
+            speciesTrue={speciesTrue}
+            setSpeciesTrue={setSpeciesTrue}
+            speciesName={speciesName}
+            setSpeciesName={setSpeciesName}/>
             <Paginado pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
             <br />
             <div className="CentradoCards">

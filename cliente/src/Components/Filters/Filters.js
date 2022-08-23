@@ -1,31 +1,33 @@
 import React from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { getStatus, getSpecies } from "../../Actions/index"
+import { getFilter } from "../../Actions/index"
 import { useDispatch, useSelector } from "react-redux";
 import "./Filters-module.css"
 
-export default function Filters({ nameCharacter, setStatusTrue, statusName, setStatusName }) {
+export default function Filters({page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName}) {
 
     const dispatch = useDispatch()
     const allSpecies = useSelector(state => state.species)
-    const allCharacters = useSelector(state => state.characters)
 
     function handleState(e) {
         e.preventDefault();
-        setStatusTrue(true);
         setStatusName(e.target.name)
-        dispatch(getStatus({ status: e.target.name, nameCharacter }))
-    }
-    
+        setStatusTrue(true);
+        dispatch(getFilter({ status: e.target.name, species: "All", nameCharacter }))
 
-    async function handleSpecies(e){
+        // dispatch(getFilter({ status: e.target.name, species: speciesName, nameCharacter }))
+
+    }
+
+    function handleSpecies(e) {
         e.preventDefault();
-        dispatch(getSpecies({
-            status: statusName,
-            nameCharacter,
-            species: e.target.name
-        }))
+        setSpeciesName(e.target.name)
+        setSpeciesTrue(true);
+        dispatch(getFilter({ status: "All", species: e.target.name, nameCharacter }))
+
+        // dispatch(getFilter({ status: statusName, species: e.target.name, nameCharacter }))
+
     }
 
     return (
@@ -39,14 +41,15 @@ export default function Filters({ nameCharacter, setStatusTrue, statusName, setS
                 </DropdownButton>
             </div>
             <div className="filtroSpecies">
-            <DropdownButton id="dropdown-basic-button" title="Species Character">
+                <DropdownButton id="dropdown-basic-button" title="Species Character">
+                    <Dropdown.Item name="All" onClick={(e) => handleSpecies(e)}>All</Dropdown.Item>
                     {
                         allSpecies.length > 0 ? allSpecies.map(j => {
-                            return(
+                            return (
                                 <Dropdown.Item key={j} name={j} onClick={(e) => handleSpecies(e)}>{j}</Dropdown.Item>
                             )
                         }) : null
-                        }
+                    }
                 </DropdownButton>
 
             </div>

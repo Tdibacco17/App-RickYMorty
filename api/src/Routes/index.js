@@ -1,13 +1,12 @@
 const { Router } = require("express");
-const { routeGetAllCharacters, routeGetCharacterDetail, routeGetStatus, routeGetSpecies, allSpecies } = require("../Controllers/CharacterRoutes")
+const { routeGetAllCharacters, routeGetCharacterDetail, routeFiltered, allSpecies } = require("../Controllers/CharacterRoutes")
 
 const router = Router();
 
 router.get("/Characters", routeGetAllCharacters);
 router.get("/Details/:id", routeGetCharacterDetail);
-router.get("/Status/:status/", routeGetStatus)
-router.get("/Species", routeGetSpecies)
-router.get("/AllSpecies", allSpecies) //funcion para la cantidad del arreglo
+router.get("/Status/:status/:species", routeFiltered)
+router.get("/AllSpecies", allSpecies) //funcion para la cantidad del arreglo de especies
 
 
 

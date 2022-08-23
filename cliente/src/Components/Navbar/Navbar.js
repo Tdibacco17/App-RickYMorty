@@ -9,7 +9,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import logoRyM from "../../Imagenes/logo.png"
 import "./Navbar-module.css"
 // import titulo from "../../Imagenes/titutlo.png"
-import { getSearchbar, getStatus } from "../../Actions/index"
+import { getSearchbar, getFilter } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 
@@ -28,10 +28,10 @@ export default function Header({ setPage, nameCharacter, setNameCharacter, statu
             swal('Ohh no!', 'No se permiten espacios en la primera posición', 'warning');
         } else if (statusTrue === true) {
             setStatusTrue(false);
-            dispatch(getStatus({ status: statusName, nameCharacter }))
+            dispatch(getFilter({ status: statusName, nameCharacter }))
         } else if (statusName === "Alive" || statusName === "Dead" || statusName === "Unknown" ) {
             setStatusName("")
-            dispatch(getStatus({ status: statusName, nameCharacter }))
+            dispatch(getFilter({ status: statusName, nameCharacter }))
         } else {
             navigate('/')
             dispatch(getSearchbar(nameCharacter));

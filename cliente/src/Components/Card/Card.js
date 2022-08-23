@@ -11,7 +11,8 @@ export default function Cards({ id, name, status, species, gender, image, create
             <Card.Body className="Fondo">
                 <Card.Title style={{ fontSize: "15.5px" }} >{name}</Card.Title>
                 <Card.Text style={{ fontSize: "13.5px" }}>
-                   Status: {status}
+                   Status: {status} /
+                   Species: {species}
                 </Card.Text>
                 <Link to={`/Details/${id}`} ><Button variant="primary">Go to Details</Button></Link>
             </Card.Body>

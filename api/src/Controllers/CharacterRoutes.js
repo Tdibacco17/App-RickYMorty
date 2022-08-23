@@ -37,13 +37,15 @@ const routeGetCharacterDetail = async (req, res) => {
     };
 };
 
-const routeGetStatus = async (req, res) => {
-    const { status } = req.params;
+const routeFiltered = async (req, res) => {
+    const { status, species } = req.params;
     const { nameCharacter } = req.query
 
+    console.log(req.query)
+    console.log(req.params)
     let result;
     try {
-        if (status !== "All") {
+        if (status !== "All" && species !== "All") {
             result = await Character.findAll({
                 where: {
                     [Op.and]: [{
@@ -53,6 +55,42 @@ const routeGetStatus = async (req, res) => {
                     }, {
                         status: {
                             [Op.iLike]: status,
+                        }
+                    }, {
+                        species: {
+                            [Op.iLike]: species,
+                        }
+                    }]
+                }
+            })
+
+            return res.json(result)
+        } else if (status !== "All" && species === "All") {
+            result = await Character.findAll({
+                where: {
+                    [Op.and]: [{
+                        name: {
+                            [Op.iLike]: `%${nameCharacter}%`,
+                        }
+                    }, {
+                        status: {
+                            [Op.iLike]: status,
+                        }
+                    }]
+                }
+            })
+
+            return res.json(result)
+        } else if (species !== "All" && status === "All") {
+            result = await Character.findAll({
+                where: {
+                    [Op.and]: [{
+                        name: {
+                            [Op.iLike]: `%${nameCharacter}%`,
+                        }
+                    }, {
+                        species: {
+                            [Op.iLike]: species,
                         }
                     }]
                 }
@@ -75,20 +113,6 @@ const routeGetStatus = async (req, res) => {
     };
 }
 
-const routeGetSpecies = async (req, res) => {
-    const { status, nameCharacter, species } = req.body
-    console.log(req.body)
-
-    try {
-
-
-        return res.json(allSpecies)
-    } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
-    }
-}
-
-
 
 
 //------------------------------------------------------------------------
@@ -106,4 +130,4 @@ const allSpecies = async (req, res) => {
     }
 }
 
-module.exports = { routeGetAllCharacters, routeGetCharacterDetail, routeGetStatus, routeGetSpecies, allSpecies };
+module.exports = { routeGetAllCharacters, routeGetCharacterDetail, routeFiltered, allSpecies };

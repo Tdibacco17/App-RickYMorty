@@ -2,6 +2,8 @@ const initialState = {
     characters: [],
     details: [],
     species: [],
+    allCharacters: [],
+    filterStatus: []
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -9,7 +11,8 @@ export default function rootReducer(state = initialState, action) {
         case "GET_ALL_CHARACTERS":
             return {
                 ...state,
-                characters: action.payload
+                characters: action.payload,
+                allCharacters: action.payload,
             }
         case "GET_CHARACTER_BY_ID":
             return {
@@ -21,20 +24,16 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 characters: action.payload
             }
-        case "GET_STATUS":
+        case "GET_FILTER":
             return {
                 ...state,
-                characters: action.payload
+                characters: action.payload,
+                filterStatus: action.payload,
             }
         case "GET_ALLSPECIES":
             return {
                 ...state,
                 species: action.payload
-            }
-        case "GET_SPECIES":
-            return {
-                ...state,
-                characters: action.payload
             }
         default:
             return state;

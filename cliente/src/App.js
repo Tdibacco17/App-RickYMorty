@@ -14,6 +14,9 @@ function App() {
   const [statusTrue, setStatusTrue] = useState(false)
   const [statusName, setStatusName] = useState("")
 
+  const [speciesTrue, setSpeciesTrue] = useState(false)
+  const [speciesName, setSpeciesName] = useState("")
+
   return (
     <div>
       <Navbar
@@ -23,16 +26,27 @@ function App() {
         statusTrue={statusTrue}
         setStatusTrue={setStatusTrue}
         statusName={statusName}
-        setStatusName={setStatusName} />
+        setStatusName={setStatusName}
+        speciesTrue={speciesTrue}
+        setSpeciesTrue={setSpeciesTrue}
+        speciesName={speciesName}
+        setSpeciesName={setSpeciesName} />
       <Routes>
         <Route exact path="/" element={
           <Home
             page={page}
             setPage={setPage}
             nameCharacter={nameCharacter}
+            setNameCharacter={setNameCharacter}
+            statusTrue={statusTrue}
             setStatusTrue={setStatusTrue}
             statusName={statusName}
-            setStatusName={setStatusName}/>} />
+            setStatusName={setStatusName}
+            speciesTrue={speciesTrue}
+            setSpeciesTrue={setSpeciesTrue}
+            speciesName={speciesName}
+            setSpeciesName={setSpeciesName}/>} 
+            />
         <Route exact path="/Details/:id" element={<Details />} />
       </Routes>
     </div>

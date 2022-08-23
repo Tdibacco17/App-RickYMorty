@@ -21,37 +21,32 @@ export function getCharacterById(id) {
 };
 
 export function getSearchbar(nameCharacter) {
-    return async function(dispatch){
-        try{ 
+    return async function (dispatch) {
+        try {
             let json = await axios.get(`/Characters?nameCharacter=${nameCharacter}`);
             return dispatch({
                 type: 'GET_SEARCHBAR',
                 payload: json.data
             });
-        }catch(error) {
+        } catch (error) {
             alert(error.response.data.error);
         }
     };
 };
 
-export function getStatus({status, nameCharacter}) {
+export function getFilter({ status, species, nameCharacter }) {
+    console.log("ACTIONS", status)
+    console.log("ACTIONS",species)
+    console.log("ACTIONS",nameCharacter)
+    
     return async function (dispatch) {
-        let json = await axios.get(`/Status/${status}?nameCharacter=${nameCharacter}`);
+        let json = await axios.get(`/Status/${status}/${species}?nameCharacter=${nameCharacter}`);
         return dispatch({
-            type: 'GET_STATUS',
+            type: 'GET_FILTER',
             payload: json.data
         });
     };
 };
-
-export function getSpecies(payload) {
-    console.log(payload)
-    return {
-        type: 'GET_SPECIES',
-        payload
-    };
-};
-
 
 export function getAllSpecies() {
     return async function (dispatch) {
