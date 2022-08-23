@@ -3,7 +3,7 @@
 <p align='left'>
     <img src='https://www.vodafone.es/c/statics/imagen/img_OG_Rick_y_Morty_T4_V2.jpg' </img>
 </p>
-
+<!--
 ## Objetivos del Proyecto
 Construir una App utlizando React, Redux, Node y Sequelize.
 
@@ -104,5 +104,5 @@ Dependiendo de los tiempos que lleve el repaso, se podría agregar:
 - [ ] Botón para filtrar por personajes traidos de la Api o creados en la BDD
 - [ ] GET /character/:id
 
-
+-->
 
