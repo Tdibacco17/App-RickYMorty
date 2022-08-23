@@ -80,5 +80,7 @@ async function getAllLocations() {
     });
     return Promise.all(returnLocation)
 }
+//para cargar la base de datos
+
 
 module.exports = { getAllCharacters, getAllEpisodes, getAllLocations };

@@ -1,0 +1,15 @@
+.filterContainer {
+   display: flex;
+   margin-top: 20px;
+   margin-left: 10px;
+}
+
+.filtroStatus {
+   margin-left: 10px;
+   margin-right: 10px;
+}
+
+.filtroSpecies {
+   margin-left: 10px;
+   margin-right: 10px;
+}

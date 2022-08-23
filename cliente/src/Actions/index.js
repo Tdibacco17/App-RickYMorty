@@ -44,12 +44,20 @@ export function getStatus({status, nameCharacter}) {
     };
 };
 
+export function getSpecies(payload) {
+    console.log(payload)
+    return {
+        type: 'GET_SPECIES',
+        payload
+    };
+};
 
-export function getSpecies(species) {
+
+export function getAllSpecies() {
     return async function (dispatch) {
-        let json = await axios.get("/Species", species);
+        let json = await axios.get("/AllSpecies");
         return dispatch({
-            type: 'GET_SPECIES',
+            type: 'GET_ALLSPECIES',
             payload: json.data
         });
     };

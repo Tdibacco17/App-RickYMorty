@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card"
-import { getAllCharacters } from "../../Actions/index";
+import { getAllCharacters, getAllSpecies } from "../../Actions/index";
 import Paginado from "../Paginado/Paginado";
 import Loading from "../Spiner/Spiner";
 import Filters from "../Filters/Filters";
 import "./Home-module.css"
 
 
-export default function Home({page, setPage, nameCharacter, setStatusTrue, setStatusName}) {
+export default function Home({page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName}) {
 
     const dispatch = useDispatch()
     const getAllChar = useSelector(state => state.characters)
@@ -24,11 +24,12 @@ export default function Home({page, setPage, nameCharacter, setStatusTrue, setSt
         if (getAllChar.length === 0) {
             dispatch(getAllCharacters())
         }
+        dispatch(getAllSpecies())
     }, [dispatch])
 
     return (
         <div>
-            <Filters setStatusName={setStatusName} setStatusTrue={setStatusTrue} nameCharacter={nameCharacter}/>
+            <Filters setStatusName={setStatusName} statusName={statusName} setStatusTrue={setStatusTrue} nameCharacter={nameCharacter}/>
             <Paginado pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
             <br />
             <div className="CentradoCards">

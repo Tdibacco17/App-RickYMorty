@@ -28,8 +28,10 @@
 }
 
 .Paginado button[disabled]{
-    display: none;
-    
+    border: transparent;
+    background-color: transparent;
+    color: transparent;
+    transition: 0.8s;
 }
 
 /* @media screen and (max-width: 500px)  {

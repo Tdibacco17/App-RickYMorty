@@ -1,6 +1,7 @@
 const initialState = {
     characters: [],
     details: [],
+    species: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -24,6 +25,11 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 characters: action.payload
+            }
+        case "GET_ALLSPECIES":
+            return {
+                ...state,
+                species: action.payload
             }
         case "GET_SPECIES":
             return {

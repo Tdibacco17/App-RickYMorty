@@ -31,6 +31,7 @@ function App() {
             setPage={setPage}
             nameCharacter={nameCharacter}
             setStatusTrue={setStatusTrue}
+            statusName={statusName}
             setStatusName={setStatusName}/>} />
         <Route exact path="/Details/:id" element={<Details />} />
       </Routes>
