@@ -17,6 +17,9 @@ function App() {
   const [speciesTrue, setSpeciesTrue] = useState(false)
   const [speciesName, setSpeciesName] = useState("All")
 
+  const [genderTrue, setGenderTrue] = useState(false)
+  const [genderName, setGenderName] = useState("All")
+
   return (
     <div>
       <Navbar
@@ -30,7 +33,11 @@ function App() {
         speciesTrue={speciesTrue}
         setSpeciesTrue={setSpeciesTrue}
         speciesName={speciesName}
-        setSpeciesName={setSpeciesName} />
+        setSpeciesName={setSpeciesName}
+        genderTrue={genderTrue}
+        setGenderTrue={setGenderTrue}
+        genderName={genderName}
+        setGenderName={setGenderName} />
       <Routes>
         <Route exact path="/" element={
           <Home
@@ -45,8 +52,12 @@ function App() {
             speciesTrue={speciesTrue}
             setSpeciesTrue={setSpeciesTrue}
             speciesName={speciesName}
-            setSpeciesName={setSpeciesName}/>} 
-            />
+            setSpeciesName={setSpeciesName}
+            genderTrue={genderTrue}
+            setGenderTrue={setGenderTrue}
+            genderName={genderName}
+            setGenderName={setGenderName} />}
+        />
         <Route exact path="/Details/:id" element={<Details />} />
       </Routes>
     </div>

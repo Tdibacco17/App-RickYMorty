@@ -13,7 +13,7 @@ import { getSearchbar, getFilter } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 
-export default function Header({ page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName }) {
+export default function Header({ page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName, genderTrue, setGenderTrue, genderName, setGenderName }) {
 
     const dispatch = useDispatch()
     let navigate = useNavigate();
@@ -22,35 +22,62 @@ export default function Header({ page, setPage, nameCharacter, setNameCharacter,
         setNameCharacter(e.target.value);
     }
 
+    console.log("estado STATUS:", statusName)
+    console.log("estado SPECIE:",speciesName)
+    console.log("estado GENDER:",genderName)
+    console.log("estado NAME:",nameCharacter)
+
+    console.log("STATUS:", statusTrue)
+    console.log("SPECIE:",speciesTrue)
+    console.log("GENDER:",genderTrue)
+    console.log("NAME:",nameCharacter)
+
     function handleSubmit(e) {
         e.preventDefault();
         if (nameCharacter.length === 0 || nameCharacter[0] === ' ') {
             swal('Ohh no!', 'No se permiten espacios en la primera posición', 'warning');
-        } else if (statusTrue === false || speciesTrue === false) {
+        } else if (statusTrue === false && speciesTrue === false && genderTrue === false) {
             setStatusTrue(false);
             setSpeciesTrue(false);
+            setGenderTrue(false);
             navigate('/')
             dispatch(getSearchbar(nameCharacter));
             setPage(1)
-        } else if (statusTrue === true) {
+        } else if (statusTrue === true && speciesTrue === false && genderTrue === false) {
             setStatusTrue(false);
             setSpeciesTrue(false);
-            dispatch(getFilter({ status: statusName, species: speciesName, nameCharacter }));
+            setGenderTrue(false);
+            dispatch(getFilter({ status: statusName, species: speciesName, gender: genderName, nameCharacter }));
             setPage(1)
-        } else if (speciesTrue === true) {
+        } else if (statusTrue === false && speciesTrue === true && genderTrue === false) {
             setStatusTrue(false);
             setSpeciesTrue(false);
-            dispatch(getFilter({ status: statusName, species: speciesName, nameCharacter }));
+            setGenderTrue(false);
+            dispatch(getFilter({ status: statusName, species: speciesName, gender: genderName, nameCharacter }));
+            setPage(1)
+        } else if (statusTrue === false && speciesTrue === false && genderTrue === true) {
+            setStatusTrue(false);
+            setSpeciesTrue(false);
+            setGenderTrue(false);
+            dispatch(getFilter({ status: statusName, species: speciesName, gender: genderName, nameCharacter }));
+            setPage(1)
+        }else if (statusTrue === true && speciesTrue === true && genderTrue === true) {
+            setStatusTrue(false);
+            setSpeciesTrue(false);
+            setGenderTrue(false);
+            dispatch(getFilter({ status: statusName, species: speciesName, gender: genderName, nameCharacter }));
             setPage(1)
         }
     }
-
+  
     function handleReloadClick(e) {
         e.preventDefault();
         setStatusName("All");
-        setSpeciesName("All")
+        setSpeciesName("All");
+        setGenderName("All");
         setStatusTrue(false);
         setSpeciesTrue(false);
+        setGenderTrue(false);
         navigate('/');
         dispatch(getSearchbar(""));
         setNameCharacter("");

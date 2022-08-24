@@ -8,7 +8,7 @@ import Filters from "../Filters/Filters";
 import "./Home-module.css"
 
 
-export default function Home({ page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName }) {
+export default function Home({ page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName, genderTrue, setGenderTrue, genderName, setGenderName }) {
 
     const dispatch = useDispatch()
     const getAllChar = useSelector(state => state.characters)
@@ -40,17 +40,21 @@ export default function Home({ page, setPage, nameCharacter, setNameCharacter, s
                 speciesTrue={speciesTrue}
                 setSpeciesTrue={setSpeciesTrue}
                 speciesName={speciesName}
-                setSpeciesName={setSpeciesName} />
+                setSpeciesName={setSpeciesName}
+                genderTrue={genderTrue}
+                setGenderTrue={setGenderTrue}
+                genderName={genderName}
+                setGenderName={setGenderName} />
             <Paginado pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
             <br />
             <div className="CentradoCards">
                 {
                     currentPage.length > 0 ? currentPage.map(j => {
                         return (
-                            <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} />
+                            <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue}/>
                         )
                     }) : <div>
-                        {statusTrue === true || speciesTrue === true ? <h4 style={{ color: "white" }}>No se encontraron Personajes</h4> : <Loading />}
+                        {currentPage.length === 0 ? <h4 style={{ color: "white" }}>No se encontraron Personajes</h4> : <Loading />}
                     </div>
                 }
             </div>

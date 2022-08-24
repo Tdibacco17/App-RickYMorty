@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import {useNavigate } from 'react-router-dom';
 import "./Card-module.css";
 
-export default function Cards({ id, name, status, species, gender, image, created, setStatusTrue, setSpeciesTrue }) {
+export default function Cards({ id, name, status, species, gender, image, created, setStatusTrue, setSpeciesTrue, setGenderTrue }) {
 
     let navigate = useNavigate();
 
@@ -12,6 +12,7 @@ export default function Cards({ id, name, status, species, gender, image, create
         e.preventDefault();
         setStatusTrue(false);
         setSpeciesTrue(false);
+        setGenderTrue(false);
         navigate(`/Details/${id}`)
     }
 

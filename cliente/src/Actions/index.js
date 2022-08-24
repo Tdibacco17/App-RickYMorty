@@ -34,9 +34,9 @@ export function getSearchbar(nameCharacter) {
     };
 };
 
-export function getFilter({ status, species, nameCharacter }) {    
+export function getFilter({ status, species, gender, nameCharacter }) {    
     return async function (dispatch) {
-        let json = await axios.get(`/Status/${status}/${species}?nameCharacter=${nameCharacter}`);
+        let json = await axios.get(`/Status/${status}/${species}/${gender}?nameCharacter=${nameCharacter}`);
         return dispatch({
             type: 'GET_FILTER',
             payload: json.data
