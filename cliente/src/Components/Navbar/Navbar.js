@@ -13,7 +13,7 @@ import { getSearchbar, getFilter } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 
-export default function Header({ setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName }) {
+export default function Header({page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName}) {
 
     const dispatch = useDispatch()
     let navigate = useNavigate();
@@ -26,23 +26,27 @@ export default function Header({ setPage, nameCharacter, setNameCharacter, statu
         e.preventDefault();
         if (nameCharacter.length === 0 || nameCharacter[0] === ' ') {
             swal('Ohh no!', 'No se permiten espacios en la primera posición', 'warning');
-        } else if (statusTrue === true) {
+        } else if(statusTrue === false || speciesTrue === false){
             setStatusTrue(false);
-            dispatch(getFilter({ status: statusName, nameCharacter }))
-        } else if (statusName === "Alive" || statusName === "Dead" || statusName === "Unknown" ) {
-            setStatusName("")
-            dispatch(getFilter({ status: statusName, nameCharacter }))
-        } else {
+            setSpeciesTrue(false);
             navigate('/')
             dispatch(getSearchbar(nameCharacter));
-            // setNameCharacter("");  si lo activono me filtra con la busqueda
             setPage(1)
-        }
+        }   else if (statusTrue === true) {
+            setStatusTrue(false);
+            setSpeciesTrue(false);
+            dispatch(getFilter({ status: statusName, species: speciesName, nameCharacter }))
+        } else if (speciesTrue === true) {
+            setStatusTrue(false);
+            setSpeciesTrue(false);
+            dispatch(getFilter({ status: statusName, species: speciesName, nameCharacter }))
+        } 
     }
 
     function handleReloadClick(e) {
         e.preventDefault();
-        setStatusName("");
+        setStatusName("All");
+        setSpeciesName("All")
         setStatusTrue(false);
         navigate('/');
         dispatch(getSearchbar(""));

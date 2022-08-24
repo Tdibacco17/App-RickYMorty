@@ -41,8 +41,6 @@ const routeFiltered = async (req, res) => {
     const { status, species } = req.params;
     const { nameCharacter } = req.query
 
-    console.log(req.query)
-    console.log(req.params)
     let result;
     try {
         if (status !== "All" && species !== "All") {

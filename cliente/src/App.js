@@ -12,10 +12,10 @@ function App() {
   const [nameCharacter, setNameCharacter] = useState("");
 
   const [statusTrue, setStatusTrue] = useState(false)
-  const [statusName, setStatusName] = useState("")
+  const [statusName, setStatusName] = useState("All")
 
   const [speciesTrue, setSpeciesTrue] = useState(false)
-  const [speciesName, setSpeciesName] = useState("")
+  const [speciesName, setSpeciesName] = useState("All")
 
   return (
     <div>

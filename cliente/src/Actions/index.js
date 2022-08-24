@@ -34,11 +34,7 @@ export function getSearchbar(nameCharacter) {
     };
 };
 
-export function getFilter({ status, species, nameCharacter }) {
-    console.log("ACTIONS", status)
-    console.log("ACTIONS",species)
-    console.log("ACTIONS",nameCharacter)
-    
+export function getFilter({ status, species, nameCharacter }) {    
     return async function (dispatch) {
         let json = await axios.get(`/Status/${status}/${species}?nameCharacter=${nameCharacter}`);
         return dispatch({

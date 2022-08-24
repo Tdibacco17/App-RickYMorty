@@ -5,29 +5,91 @@ import { getFilter } from "../../Actions/index"
 import { useDispatch, useSelector } from "react-redux";
 import "./Filters-module.css"
 
-export default function Filters({page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName}) {
+export default function Filters({ page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName }) {
 
     const dispatch = useDispatch()
     const allSpecies = useSelector(state => state.species)
 
     function handleState(e) {
         e.preventDefault();
-        setStatusName(e.target.name)
-        setStatusTrue(true);
-        dispatch(getFilter({ status: e.target.name, species: "All", nameCharacter }))
-
-        // dispatch(getFilter({ status: e.target.name, species: speciesName, nameCharacter }))
-
+        if (statusName === "All") {
+            if (speciesName === "All") {
+                setStatusName(e.target.name)
+                dispatch(getFilter({ status: e.target.name, species: "All", nameCharacter }))
+                if (e.target.name === "All") {
+                    setStatusTrue(false);
+                } else {
+                    setStatusTrue(true);
+                }
+            } else {
+                setStatusName(e.target.name)
+                dispatch(getFilter({ status: e.target.name, species: speciesName, nameCharacter }))
+                if (e.target.name === "All") {
+                    setStatusTrue(false);
+                } else {
+                    setStatusTrue(true);
+                }
+            }
+        } else {
+            if (speciesName === "All") {
+                setStatusName(e.target.name)
+                dispatch(getFilter({ status: e.target.name, species: "All", nameCharacter }))
+                if (e.target.name === "All") {
+                    setStatusTrue(false);
+                } else {
+                    setStatusTrue(true);
+                }
+            } else {
+                setStatusName(e.target.name)
+                dispatch(getFilter({ status: e.target.name, species: speciesName, nameCharacter }))
+                if (e.target.name === "All") {
+                    setStatusTrue(false);
+                } else {
+                    setStatusTrue(true);
+                }
+            }
+        }
     }
 
     function handleSpecies(e) {
         e.preventDefault();
-        setSpeciesName(e.target.name)
-        setSpeciesTrue(true);
-        dispatch(getFilter({ status: "All", species: e.target.name, nameCharacter }))
-
-        // dispatch(getFilter({ status: statusName, species: e.target.name, nameCharacter }))
-
+        if (speciesName === "All") {
+            if (statusName === "All") {
+                setSpeciesName(e.target.name)
+                dispatch(getFilter({ status: "All", species: e.target.name, nameCharacter }))
+                if (e.target.name === "All") {
+                    setSpeciesTrue(false);
+                } else {
+                    setSpeciesTrue(true);
+                }
+            } else {
+                setSpeciesName(e.target.name)
+                dispatch(getFilter({ status: statusName, species: e.target.name, nameCharacter }))
+                if (e.target.name === "All") {
+                    setSpeciesTrue(false);
+                } else {
+                    setSpeciesTrue(true);
+                }
+            }
+        } else {
+            if (statusName === "All") {
+                setSpeciesName(e.target.name)
+                dispatch(getFilter({ status: "All", species: e.target.name, nameCharacter }))
+                if (e.target.name === "All") {
+                    setSpeciesTrue(false);
+                } else {
+                    setSpeciesTrue(true);
+                }
+            } else {
+                setSpeciesName(e.target.name)
+                dispatch(getFilter({ status: statusName, species: e.target.name, nameCharacter }))
+                if (e.target.name === "All") {
+                    setSpeciesTrue(false);
+                } else {
+                    setSpeciesTrue(true);
+                }
+            }
+        }
     }
 
     return (
