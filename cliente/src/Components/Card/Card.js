@@ -22,7 +22,8 @@ export default function Cards({ id, name, status, species, gender, image, create
                 <Card.Title style={{ fontSize: "15.5px" }} >{name}</Card.Title>
                 <Card.Text style={{ fontSize: "13.5px" }}>
                    Status: {status} /
-                   Species: {species}
+                   Species: {species} /
+                   Gender : {gender}
                 </Card.Text>
                 <Button onClick={(e) => handleDetail(e)} variant="primary">Go to Details</Button>
             </Card.Body>

@@ -71,7 +71,7 @@ export default function Filters({ page, setPage, nameCharacter, setNameCharacter
     function handleGender(e) {
         e.preventDefault();
         setPage(1);
-        
+
     }
 
     return (
@@ -99,6 +99,7 @@ export default function Filters({ page, setPage, nameCharacter, setNameCharacter
             <div className="filtroGeneros">
                 <div className="filtroStatus">
                     <DropdownButton id="dropdown-basic-button" title="Gender Filter">
+                        <Dropdown.Item name="All" onClick={(e) => handleGender(e)}>All</Dropdown.Item>
                         <Dropdown.Item name="Female" onClick={(e) => handleGender(e)}>Female</Dropdown.Item>
                         <Dropdown.Item name="Male" onClick={(e) => handleGender(e)}>Male</Dropdown.Item>
                         <Dropdown.Item name="Genderless" onClick={(e) => handleGender(e)} >Dead</Dropdown.Item>
