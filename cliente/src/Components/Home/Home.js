@@ -8,8 +8,8 @@ import Filters from "../Filters/Filters";
 import "./Home-module.css"
 
 
-export default function Home({page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName}) {
-    
+export default function Home({ page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName }) {
+
     const dispatch = useDispatch()
     const getAllChar = useSelector(state => state.characters)
 
@@ -30,26 +30,28 @@ export default function Home({page, setPage, nameCharacter, setNameCharacter, st
     return (
         <div>
             <Filters page={page}
-            setPage={setPage}
-            nameCharacter={nameCharacter}
-            setNameCharacter={setNameCharacter}
-            statusTrue={statusTrue}
-            setStatusTrue={setStatusTrue}
-            statusName={statusName}
-            setStatusName={setStatusName}
-            speciesTrue={speciesTrue}
-            setSpeciesTrue={setSpeciesTrue}
-            speciesName={speciesName}
-            setSpeciesName={setSpeciesName}/>
+                setPage={setPage}
+                nameCharacter={nameCharacter}
+                setNameCharacter={setNameCharacter}
+                statusTrue={statusTrue}
+                setStatusTrue={setStatusTrue}
+                statusName={statusName}
+                setStatusName={setStatusName}
+                speciesTrue={speciesTrue}
+                setSpeciesTrue={setSpeciesTrue}
+                speciesName={speciesName}
+                setSpeciesName={setSpeciesName} />
             <Paginado pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
             <br />
             <div className="CentradoCards">
                 {
                     currentPage.length > 0 ? currentPage.map(j => {
                         return (
-                            <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} />
+                            <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} />
                         )
-                    }) : <Loading/>
+                    }) : <div>
+                        {statusTrue === true || speciesTrue === true ? <h4 style={{ color: "white" }}>No se encontraron Personajes</h4> : <Loading />}
+                    </div>
                 }
             </div>
         </div>

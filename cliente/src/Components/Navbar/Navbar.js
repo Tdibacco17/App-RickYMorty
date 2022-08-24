@@ -13,7 +13,7 @@ import { getSearchbar, getFilter } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 
-export default function Header({page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName}) {
+export default function Header({ page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName }) {
 
     const dispatch = useDispatch()
     let navigate = useNavigate();
@@ -26,21 +26,23 @@ export default function Header({page, setPage, nameCharacter, setNameCharacter, 
         e.preventDefault();
         if (nameCharacter.length === 0 || nameCharacter[0] === ' ') {
             swal('Ohh no!', 'No se permiten espacios en la primera posición', 'warning');
-        } else if(statusTrue === false || speciesTrue === false){
+        } else if (statusTrue === false || speciesTrue === false) {
             setStatusTrue(false);
             setSpeciesTrue(false);
             navigate('/')
             dispatch(getSearchbar(nameCharacter));
             setPage(1)
-        }   else if (statusTrue === true) {
+        } else if (statusTrue === true) {
             setStatusTrue(false);
             setSpeciesTrue(false);
-            dispatch(getFilter({ status: statusName, species: speciesName, nameCharacter }))
+            dispatch(getFilter({ status: statusName, species: speciesName, nameCharacter }));
+            setPage(1)
         } else if (speciesTrue === true) {
             setStatusTrue(false);
             setSpeciesTrue(false);
-            dispatch(getFilter({ status: statusName, species: speciesName, nameCharacter }))
-        } 
+            dispatch(getFilter({ status: statusName, species: speciesName, nameCharacter }));
+            setPage(1)
+        }
     }
 
     function handleReloadClick(e) {
@@ -48,9 +50,11 @@ export default function Header({page, setPage, nameCharacter, setNameCharacter, 
         setStatusName("All");
         setSpeciesName("All")
         setStatusTrue(false);
+        setSpeciesTrue(false);
         navigate('/');
         dispatch(getSearchbar(""));
         setNameCharacter("");
+        setPage(1)
     }
 
     function handleEnter(e) {

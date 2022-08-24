@@ -1,10 +1,20 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import "./Card-module.css";
 
-export default function Cards({ id, name, status, species, gender, image, created }) {
+export default function Cards({ id, name, status, species, gender, image, created, setStatusTrue, setSpeciesTrue }) {
+
+    let navigate = useNavigate();
+
+    function handleDetail(e) {
+        e.preventDefault();
+        setStatusTrue(false);
+        setSpeciesTrue(false);
+        navigate(`/Details/${id}`)
+    }
+
     return (
         <Card className="Tarjetas">
             <Card.Img variant="top" src={image} alt="Imagen Rick Y Morty" />
@@ -14,7 +24,7 @@ export default function Cards({ id, name, status, species, gender, image, create
                    Status: {status} /
                    Species: {species}
                 </Card.Text>
-                <Link to={`/Details/${id}`} ><Button variant="primary">Go to Details</Button></Link>
+                <Button onClick={(e) => handleDetail(e)} variant="primary">Go to Details</Button>
             </Card.Body>
         </Card>
     )

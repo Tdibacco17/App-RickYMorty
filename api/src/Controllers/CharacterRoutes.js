@@ -38,7 +38,7 @@ const routeGetCharacterDetail = async (req, res) => {
 };
 
 const routeFiltered = async (req, res) => {
-    const { status, species } = req.params;
+    const { status, species, gender } = req.params;
     const { nameCharacter } = req.query
 
     let result;
