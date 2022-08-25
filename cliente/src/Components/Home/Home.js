@@ -7,8 +7,7 @@ import Loading from "../Spiner/Spiner";
 import Filters from "../Filters/Filters";
 import "./Home-module.css"
 
-
-export default function Home({ page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName, genderTrue, setGenderTrue, genderName, setGenderName }) {
+export default function Home({ page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
 
     const dispatch = useDispatch()
     const getAllChar = useSelector(state => state.characters)
@@ -29,19 +28,16 @@ export default function Home({ page, setPage, nameCharacter, setNameCharacter, s
 
     return (
         <div>
-            <Filters page={page}
+            <Filters
+            className="Filtros"
                 setPage={setPage}
                 nameCharacter={nameCharacter}
-                setNameCharacter={setNameCharacter}
-                statusTrue={statusTrue}
                 setStatusTrue={setStatusTrue}
                 statusName={statusName}
                 setStatusName={setStatusName}
-                speciesTrue={speciesTrue}
                 setSpeciesTrue={setSpeciesTrue}
                 speciesName={speciesName}
                 setSpeciesName={setSpeciesName}
-                genderTrue={genderTrue}
                 setGenderTrue={setGenderTrue}
                 genderName={genderName}
                 setGenderName={setGenderName} />
@@ -51,7 +47,7 @@ export default function Home({ page, setPage, nameCharacter, setNameCharacter, s
                 {
                     currentPage.length > 0 ? currentPage.map(j => {
                         return (
-                            <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue}/>
+                            <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
                         )
                     }) : <div>
                         {currentPage.length === 0 ? <h4 style={{ color: "white" }}>No se encontraron Personajes</h4> : <Loading />}

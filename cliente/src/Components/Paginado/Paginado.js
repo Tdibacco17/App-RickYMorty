@@ -26,7 +26,6 @@ export default function Paginado({ page, pageSize, setPage, totalCount, setInput
         setPage(totalPages);
     }
 
-
     return (
         <div className='Paginado'>
             <Button variant="outline-primary" disabled={page === 1 || page < 1} onClick={firstPage}>First</Button>

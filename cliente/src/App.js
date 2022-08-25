@@ -44,16 +44,12 @@ function App() {
             page={page}
             setPage={setPage}
             nameCharacter={nameCharacter}
-            setNameCharacter={setNameCharacter}
-            statusTrue={statusTrue}
             setStatusTrue={setStatusTrue}
             statusName={statusName}
             setStatusName={setStatusName}
-            speciesTrue={speciesTrue}
             setSpeciesTrue={setSpeciesTrue}
             speciesName={speciesName}
             setSpeciesName={setSpeciesName}
-            genderTrue={genderTrue}
             setGenderTrue={setGenderTrue}
             genderName={genderName}
             setGenderName={setGenderName} />}

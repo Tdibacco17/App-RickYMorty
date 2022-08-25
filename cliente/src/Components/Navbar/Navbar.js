@@ -5,15 +5,13 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
 import logoRyM from "../../Imagenes/logo.png"
 import "./Navbar-module.css"
-// import titulo from "../../Imagenes/titutlo.png"
 import { getSearchbar, getFilter } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 
-export default function Header({ page, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName, genderTrue, setGenderTrue, genderName, setGenderName }) {
+export default function Header({ setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName, genderTrue, setGenderTrue, genderName, setGenderName }) {
 
     const dispatch = useDispatch()
     let navigate = useNavigate();
@@ -21,16 +19,6 @@ export default function Header({ page, setPage, nameCharacter, setNameCharacter,
     function handleInputChange(e) {
         setNameCharacter(e.target.value);
     }
-
-    console.log("estado STATUS:", statusName)
-    console.log("estado SPECIE:",speciesName)
-    console.log("estado GENDER:",genderName)
-    console.log("estado NAME:",nameCharacter)
-
-    console.log("STATUS:", statusTrue)
-    console.log("SPECIE:",speciesTrue)
-    console.log("GENDER:",genderTrue)
-    console.log("NAME:",nameCharacter)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -43,25 +31,7 @@ export default function Header({ page, setPage, nameCharacter, setNameCharacter,
             navigate('/')
             dispatch(getSearchbar(nameCharacter));
             setPage(1)
-        } else if (statusTrue === true && speciesTrue === false && genderTrue === false) {
-            setStatusTrue(false);
-            setSpeciesTrue(false);
-            setGenderTrue(false);
-            dispatch(getFilter({ status: statusName, species: speciesName, gender: genderName, nameCharacter }));
-            setPage(1)
-        } else if (statusTrue === false && speciesTrue === true && genderTrue === false) {
-            setStatusTrue(false);
-            setSpeciesTrue(false);
-            setGenderTrue(false);
-            dispatch(getFilter({ status: statusName, species: speciesName, gender: genderName, nameCharacter }));
-            setPage(1)
-        } else if (statusTrue === false && speciesTrue === false && genderTrue === true) {
-            setStatusTrue(false);
-            setSpeciesTrue(false);
-            setGenderTrue(false);
-            dispatch(getFilter({ status: statusName, species: speciesName, gender: genderName, nameCharacter }));
-            setPage(1)
-        }else if (statusTrue === true && speciesTrue === true && genderTrue === true) {
+        } else {
             setStatusTrue(false);
             setSpeciesTrue(false);
             setGenderTrue(false);
@@ -69,7 +39,7 @@ export default function Header({ page, setPage, nameCharacter, setNameCharacter,
             setPage(1)
         }
     }
-  
+
     function handleReloadClick(e) {
         e.preventDefault();
         setStatusName("All");
