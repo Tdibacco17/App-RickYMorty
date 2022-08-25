@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -15,6 +15,20 @@ export default function Header({ setPage, nameCharacter, setNameCharacter, statu
 
     const dispatch = useDispatch()
     let navigate = useNavigate();
+
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+    
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+    
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
 
     function handleInputChange(e) {
         setNameCharacter(e.target.value);
@@ -62,8 +76,8 @@ export default function Header({ setPage, nameCharacter, setNameCharacter, statu
 
     return (
         <div>
-            <Navbar id="ContentNavbar" bg="light" expand="lg">
-                <Container fluid>
+            <Navbar bg="light" expand="lg">
+                <Container fluid >
                     <Link to="/"><img src={logoRyM} style={{ width: "3.2rem", }} alt="Imagen Rick Y Morty" /></Link>
                     <h5 className="titulo">Rick Y Morti App</h5>
                     <Navbar.Toggle aria-controls="navbarScroll" />
@@ -86,6 +100,9 @@ export default function Header({ setPage, nameCharacter, setNameCharacter, statu
                             onKeyPress={handleEnter}
                         />
                         <Button id="boton2" onClick={(e) => handleSubmit(e)} type="button" variant="outline-primary">Search</Button>
+                        {
+                         width <= 991 && <Button id="boton3" onClick={(e) => handleReloadClick(e)} type="button" variant="outline-primary">Reload</Button>
+                        }
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

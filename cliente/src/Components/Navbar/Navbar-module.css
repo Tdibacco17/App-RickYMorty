@@ -5,40 +5,27 @@
 
 
 @media screen and (max-width: 991px)  {
-    #boton1{
-        margin-bottom: 10px;
+    #boton3{
+        margin-top: 15px;
         margin-left: 10px
+    }
+    #boton1{
+        display: none;
     }
     
     #boton2{
-        margin-top: 10px;
+        margin-top: 15px;
         margin-left: 10px
     }
-}
-
-@media screen and (max-width: 600px)  {
-    .titulo{
-    margin-right: 15px;
-
-    }
-}
-@media screen and (max-width: 450px)  {
-    .titulo{
-    margin-right: 55px;
-
+    #navbarScroll{
+        margin: 0px;
+        padding: 0px;
     }
 }
 
-@media screen and (max-width: 385px)  {
+@media screen and (max-width: 350px)  {
     .titulo{
-        margin-left: -40px;
-        margin-right: 0px;
-    }
-}
-@media screen and (max-width: 340px)  {
-    .titulo{
-        margin-left: -20px;
-        margin-right: 0px;
+        margin-right: 15px;
     }
 }
 

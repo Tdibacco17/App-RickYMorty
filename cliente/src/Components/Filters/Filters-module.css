@@ -19,3 +19,25 @@
    margin-left: 10px;
    margin-right: 10px;
 }
+
+@media screen and (max-width: 485px)  {
+   .filterContainer{
+       flex-direction: column;
+       align-items: center;
+   }
+   
+.filtroStatus {
+   margin-bottom: 15px;
+   margin-top: 15px;
+}
+
+.filtroSpecies {
+   margin-bottom: 15px;
+   margin-top: 15px;
+}
+
+.filtroGeneros{
+   margin-bottom: 15px;
+   margin-top: 15px;
+}
+}
