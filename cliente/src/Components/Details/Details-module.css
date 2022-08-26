@@ -45,12 +45,7 @@
 @media screen and (max-width: 720px)  {
     .ContenedorDetail{
         flex-direction: column;
-
     }    
-    .centradoDetail{
-        margin-bottom: 50px;
-        margin-top: 90px;
-    }
 }
 
 @media screen and (max-width: 435px)  {
