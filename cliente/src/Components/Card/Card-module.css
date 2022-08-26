@@ -6,10 +6,26 @@
     margin-right: 10px;
 }
 
+.TarjetasDark{
+    width: 14rem;
+    margin-bottom: 1.5%;
+    margin-top: 1.5%;
+    margin-left: 10px;
+    margin-right: 10px;
+    color:white
+}
 
+#CardText{
+    margin-bottom: 15px;
+    margin-top: 15px;
+    background-color: transparent;
+}
 
 @media screen and (max-width: 750px)  {
     .Tarjetas{
+        margin-bottom: 3%
+    }
+    .TarjetasDark{
         margin-bottom: 3%
     }
 }

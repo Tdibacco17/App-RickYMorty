@@ -5,8 +5,9 @@ import { getCharacterById } from "../../Actions/index";
 import Card from 'react-bootstrap/Card';
 import Loading from "../Spiner/Spiner";
 import "./Details-module.css"
+import ListGroup from 'react-bootstrap/ListGroup';
 
-export default function Details() {
+export default function Details({ darkMode }) {
 
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -20,25 +21,27 @@ export default function Details() {
         <div className="Ubicacion">
             {
                 CharacterDetail.id ? <div className="centradoDetail">
-                    <Card >
+                    <Card bg={darkMode === true ? "light" : "dark"}>
                         <div className="ContenedorDetail">
                             <div>
                                 <img className="imagenDetail" src={CharacterDetail.image} alt="Imagen Rick Y Morty" />
                             </div>
-                            <div className="cuerpo" >
-                                <h4>{CharacterDetail.name}</h4>
-                                <h5>{CharacterDetail.status}</h5>
-                                <h5>{CharacterDetail.species}</h5>
-                                <h5>{CharacterDetail.gender}</h5>
-                                <h5>{CharacterDetail.created}</h5>
+                            <div className={darkMode === true ? "cuerpo" : "cuerpoDark"} >
+                            <Card.Title style={{ fontSize: "26px", paddingBottom: "20px" }} >{CharacterDetail.name}</Card.Title>
+                                <ListGroup  variant={darkMode === true ? "primary" : "secondary"}>
+                                    <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Status: {CharacterDetail.status}</ListGroup.Item>
+                                    <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Specie: {CharacterDetail.species} </ListGroup.Item>
+                                    <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Gender: {CharacterDetail.gender}</ListGroup.Item>
+                                    <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Gender: {CharacterDetail.created}</ListGroup.Item>
+                                </ListGroup>
                             </div>
                         </div>
                     </Card>
                 </div> : <div className="CentradoDetailsLoading">
-                    <Loading/>
-                    </div>
+                    <Loading />
+                </div>
             }
-            <br/><br/>
+            <br /><br />
         </div>
     )
 }

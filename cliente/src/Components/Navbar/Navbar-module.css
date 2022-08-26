@@ -1,38 +1,188 @@
-.titulo{
+.BontonLightMode {
+    margin-right: 15px;
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    background-color: rgba(24, 128, 198, 0.102);
+    border-radius: 99px;
+}
+
+.BontonLightMode:hover {
+    background-color: rgba(69, 92, 107, 0.52);
+    transition: 0.4s;
+}
+
+.BontonDarkMode {
+    margin-right: 15px;
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    background-color: rgb(128, 128, 128);
+    border-radius: 99px;
+}
+
+.BontonDarkMode:hover {
+    background-color: rgba(255, 255, 255, 0.807);
+    transition: 0.4s;
+}
+
+.DarkIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.titulo {
     font-size: 16px;
     margin-left: 15px;
 }
 
+.titulo2 {
+    font-size: 16px;
+    margin-left: 15px;
+    color: white;
+}
 
-@media screen and (max-width: 991px)  {
-    #boton3{
+#inputNavbar {
+    border: 1px solid rgb(24, 128, 198);
+}
+
+#inputNavbar::placeholder {
+    color: rgb(24, 128, 198);
+    font-size: 18px;
+}
+
+#inputNavbarDark {
+    background-color: grey;
+    color: white;
+    border-color: white;
+}
+
+
+#inputNavbarDark::placeholder {
+    color: white;
+}
+
+#boton3Dark {
+
+    color: white;
+}
+
+#boton1Dark {
+    color: white;
+}
+
+#boton2Dark {
+    color: white;
+}
+
+
+@media screen and (max-width: 991px) {
+    #boton3 {
         margin-top: 15px;
         margin-left: 10px
     }
-    #boton1{
+
+    .BontonLightMode {
         display: none;
     }
-    
-    #boton2{
-        margin-top: 15px;
-        margin-left: 10px
+
+    .BontonDarkMode {
+        display: none;
     }
-    #navbarScroll{
+
+    .DarkIcon {
+        display: none;
+    }
+
+
+    #boton1 {
+        display: none;
+    }
+
+    #boton2 {
+        margin-top: 15px;
+        margin-left: 10px;
+        margin-right: 5px;
+    }
+
+    #navbarScroll {
         margin: 0px;
         padding: 0px;
     }
+
+    #boton3Dark {
+        margin-top: 15px;
+        margin-left: 10px;
+        color: white;
+    }
+
+    #boton1Dark {
+        display: none;
+        color: white;
+    }
+
+    #boton2Dark {
+        margin-top: 15px;
+        margin-left: 10px;
+        margin-right: 5px;
+        color: white;
+    }
+
+    #Cuadradito {
+        color: white;
+        background-color: grey;
+    }
+
+    .BontonLightMode2 {
+        position: absolute;
+        margin-left: 15px;
+        margin-top: 15px;
+        background-color: transparent;
+        border: none;
+        padding: 5px;
+        background-color: rgba(24, 128, 198, 0.102);
+        border-radius: 99px;
+    }
+    
+    .BontonLightMode2:hover {
+        background-color: rgba(69, 92, 107, 0.52);
+        
+    }
+    
+    .BontonDarkMode2 {
+        position: absolute;
+        margin-left: 15px;
+        margin-top: 15px;
+        background-color: transparent;
+        border: none;
+        padding: 5px;
+        background-color: rgb(128, 128, 128);
+        border-radius: 99px;
+    }
+    
+    .BontonDarkMode2:hover {
+        background-color: rgba(255, 255, 255, 0.807);
+    }
+    
+    .DarkIcon2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+    }
+
 }
 
-@media screen and (max-width: 350px)  {
-    .titulo{
+@media screen and (max-width: 350px) {
+    .titulo {
         margin-right: 15px;
     }
 }
 
-@media screen and (max-width: 300px)  {
-    .titulo{
+@media screen and (max-width: 300px) {
+    .titulo {
         display: none;
     }
 }
-
-

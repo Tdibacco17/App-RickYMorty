@@ -8,7 +8,7 @@ import Filters from "../Filters/Filters";
 import Carrusel from "../Carousel/Carousel";
 import "./Home-module.css"
 
-export default function Home({ page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
+export default function Home({ darkMode, page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
 
     const dispatch = useDispatch()
     const getAllChar = useSelector(state => state.characters)
@@ -31,7 +31,8 @@ export default function Home({ page, setPage, nameCharacter, setStatusTrue, stat
         <div>
             <Carrusel />
             <Filters
-            className="Filtros"
+                className="Filtros"
+                darkMode={darkMode}
                 setPage={setPage}
                 nameCharacter={nameCharacter}
                 setStatusTrue={setStatusTrue}
@@ -43,13 +44,13 @@ export default function Home({ page, setPage, nameCharacter, setStatusTrue, stat
                 setGenderTrue={setGenderTrue}
                 genderName={genderName}
                 setGenderName={setGenderName} />
-            <Paginado pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
+            <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
             <br />
             <div className="CentradoCards">
                 {
                     currentPage.length > 0 ? currentPage.map(j => {
                         return (
-                            <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
+                            <Card darkMode={darkMode} key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
                         )
                     }) : <div>
                         {currentPage.length === 0 ? <h4 style={{ color: "white" }}>No se encontraron Personajes</h4> : <Loading />}

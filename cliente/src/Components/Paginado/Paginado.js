@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import "./Paginado-module.css"
 
-export default function Paginado({ page, pageSize, setPage, totalCount, setInput, input }) {
+export default function Paginado({ darkMode, page, pageSize, setPage, totalCount, setInput, input }) {
 
     const totalPages = Math.ceil(totalCount / pageSize);
 
@@ -28,11 +28,11 @@ export default function Paginado({ page, pageSize, setPage, totalCount, setInput
 
     return (
         <div className='Paginado'>
-            <Button variant="outline-primary" disabled={page === 1 || page < 1} onClick={firstPage}>First</Button>
-            <Button variant="outline-primary" disabled={page === 1 || page < 1} onClick={prevPage}>Prev</Button>
-                <h6> {page} / {totalPages}</h6>
-            <Button variant="outline-primary" disabled={page === totalPages || page > totalPages} onClick={nextPage}>Next</Button>
-            <Button variant="outline-primary" disabled={page === totalPages || page > totalPages} onClick={lastPage}>Last</Button>
+            <Button variant={darkMode === true ? "outline-primary" : "outline-secondary"} disabled={page === 1 || page < 1} onClick={firstPage}>First</Button>
+            <Button variant={darkMode === true ? "outline-primary" : "outline-secondary"} disabled={page === 1 || page < 1} onClick={prevPage}>Prev</Button>
+            <h6> {page} / {totalPages}</h6>
+            <Button variant={darkMode === true ? "outline-primary" : "outline-secondary"} disabled={page === totalPages || page > totalPages} onClick={nextPage}>Next</Button>
+            <Button variant={darkMode === true ? "outline-primary" : "outline-secondary"} disabled={page === totalPages || page > totalPages} onClick={lastPage}>Last</Button>
         </div>
     )
 }

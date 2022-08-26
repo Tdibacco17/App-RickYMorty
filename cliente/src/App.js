@@ -12,6 +12,8 @@ function App() {
 
   const [nameCharacter, setNameCharacter] = useState("");
 
+  const [darkMode, setDarkMode] = useState(false);
+
   const [statusTrue, setStatusTrue] = useState(false)
   const [statusName, setStatusName] = useState("All")
 
@@ -22,8 +24,10 @@ function App() {
   const [genderName, setGenderName] = useState("All")
 
   return (
-    <div>
+    <div >
       <Navbar
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
         setPage={setPage}
         nameCharacter={nameCharacter}
         setNameCharacter={setNameCharacter}
@@ -42,6 +46,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={
           <Home
+            darkMode={darkMode}
             page={page}
             setPage={setPage}
             nameCharacter={nameCharacter}
@@ -55,9 +60,9 @@ function App() {
             genderName={genderName}
             setGenderName={setGenderName} />}
         />
-        <Route exact path="/Details/:id" element={<Details />} />
+        <Route exact path="/Details/:id" element={<Details darkMode={darkMode}/>} />
       </Routes>
-      <Footer />
+      <Footer  darkMode={darkMode}/>
     </div>
   );
 }

@@ -10,8 +10,12 @@ import "./Navbar-module.css"
 import { getSearchbar, getFilter } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
+import { IoMoon } from "react-icons/io5";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
-export default function Header({ setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName, genderTrue, setGenderTrue, genderName, setGenderName }) {
+
+export default function Header({ darkMode, setDarkMode, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName, genderTrue, setGenderTrue, genderName, setGenderName }) {
 
     const dispatch = useDispatch()
     let navigate = useNavigate();
@@ -20,15 +24,15 @@ export default function Header({ setPage, nameCharacter, setNameCharacter, statu
 
     useEffect(() => {
         window.addEventListener("resize", handleResize);
-    
+
         return () => {
-          window.removeEventListener("resize", handleResize);
+            window.removeEventListener("resize", handleResize);
         };
-      }, []);
-    
-      const handleResize = () => {
+    }, []);
+
+    const handleResize = () => {
         setWidth(window.innerWidth);
-      };
+    };
 
     function handleInputChange(e) {
         setNameCharacter(e.target.value);
@@ -73,14 +77,29 @@ export default function Header({ setPage, nameCharacter, setNameCharacter, statu
             handleSubmit(e)
         }
     }
+    function handleDark(e) {
+        e.preventDefault();
+        if (darkMode === true) {
+            setDarkMode(false)
+        } else {
+            setDarkMode(true)
+        }
+    }
 
     return (
         <div>
-            <Navbar bg="light" expand="lg">
+            <Navbar bg={darkMode === true ? "light" : "dark"} expand="lg">
                 <Container fluid >
-                    <Link to="/"><img src={logoRyM} style={{ width: "3.2rem", }} alt="Imagen Rick Y Morty" /></Link>
-                    <h5 className="titulo">Rick Y Morti App</h5>
-                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <OverlayTrigger
+                        key='bottom'
+                        placement='bottom'
+                        overlay={
+                            <Tooltip id='tooltip-bottom'>Home</Tooltip>
+                        }>
+                        <Link to="/"><img src={logoRyM} style={{ width: "3.2rem", }} alt="Imagen Rick Y Morty" /></Link>
+                    </OverlayTrigger>
+                    <h5 className={darkMode === true ? "titulo" : "titulo2"}>Rick Y Morti App</h5>
+                    <Navbar.Toggle id={darkMode === true ? null : "Cuadradito"} aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
                             className="me-auto my-2 my-lg-0"
@@ -88,20 +107,24 @@ export default function Header({ setPage, nameCharacter, setNameCharacter, statu
                             navbarScroll
                         >
                         </Nav>
-                        <Button id="boton1" onClick={(e) => handleReloadClick(e)} type="button" variant="outline-primary">Reload</Button>
+                        <button onClick={e => handleDark(e)} className={darkMode === true ? "BontonLightMode" : "BontonDarkMode"} ><IoMoon className="DarkIcon" /></button>
+                        <Button id={darkMode === true ? "boton1" : "boton1Dark"} onClick={(e) => handleReloadClick(e)} type="button" variant={darkMode === true ? "outline-primary" : "outline-secondary"}>Reload</Button>
                         <Form.Control
                             type="text"
-                            placeholder="Search"
-                            className="me-2"
+                            placeholder="Search..."
+                            id={darkMode === true ? "inputNavbar" : "inputNavbarDark"}
                             aria-label="Search"
                             onChange={(e) => handleInputChange(e)}
-                            style={{ width: '250px', marginLeft: '8px' }}
+                            style={{ width: '250px', marginLeft: '8px', marginRight: '8px' }}
                             value={nameCharacter}
                             onKeyPress={handleEnter}
                         />
-                        <Button id="boton2" onClick={(e) => handleSubmit(e)} type="button" variant="outline-primary">Search</Button>
+                        <Button id={darkMode === true ? "boton2" : "boton2Dark"} onClick={(e) => handleSubmit(e)} type="button" variant={darkMode === true ? "outline-primary" : "outline-secondary"}>Search</Button>
                         {
-                         width <= 991 && <Button id="boton3" onClick={(e) => handleReloadClick(e)} type="button" variant="outline-primary">Reload</Button>
+                            width <= 991 && <Button id={darkMode === true ? "boton3" : "boton3Dark"} onClick={(e) => handleReloadClick(e)} type="button" variant={darkMode === true ? "outline-primary" : "outline-secondary"}>Reload</Button>
+                        }
+                        {
+                            width <= 991 && <button onClick={e => handleDark(e)} className={darkMode === true ? "BontonLightMode2" : "BontonDarkMode2"} ><IoMoon className="DarkIcon2" /></button>
                         }
                     </Navbar.Collapse>
                 </Container>
