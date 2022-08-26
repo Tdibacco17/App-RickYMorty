@@ -5,6 +5,7 @@ import { getAllCharacters, getAllSpecies } from "../../Actions/index";
 import Paginado from "../Paginado/Paginado";
 import Loading from "../Spiner/Spiner";
 import Filters from "../Filters/Filters";
+import Carrusel from "../Carousel/Carousel";
 import "./Home-module.css"
 
 export default function Home({ page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
@@ -28,6 +29,7 @@ export default function Home({ page, setPage, nameCharacter, setStatusTrue, stat
 
     return (
         <div>
+            <Carrusel />
             <Filters
             className="Filtros"
                 setPage={setPage}

@@ -1,8 +1,8 @@
 .filterContainer {
    display: flex;
    margin-top: 20px;
-   /* margin-left: 10px; */
    justify-content: center;
+   margin-top: 30px;
 }
 
 .filtroStatus {

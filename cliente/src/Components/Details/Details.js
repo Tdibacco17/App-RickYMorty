@@ -17,9 +17,9 @@ export default function Details() {
     }, [dispatch, id])
 
     return (
-        <div>
+        <div className="Ubicacion">
             {
-                CharacterDetail.id ? <div className="Ubicacion">
+                CharacterDetail.id ? <div className="centradoDetail">
                     <Card >
                         <div className="ContenedorDetail">
                             <div>
@@ -38,24 +38,7 @@ export default function Details() {
                     <Loading/>
                     </div>
             }
-
+            <br/><br/>
         </div>
     )
 }
-
-/*
-  <Card>
-                        <div className="CardDetail">
-                            <Card.Img variant="top" src={CharacterDetail.image} alt="Imagen Rick Y Morty" />
-                            <Card.Body>
-                                <Card.Title>{CharacterDetail.name}</Card.Title>
-                                <div>
-                                    {CharacterDetail.status}
-                                    {CharacterDetail.species}
-                                    {CharacterDetail.gender}
-                                    {CharacterDetail.created}
-                                </div>
-                            </Card.Body>
-                        </div>
-                    </Card>
-*/

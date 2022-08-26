@@ -1,6 +1,9 @@
 .Tarjetas{
     width: 14rem;
-    margin-bottom: 1.5%
+    margin-bottom: 1.5%;
+    margin-top: 1.5%;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 

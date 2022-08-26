@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Details from "./Components/Details/Details";
-import Navbar from "./Components/Navbar/Navbar"
+import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer"
 import "./index.css"
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
         />
         <Route exact path="/Details/:id" element={<Details />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

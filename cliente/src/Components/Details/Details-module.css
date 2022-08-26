@@ -1,19 +1,26 @@
 .Ubicacion {
     display: flex;
     justify-content: center;
-    margin-top: 175px;
+    margin: 0;
 }
+.centradoDetail{
+    margin-bottom: 180px;
+    margin-top: 90px;
+}
+
 .CentradoDetailsLoading{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 190px;
+    margin-top: 150px;
 }
+
 
 .ContenedorDetail{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
 }
+
 .imagenDetail{
     border-radius: 5px 0px 0px 5px;
     width: 375px;
@@ -39,14 +46,18 @@
     .ContenedorDetail{
         flex-direction: column;
 
+    }    
+    .centradoDetail{
+        margin-bottom: 50px;
+        margin-top: 90px;
     }
-    
 }
 
 @media screen and (max-width: 435px)  {
     .ContenedorDetail{
         width: 255px;
         height: 535px;
+        
     }
     
     .imagenDetail{
