@@ -32,7 +32,7 @@ export default function Details({ darkMode }) {
                                     <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Status: {CharacterDetail.status}</ListGroup.Item>
                                     <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Specie: {CharacterDetail.species} </ListGroup.Item>
                                     <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Gender: {CharacterDetail.gender}</ListGroup.Item>
-                                    <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Gender: {CharacterDetail.created}</ListGroup.Item>
+                                    <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Created: {CharacterDetail.created}</ListGroup.Item>
                                 </ListGroup>
                             </div>
                         </div>
