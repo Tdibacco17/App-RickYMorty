@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCharacterById, getRelacionEpisodes, getRelacionLocation, getRelacionLocationOrigin, getRelacionEpisodesCharacterCap, getRelacionLocationResidents } from "../../Actions/index";
+import { getCharacterById, getRelacionEpisodes, getRelacionLocation, getRelacionOrigin, getRelacionOriginResidents, getRelacionEpisodesCharacterCap, getRelacionLocationResidents } from "../../Actions/index";
 import Card from 'react-bootstrap/Card';
 import Loading from "../Spiner/Spiner";
 import "./Details-module.css"
@@ -19,24 +19,29 @@ export default function Details({ darkMode }) {
     const relacionEpisodiosCharacterCap = useSelector(state => state.characterEpisodesCharacterCap)
     const relacionLocation = useSelector(state => state.characterLocation)
     const relacionLocationResidents = useSelector(state => state.characterLocationResidents)
+    const relacionOrigin = useSelector(state => state.characterOrigin)
+    const relacionOriginResidents = useSelector(state => state.characterOriginResidents)
 
-    // const relacionLocationOrigin = useSelector(state => state.characterLocationOrigin)
-    // console.log(relacionLocationOrigin)  
     function handleClickCharacterCap(e) {
         e.preventDefault();
         dispatch(getRelacionEpisodesCharacterCap(e.target.value))
     }
 
-    function handleClickResidents(e) {
+    function handleClickLocationResidents(e) {
         e.preventDefault();
         dispatch(getRelacionLocationResidents(e.target.value))
+    }
+
+    function handleClickOriginResidents(e) {
+        e.preventDefault();
+        dispatch(getRelacionOriginResidents(e.target.value))
     }
 
     useEffect(() => {
         dispatch(getCharacterById(id))
         dispatch(getRelacionEpisodes(id));
         dispatch(getRelacionLocation(id));
-        // dispatch(getRelacionLocationOrigin(id));
+        dispatch(getRelacionOrigin(id));
     }, [dispatch, id])
 
     return (
@@ -56,7 +61,7 @@ export default function Details({ darkMode }) {
                                     </ListGroup>
                                 </Card.Body>
                             </div>
-                            {/* <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Location Origin: {relacionLocationOrigin[0].name}</ListGroup.Item> */}
+                            {/* <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Location Origin: {relacionOrigin[0].name}</ListGroup.Item> */}
                             {/* <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Location: {relacionLocation[0].name}</ListGroup.Item> */}
 
                             <div>
@@ -83,6 +88,27 @@ export default function Details({ darkMode }) {
 
                                 <Dropdown >
                                     <Dropdown.Toggle id="dropdown-button-dark-example1" variant={darkMode === true ? "primary" : "secondary"}>
+                                        Origin
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu id="dropdooown" variant={darkMode === true ? "light" : "dark"}>
+                                        {
+                                            relacionOrigin.length > 0 ? relacionOrigin.map(e => {
+                                                return (
+                                                    <div key={e.id} >
+                                                        <Dropdown.Item variant={darkMode === true ? "primary" : "dark"}>Nombre: {e.name}</Dropdown.Item>
+                                                        <Dropdown.Item variant={darkMode === true ? "primary" : "dark"}>Tipo: {e.type}</Dropdown.Item>
+                                                        <Dropdown.Item variant={darkMode === true ? "primary" : "dark"}>Dimension: {e.dimension}</Dropdown.Item>
+                                                        <Button value={e.id} onClick={e => handleClickOriginResidents(e)}>Residentes</Button>
+                                                        <Dropdown.Divider />
+                                                    </div>
+                                                )
+                                            }) : null
+                                        }
+                                    </Dropdown.Menu>
+                                </Dropdown>
+
+                                <Dropdown >
+                                    <Dropdown.Toggle id="dropdown-button-dark-example1" variant={darkMode === true ? "primary" : "secondary"}>
                                         Locaciones
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu id="dropdooown" variant={darkMode === true ? "light" : "dark"}>
@@ -93,7 +119,7 @@ export default function Details({ darkMode }) {
                                                         <Dropdown.Item variant={darkMode === true ? "primary" : "dark"}>Nombre: {e.name}</Dropdown.Item>
                                                         <Dropdown.Item variant={darkMode === true ? "primary" : "dark"}>Tipo: {e.type}</Dropdown.Item>
                                                         <Dropdown.Item variant={darkMode === true ? "primary" : "dark"}>Dimension: {e.dimension}</Dropdown.Item>
-                                                        <Button value={e.id} onClick={e => handleClickResidents(e)}>Residentes</Button>
+                                                        <Button value={e.id} onClick={e => handleClickLocationResidents(e)}>Residentes</Button>
                                                         <Dropdown.Divider />
                                                     </div>
                                                 )
@@ -107,6 +133,19 @@ export default function Details({ darkMode }) {
                                 <div className="imagenesDetails">
                                     {
                                         relacionEpisodiosCharacterCap.length > 0 ? relacionEpisodiosCharacterCap.map(e => {
+                                            return (
+                                                <div key={e[0].id}>
+                                                    <a href={`/Details/${e[0].id}`}><img style={{ width: "100px", height: "100px" }} src={e[0].image} alt="Imagen Rick Y Morty" /></a>
+                                                </div>
+
+                                            )
+                                        }) : null
+                                    }
+                                </div>
+
+                                <div className="imagenesDetails">
+                                    {
+                                        relacionOriginResidents.length > 0 ? relacionOriginResidents.map(e => {
                                             return (
                                                 <div key={e[0].id}>
                                                     <a href={`/Details/${e[0].id}`}><img style={{ width: "100px", height: "100px" }} src={e[0].image} alt="Imagen Rick Y Morty" /></a>

@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { routeGetAllCharacters, routeGetCharacterDetail, characterEpisodes, characterLocationOrigin, characterLocation, characterEpisodesCap, characterLocationResidents } = require("../Controllers/CharacterRoutes")
+const { routeGetAllCharacters, routeGetCharacterDetail, characterEpisodes, characterOrigin, characterLocation, characterEpisodesCap, characterLocationResidents, characterOriginResidents } = require("../Controllers/CharacterRoutes")
 const { routeFiltered, allSpecies } = require("../Controllers/FilterRoute")
 
 const router = Router();
@@ -10,7 +10,8 @@ router.get("/Status/:status/:species/:gender", routeFiltered)
 router.get("/AllSpecies", allSpecies) //funcion para la cantidad del arreglo de especies
 router.get("/relacionesEpisodios/:id", characterEpisodes)
 router.get("/relacionesEpisodiosCharacterCap/:id", characterEpisodesCap)
-router.get("/relacionesLocationOrigin/:id", characterLocationOrigin)
+router.get("/relacionesOrigin/:id", characterOrigin)
+router.get("/relacionesOriginResidents/:id", characterOriginResidents)
 router.get("/relacionesLocation/:id", characterLocation)
 router.get("/relacionesLocationResidents/:id", characterLocationResidents)
 

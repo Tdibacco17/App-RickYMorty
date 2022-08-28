@@ -75,11 +75,21 @@ export function getRelacionEpisodesCharacterCap(id) {
     };
 };
 
-export function getRelacionLocationOrigin(id) {
+export function getRelacionOrigin(id) {
     return async function (dispatch) {
-        let json = await axios.get(`/relacionesLocationOrigin/${id}`);
+        let json = await axios.get(`/relacionesOrigin/${id}`);
         return dispatch({
-            type: 'GET_CHARACTER_LOCATION_ORIGIN',
+            type: 'GET_CHARACTER_ORIGIN',
+            payload: json.data
+        });
+    };
+};
+
+export function getRelacionOriginResidents(id) {
+    return async function (dispatch) {
+        let json = await axios.get(`/relacionesOriginResidents/${id}`);
+        return dispatch({
+            type: 'GET_CHARACTER_ORIGIN_RESIDENTS',
             payload: json.data
         });
     };
