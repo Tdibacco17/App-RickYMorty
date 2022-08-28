@@ -2,28 +2,34 @@
     margin-right: 15px;
     background-color: transparent;
     border: none;
-    padding: 5px;
-    background-color: rgba(24, 128, 198, 0.102);
-    border-radius: 99px;
+    padding: 5px 5px;
+    border-radius: 10px;
 }
 
 .BontonLightMode:hover {
-    background-color: rgba(69, 92, 107, 0.52);
-    transition: 0.4s;
+    background: rgba(0, 0, 0, 0.100);
+    transition: 0.5s;
 }
 
 .BontonDarkMode {
     margin-right: 15px;
     background-color: transparent;
     border: none;
-    padding: 5px;
-    background-color: rgb(128, 128, 128);
-    border-radius: 99px;
+    padding: 5px 5px;
+    border-radius: 10px;
 }
 
 .BontonDarkMode:hover {
-    background-color: rgba(255, 255, 255, 0.807);
-    transition: 0.4s;
+    background: rgba(255, 255, 255, 0.100);
+    transition: 0.5s;
+}
+
+.LightIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: white;
 }
 
 .DarkIcon {
@@ -139,33 +145,35 @@
         position: absolute;
         margin-left: 15px;
         margin-top: 15px;
+        margin-right: 15px;
         background-color: transparent;
         border: none;
-        padding: 5px;
-        background-color: rgba(24, 128, 198, 0.102);
-        border-radius: 99px;
+        padding: 5px 5px;
+        border-radius: 10px;
     }
-    
+
     .BontonLightMode2:hover {
-        background-color: rgba(69, 92, 107, 0.52);
-        
+        background: rgba(0, 0, 0, 0.100);
+        transition: 0.5s;
     }
-    
+
     .BontonDarkMode2 {
         position: absolute;
         margin-left: 15px;
         margin-top: 15px;
         background-color: transparent;
+        margin-right: 15px;
+        background-color: transparent;
         border: none;
-        padding: 5px;
-        background-color: rgb(128, 128, 128);
-        border-radius: 99px;
+        padding: 5px 5px;
+        border-radius: 10px;
     }
-    
+
     .BontonDarkMode2:hover {
-        background-color: rgba(255, 255, 255, 0.807);
+        background: rgba(255, 255, 255, 0.100);
+        transition: 0.5s;
     }
-    
+
     .DarkIcon2 {
         display: flex;
         justify-content: center;
@@ -173,6 +181,13 @@
         font-size: 25px;
     }
 
+    .LightIcon2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        color: white;
+    }
 }
 
 @media screen and (max-width: 350px) {

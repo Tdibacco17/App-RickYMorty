@@ -10,7 +10,7 @@ import "./Navbar-module.css"
 import { getSearchbar, getFilter, CleanDetails } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
-import { IoMoon } from "react-icons/io5";
+import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
@@ -106,7 +106,7 @@ export default function Header({ darkMode, setDarkMode, setPage, nameCharacter, 
                             navbarScroll
                         >
                         </Nav>
-                        <button onClick={e => handleDark(e)} className={darkMode === true ? "BontonLightMode" : "BontonDarkMode"} ><IoMoon className="DarkIcon" /></button>
+                        <button onClick={e => handleDark(e)} className={darkMode === true ? "BontonLightMode" : "BontonDarkMode"} >{darkMode === true ? <IoMoonOutline className="DarkIcon" /> : <IoSunnyOutline className="LightIcon" />}</button>
                         <Button id={darkMode === true ? "boton1" : "boton1Dark"} onClick={(e) => handleReloadClick(e)} type="button" variant={darkMode === true ? "outline-primary" : "outline-secondary"}>Reload</Button>
                         <Form.Control
                             type="text"
@@ -123,7 +123,7 @@ export default function Header({ darkMode, setDarkMode, setPage, nameCharacter, 
                             width <= 991 && <Button id={darkMode === true ? "boton3" : "boton3Dark"} onClick={(e) => handleReloadClick(e)} type="button" variant={darkMode === true ? "outline-primary" : "outline-secondary"}>Reload</Button>
                         }
                         {
-                            width <= 991 && <button onClick={e => handleDark(e)} className={darkMode === true ? "BontonLightMode2" : "BontonDarkMode2"} ><IoMoon className="DarkIcon2" /></button>
+                            width <= 991 && <button onClick={e => handleDark(e)} className={darkMode === true ? "BontonLightMode2" : "BontonDarkMode2"} >{darkMode === true ? <IoMoonOutline className="DarkIcon2" /> : <IoSunnyOutline className="LightIcon2" />}</button>
                         }
                     </Navbar.Collapse>
                 </Container>
