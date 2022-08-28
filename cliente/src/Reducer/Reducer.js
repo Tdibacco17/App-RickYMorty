@@ -2,11 +2,11 @@ const initialState = {
     characters: [],
     details: [],
     species: [],
-    allCharacters: [],
-    filterStatus: [],
     characterEpisodes: [],
+    characterEpisodesCharacterCap: [],
     characterLocationOrigin: [],
     characterLocation: [],
+    characterLocationResidents: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -15,7 +15,6 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 characters: action.payload,
-                allCharacters: action.payload,
             }
         case "GET_CHARACTER_BY_ID":
             return {
@@ -31,7 +30,6 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 characters: action.payload,
-                filterStatus: action.payload,
             }
         case "GET_ALLSPECIES":
             return {
@@ -43,6 +41,11 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 characterEpisodes: action.payload
             }
+        case "GET_CHARACTER_EPISODES_CHARACTERCAP":
+            return {
+                ...state,
+                characterEpisodesCharacterCap: action.payload
+            }
         case "GET_CHARACTER_LOCATION_ORIGIN":
             return {
                 ...state,
@@ -52,6 +55,11 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 characterLocation: action.payload
+            }
+        case "GET_CHARACTER_LOCATION_RESIDENTS":
+            return {
+                ...state,
+                characterLocationResidents: action.payload
             }
         default:
             return state;

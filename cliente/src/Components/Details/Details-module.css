@@ -3,12 +3,13 @@
     justify-content: center;
     margin: 0;
 }
-.centradoDetail{
+
+.centradoDetail {
     margin-bottom: 180px;
     margin-top: 90px;
 }
 
-.CentradoDetailsLoading{
+.CentradoDetailsLoading {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -16,71 +17,99 @@
 }
 
 
-.ContenedorDetail{
+.ContenedorDetail {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
+    width: 1400px;
+    height: 800px;
 }
 
-.imagenDetail{
-    border-radius: 5px 0px 0px 5px;
+#tittleDetails {
+    color: white;
+}
+
+.imagenDetail {
+    /* border-radius: 5px 0px 0px 5px; */
     width: 375px;
     height: 375px;
 }
-.cuerpo{
+
+.cuerpo {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 35px;
-} 
-.cuerpoDark{
+}
+
+.cuerpoDark {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 35px;
     color: white;
-} 
+}
 
-.cuerpoDark h4{
+.cuerpoDark h4 {
     padding-bottom: 5px;
 }
 
-.cuerpoDark h5{
+.cuerpoDark h5 {
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
 
-.cuerpo h4{
+.cuerpo h4 {
     padding-bottom: 5px;
 }
 
-.cuerpo h5{
+.cuerpo h5 {
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
-@media screen and (max-width: 720px)  {
-    .ContenedorDetail{
+#dropdooown {
+    height: 400px;
+    overflow-y: scroll;
+    
+}
+
+.centradoimagenesDetails{
+    display: flex;
+    flex-direction: column;
+}
+
+.imagenesDetails{
+    height: 400px;
+    width: 425px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+@media screen and (max-width: 720px) {
+    .ContenedorDetail {
         flex-direction: column;
-    }  
-     
+    }
+
 }
 
-@media screen and (max-width: 435px)  {
-    .ContenedorDetail{
+@media screen and (max-width: 435px) {
+    .ContenedorDetail {
         width: 255px;
         height: 575px;
-        justify-content: space-between; 
-        
+        justify-content: space-between;
+
     }
-    .cuerpoDark{
+
+    .cuerpoDark {
         margin-top: 0px;
-    }  
-    
-    .imagenDetail{
-        
+    }
+
+    .imagenDetail {
+
         width: 255px;
         height: 255px;
     }
-    
+
 }
