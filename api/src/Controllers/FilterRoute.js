@@ -156,21 +156,4 @@ const routeFiltered = async (req, res) => {
     };
 }
 
-
-
-//------------------------------------------------------------------------
-//Funcion para sacar la cantidad de especies que tiene el arreglo genereal
-const allSpecies = async (req, res) => {
-    try {
-        const todo = await Character.findAll()
-        const species = todo.map(e => e.species)
-        let resultSpecies = new Set(species);
-        const allSpecies = Array.from(resultSpecies);
-
-        return res.json(allSpecies)
-    } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
-    }
-}
-
-module.exports = { routeFiltered, allSpecies };
+module.exports = { routeFiltered };

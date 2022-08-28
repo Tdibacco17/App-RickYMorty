@@ -7,13 +7,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logoRyM from "../../Imagenes/logo.png"
 import "./Navbar-module.css"
-import { getSearchbar, getFilter } from "../../Actions/index"
+import { getSearchbar, getFilter, CleanDetails } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 import { IoMoon } from "react-icons/io5";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-
 
 export default function Header({ darkMode, setDarkMode, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName, genderTrue, setGenderTrue, genderName, setGenderName }) {
 
@@ -96,7 +95,7 @@ export default function Header({ darkMode, setDarkMode, setPage, nameCharacter, 
                         overlay={
                             <Tooltip id='tooltip-bottom'>Home</Tooltip>
                         }>
-                        <Link to="/"><img src={logoRyM} style={{ width: "3.2rem", }} alt="Imagen Rick Y Morty" /></Link>
+                        <Link to="/" onClick={dispatch(CleanDetails(""))}><img src={logoRyM} style={{ width: "3.2rem", }} alt="Imagen Rick Y Morty" /></Link>
                     </OverlayTrigger>
                     <h5 className={darkMode === true ? "titulo" : "titulo2"}>Rick Y Morti App</h5>
                     <Navbar.Toggle id={darkMode === true ? null : "Cuadradito"} aria-controls="navbarScroll" />

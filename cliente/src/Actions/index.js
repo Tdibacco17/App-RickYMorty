@@ -44,17 +44,6 @@ export function getFilter({ status, species, gender, nameCharacter }) {
     };
 };
 
-export function getAllSpecies() {
-    return async function (dispatch) {
-        let json = await axios.get("/AllSpecies");
-        return dispatch({
-            type: 'GET_ALLSPECIES',
-            payload: json.data
-        });
-    };
-};
-
-
 export function getRelacionEpisodes(id) {
     return async function (dispatch) {
         let json = await axios.get(`/relacionesEpisodios/${id}`);
@@ -112,5 +101,12 @@ export function getRelacionLocationResidents(id) {
             type: 'GET_CHARACTER_LOCATION_RESIDENTS',
             payload: json.data
         });
+    };
+};
+
+export function CleanDetails(payload) {
+    return {
+        type: 'CLEAN_DETAILS',
+        payload
     };
 };

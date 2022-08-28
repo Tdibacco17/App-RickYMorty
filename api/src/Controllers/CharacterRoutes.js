@@ -130,16 +130,23 @@ const characterOrigin = async (req, res) => {
     try {
         if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
 
-        const result = await Location.findAll({
+        const personaje = await Character.findAll({
             where: { id: id }
+        })
+        let validacion = personaje[0].origin.id_location 
+        if(validacion === "") return res.status(400).json({ msg: `Error 404 - ${e}` });
+
+        let result = await Location.findAll({
+            where: { id: validacion }
         })
 
         return res.json(result)
-
     } catch (e) {
         return res.status(400).json({ msg: `Error 404 - ${e}` });
     }
 }
+
+
 
 const characterOriginResidents = async (req, res) => {
     const { id } = req.params

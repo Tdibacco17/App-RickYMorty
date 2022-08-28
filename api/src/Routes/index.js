@@ -1,13 +1,12 @@
 const { Router } = require("express");
 const { routeGetAllCharacters, routeGetCharacterDetail, characterEpisodes, characterOrigin, characterLocation, characterEpisodesCap, characterLocationResidents, characterOriginResidents } = require("../Controllers/CharacterRoutes")
-const { routeFiltered, allSpecies } = require("../Controllers/FilterRoute")
+const { routeFiltered } = require("../Controllers/FilterRoute")
 
 const router = Router();
 
 router.get("/Characters", routeGetAllCharacters);
 router.get("/Details/:id", routeGetCharacterDetail);
 router.get("/Status/:status/:species/:gender", routeFiltered)
-router.get("/AllSpecies", allSpecies) //funcion para la cantidad del arreglo de especies
 router.get("/relacionesEpisodios/:id", characterEpisodes)
 router.get("/relacionesEpisodiosCharacterCap/:id", characterEpisodesCap)
 router.get("/relacionesOrigin/:id", characterOrigin)

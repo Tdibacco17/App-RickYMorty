@@ -1,13 +1,12 @@
 import React from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { getFilter } from "../../Actions/index"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./Filters-module.css"
 
 export default function Filters({ darkMode, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
 
     const dispatch = useDispatch()
-    const allSpecies = useSelector(state => state.species)
 
     function handleState(e) {
         e.preventDefault();
@@ -108,13 +107,16 @@ export default function Filters({ darkMode, setPage, nameCharacter, setStatusTru
 
                     <Dropdown.Menu variant={darkMode === true ? "light" : "dark"}>
                         <Dropdown.Item name="All" onClick={(e) => handleSpecies(e)}>All</Dropdown.Item>
-                        {
-                            allSpecies.length > 0 ? allSpecies.map(j => {
-                                return (
-                                    <Dropdown.Item key={j} name={j} onClick={(e) => handleSpecies(e)}>{j}</Dropdown.Item>
-                                )
-                            }) : null
-                        }
+                        <Dropdown.Item name="Human" onClick={(e) => handleSpecies(e)}>Human</Dropdown.Item>
+                        <Dropdown.Item name="Alien" onClick={(e) => handleSpecies(e)}>Alien</Dropdown.Item>
+                        <Dropdown.Item name="Humanoid" onClick={(e) => handleSpecies(e)}>Humanoid</Dropdown.Item>
+                        <Dropdown.Item name="unknown" onClick={(e) => handleSpecies(e)}>unknown</Dropdown.Item>
+                        <Dropdown.Item name="Poopybutthole" onClick={(e) => handleSpecies(e)}>Poopybutthole</Dropdown.Item>
+                        <Dropdown.Item name="Mythological Creature" onClick={(e) => handleSpecies(e)}>Mythological Creature</Dropdown.Item>
+                        <Dropdown.Item name="Animal" onClick={(e) => handleSpecies(e)}>Animal</Dropdown.Item>
+                        <Dropdown.Item name="Cronenberg" onClick={(e) => handleSpecies(e)}>Cronenberg</Dropdown.Item>
+                        <Dropdown.Item name="Disease" onClick={(e) => handleSpecies(e)}>Disease</Dropdown.Item>
+                        <Dropdown.Item name="Robot" onClick={(e) => handleSpecies(e)}>Robot</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>

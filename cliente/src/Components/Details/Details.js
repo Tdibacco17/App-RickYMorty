@@ -22,6 +22,8 @@ export default function Details({ darkMode }) {
     const relacionOrigin = useSelector(state => state.characterOrigin)
     const relacionOriginResidents = useSelector(state => state.characterOriginResidents)
 
+    console.log(relacionOrigin)
+
     function handleClickCharacterCap(e) {
         e.preventDefault();
         dispatch(getRelacionEpisodesCharacterCap(e.target.value))
@@ -38,7 +40,7 @@ export default function Details({ darkMode }) {
     }
 
     useEffect(() => {
-        dispatch(getCharacterById(id))
+        dispatch(getCharacterById(id));
         dispatch(getRelacionEpisodes(id));
         dispatch(getRelacionLocation(id));
         dispatch(getRelacionOrigin(id));

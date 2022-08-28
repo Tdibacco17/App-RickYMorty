@@ -4,16 +4,20 @@ import Button from 'react-bootstrap/Button'
 import { useNavigate } from 'react-router-dom';
 import "./Card-module.css";
 import ListGroup from 'react-bootstrap/ListGroup';
+import { useDispatch } from "react-redux";
+import { CleanDetails } from "../../Actions/index"
 
-export default function Cards({ darkMode, id, name, status, species, gender, image, createdDay, createdTime, setStatusTrue, setSpeciesTrue, setGenderTrue }) {
+export default function Cards({ darkMode, id, name, status, species, gender, image, setStatusTrue, setSpeciesTrue, setGenderTrue }) {
 
     let navigate = useNavigate();
+    let dispatch = useDispatch()
 
     function handleDetail(e) {
         e.preventDefault();
         setStatusTrue(false);
         setSpeciesTrue(false);
         setGenderTrue(false);
+        dispatch(CleanDetails(""));
         navigate(`/Details/${id}`);
     }
 

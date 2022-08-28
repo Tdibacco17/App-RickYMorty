@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card"
-import { getAllCharacters, getAllSpecies } from "../../Actions/index";
+import { getAllCharacters } from "../../Actions/index";
 import Paginado from "../Paginado/Paginado";
 import Loading from "../Spiner/Spiner";
 import Filters from "../Filters/Filters";
@@ -24,7 +24,6 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
         if (getAllChar.length === 0) {
             dispatch(getAllCharacters())
         }
-        dispatch(getAllSpecies())
     }, [dispatch])
 
     return (
