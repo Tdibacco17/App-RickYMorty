@@ -1,86 +1,85 @@
-const axios = require("axios");
+// const axios = require("axios");
+// const { Character, Episode, Location } = require('../../../db');
+// //para cargar la base de datos
 
-//para cargar la base de datos
+// async function getAllCharacters() {
 
-async function getAllCharacters() {
+//     const { data } = await axios.get(`https://rickandmortyapi.com/api/character`);
 
-    const { data } = await axios.get(`https://rickandmortyapi.com/api/character`);
+//     const numberOfPages = data.info.pages
 
-    const numberOfPages = data.info.pages
+//     let arraycharacter = new Array(numberOfPages).fill()
 
-    let arraycharacter = new Array(numberOfPages).fill()
+//     const returnCharacters = arraycharacter.map(async (e, index) => {
+//         const { data } = await axios.get(`https://rickandmortyapi.com/api/character?page=${1 + index}`);
 
-    const returnCharacters = arraycharacter.map(async (e, index) => {
-        const { data } = await axios.get(`https://rickandmortyapi.com/api/character?page=${1 + index}`);
+//         return await data.results.map(j => {
+//             return {
+//                 characterId: j.id,
+//                 name: j.name,
+//                 status: j.status,
+//                 species: j.species,
+//                 gender: j.gender,
+//                 origin: { id_location: j.origin.url.slice(41) },
+//                 location: { id_location: j.location.url.slice(41) },
+//                 episode: j.episode.map(h => h.slice(40)),
+//                 image: j.image,
+//                 createdDay: j.created.slice(0, 10),
+//                 createdTime: j.created.slice(11, 16),
+//             }
+//         });
+//     });
 
-        return await data.results.map(j => {
-            return {
-                characterId: j.id,
-                name: j.name,
-                status: j.status,
-                species: j.species,
-                gender: j.gender,
-                // origin: j.origin,
-                // location: j.location,
-                // episode: j.episode,
-                image: j.image,
-                created: j.created,
-            }
-        });
-    });
+//     return Promise.all(returnCharacters);
+// }
 
+// async function getAllEpisodes() {
 
-    return Promise.all(returnCharacters);
-}
+//     const { data } = await axios.get(`https://rickandmortyapi.com/api/episode`);
 
-async function getAllEpisodes() {
+//     const numberOfPages = data.info.pages// 3
 
-    const { data } = await axios.get(`https://rickandmortyapi.com/api/episode`);
+//     var arrayepisode = new Array(numberOfPages).fill()
 
-    const numberOfPages = data.info.pages// 3
+//     const returnEpisodes = arrayepisode.map(async (e, index) => {
+//         const { data } = await axios.get(`https://rickandmortyapi.com/api/episode?page=${1 + index}`);
 
-    var arrayepisode = new Array(numberOfPages).fill()
+//         return await data.results.map(j => {
+//             return {
+//                 episodeId: j.id,
+//                 name: j.name,
+//                 air_date: j.air_date,
+//                 temporada: j.episode.slice(1, 3),
+//                 capitulo: j.episode.slice(4),
+//                 characters: j.characters.map(h => h.slice(42)),
+//             }
+//         });
+//     });
+//     return Promise.all(returnEpisodes)
+// }
 
-    const returnEpisodes = arrayepisode.map(async (e, index) => {
-        const { data } = await axios.get(`https://rickandmortyapi.com/api/episode?page=${1 + index}`);
+// async function getAllLocations() {
 
-        let episodeDB = data.results.map(j => {
+//     const { data } = await axios.get(`https://rickandmortyapi.com/api/location`);
 
-        })
+//     const numberOfPages = data.info.pages
 
-        return await data.results.map(j => {
-            return {
-                episodeId: j.id,
-                name: j.name,
-                // characters: j.characters,
-            }
-        });
-    });
-    return Promise.all(returnEpisodes)
-}
+//     let arrayLocation = new Array(numberOfPages).fill()
 
-async function getAllLocations() {
+//     const returnLocation = arrayLocation.map(async (e, index) => {
+//         const { data } = await axios.get(`https://rickandmortyapi.com/api/location?page=${1 + index}`);
 
-    const { data } = await axios.get(`https://rickandmortyapi.com/api/location`);
+//         return await data.results.map(j => {
+//             return {
+//                 locationId: j.id,
+//                 name: j.name,
+//                 type: j.type,
+//                 dimension: j.dimension,
+//                 residents: j.residents.map(h => h.slice(42)),
+//             }
+//         });
+//     });
+//     return Promise.all(returnLocation)
+// }
 
-    const numberOfPages = data.info.pages
-
-    let arrayLocation = new Array(numberOfPages).fill()
-
-    const returnLocation = arrayLocation.map(async (e, index) => {
-        const { data } = await axios.get(`https://rickandmortyapi.com/api/location?page=${1 + index}`);
-
-        return await data.results.map(j => {
-            return {
-                locationId: j.id,
-                name: j.name,
-                // residents: j.residents,
-            }
-        });
-    });
-    return Promise.all(returnLocation)
-}
-//para cargar la base de datos
-
-
-module.exports = { getAllCharacters, getAllEpisodes, getAllLocations };
+// module.exports = { getAllCharacters, getAllEpisodes, getAllLocations };

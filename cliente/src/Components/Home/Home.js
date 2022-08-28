@@ -19,7 +19,7 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
     let lastCard = page * pageSize;
     let firstCard = lastCard - pageSize
     let currentPage = getAllChar.slice(firstCard, lastCard);
-
+    
     useEffect(() => {
         if (getAllChar.length === 0) {
             dispatch(getAllCharacters())
@@ -50,7 +50,7 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
                 {
                     currentPage.length > 0 ? currentPage.map(j => {
                         return (
-                            <Card darkMode={darkMode} key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} created={j.created} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
+                            <Card darkMode={darkMode} key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} createdDay={j.createdDay} createdTime={j.createdTime} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
                         )
                     }) : <div>
                         {currentPage.length === 0 ? <h4 style={{ color: "white" }}>No se encontraron Personajes</h4> : <Loading />}

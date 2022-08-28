@@ -2,9 +2,9 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('Character', {
-        // characterId: {
-        //     type: DataTypes.INTEGER,
-        // },
+        characterId: {
+            type: DataTypes.INTEGER,
+        },
         name: {
             type: DataTypes.STRING,
         },
@@ -17,13 +17,22 @@ module.exports = (sequelize) => {
         gender: {
             type: DataTypes.STRING,
         },
-        // // origin: {},
-        // // location: {},
-        // // episode: {}
+        origin: {
+            type: DataTypes.JSON,
+        },
+        location: {
+            type: DataTypes.JSON,
+        },
+        episode: {
+            type: DataTypes.ARRAY(DataTypes.DECIMAL)
+        },
         image: {
             type: DataTypes.STRING,
         },
-        created: {
+        createdDay: {
+            type: DataTypes.STRING,
+        },
+        createdTime: {
             type: DataTypes.STRING,
         },
     }, {

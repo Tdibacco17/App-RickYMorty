@@ -1,37 +1,55 @@
-// const { getAllCharacters } = require("./FunctionController");
-// const { Character } = require('../../../db');
+// const { getAllCharacters, getAllEpisodes, getAllLocations } = require("./FunctionController");
+// const { Character, Episode, Location } = require('../../../db');
+
+// //los creo recien aca asi me los trae ordenados por id, ya que con el promise.all los trae en cualq orden
 
 // const characterDataBase = async (req, res) => {
-//     const characters = await getAllCharacters();
 
 //     try {
+//         const personajes = await getAllCharacters();
 
-//         const charactersDB = characters.map(e => e.map(j => {
+//         const result1 = personajes.map(e => e.map(j => {
 //             return Character.create({
 //                 characterId: j.characterId,
 //                 name: j.name,
 //                 status: j.status,
 //                 species: j.species,
 //                 gender: j.gender,
+//                 origin: { id_location: j.origin.id_location },
+//                 location: { id_location: j.origin.id_location },
+//                 episode: j.episode,
 //                 image: j.image,
-//                 created: j.created,
+//                 createdDay: j.createdDay,
+//                 createdTime: j.createdTime,
 //             })
 //         }))
-//         // const episodes = await getAllEpisodes();
-//         // const episodesDB = episodes.map(e => e.map(j => {
-//         //     return Episode.create({
-//         //         characterId: j.characterId,
-//         //         name: j.name,
-//         //     })
-//         // }))
 
-//         // const locations = await getAllLocations();
-//         // const locationsDB = locations.map(e => e.map(j => {
-//         //     return Episode.create({
-//         //         characterId: j.characterId,
-//         //         name: j.name,
-//         //     })
-//         // }))
+//         const episodios = await getAllEpisodes();
+
+//         const result2 = episodios.map(e => e.map(j => {
+//             return Episode.create({
+//                 episodeId: j.episodeId,
+//                 name: j.name,
+//                 air_date: j.air_date,
+//                 temporada: j.temporada,
+//                 capitulo: j.capitulo,
+//                 characters: j.characters,
+//             })
+//         }))
+
+
+//         const locaciones = await getAllLocations();
+
+//         const result3 = locaciones.map(e => e.map(j => {
+//             return Location.create({
+//                 locationId: j.locationId,
+//                 name: j.name,
+//                 type: j.type,
+//                 dimension: j.dimension,
+//                 residents: j.residents,
+//             })
+//         }))
+
 //         return res.json("Base de datos cargada")
 //     } catch (e) {
 //         return res.status(400).json({ msg: `Error 404 - ${e}` });

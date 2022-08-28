@@ -34,7 +34,7 @@ export function getSearchbar(nameCharacter) {
     };
 };
 
-export function getFilter({ status, species, gender, nameCharacter }) {    
+export function getFilter({ status, species, gender, nameCharacter }) {
     return async function (dispatch) {
         let json = await axios.get(`/Status/${status}/${species}/${gender}?nameCharacter=${nameCharacter}`);
         return dispatch({
@@ -49,6 +49,37 @@ export function getAllSpecies() {
         let json = await axios.get("/AllSpecies");
         return dispatch({
             type: 'GET_ALLSPECIES',
+            payload: json.data
+        });
+    };
+};
+
+
+export function getRelacionEpisodes(id) {
+    return async function (dispatch) {
+        let json = await axios.get(`/relacionesEpisodios/${id}`);
+        return dispatch({
+            type: 'GET_CHARACTER_EPISODES',
+            payload: json.data
+        });
+    };
+};
+
+export function getRelacionLocationOrigin(id) {
+    return async function (dispatch) {
+        let json = await axios.get(`/relacionesLocationOrigin/${id}`);
+        return dispatch({
+            type: 'GET_CHARACTER_LOCATION_ORIGIN',
+            payload: json.data
+        });
+    };
+};
+
+export function getRelacionLocation(id) {
+    return async function (dispatch) {
+        let json = await axios.get(`/relacionesLocation/${id}`);
+        return dispatch({
+            type: 'GET_CHARACTER_LOCATION',
             payload: json.data
         });
     };

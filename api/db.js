@@ -18,11 +18,11 @@ modelLocation(sequelize);
 
 const { Character, Episode, Location } = sequelize.models;
 
-Character.belongsToMany(Episode, {through: 'Character_Episode'});
-Episode.belongsToMany(Character, {through: 'Character_Episode'});
+// Character.belongsToMany(Episode, {through: 'Character_Episode'});
+// Episode.belongsToMany(Character, {through: 'Character_Episode'});
 
-Episode.belongsToMany(Location, {through: 'Episode_Location'});
-Location.belongsToMany(Episode, {through: 'Episode_Location'});
+// Episode.hasOne(Location, {through: 'Episode_Location'});
+// Location.hasOne(Episode, {through: 'Episode_Location'});
 
 module.exports = {
     ...sequelize.models,

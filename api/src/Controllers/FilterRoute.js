@@ -5,11 +5,6 @@ const { Op } = require("sequelize");
 const routeFiltered = async (req, res) => {
     const { status, species, gender } = req.params;
     const { nameCharacter } = req.query
-    
-    console.log(status)
-    console.log(species)
-    console.log(gender)
-    console.log(nameCharacter)
 
     let result;
     try {
