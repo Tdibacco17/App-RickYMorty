@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCharacterById, getRelacionEpisodes, getRelacionLocation, getRelacionOrigin, getRelacionOriginResidents, getRelacionEpisodesCharacterCap, getRelacionLocationResidents } from "../../Actions/index";
@@ -7,43 +7,73 @@ import Loading from "../Spiner/Spiner";
 import "./Details-module.css"
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 export default function Details({ darkMode }) {
 
     const dispatch = useDispatch();
     const { id } = useParams();
+    const [viewEpisodes, setViewEpisodes] = useState(false)
+    const [viewLocation, setViewLocation] = useState(false)
+    const [viewOrigin, setViewOrigin] = useState(false)
 
     const CharacterDetail = useSelector(state => state.details)
     const relacionEpisodios = useSelector(state => state.characterEpisodes)
     const relacionEpisodiosCharacterCap = useSelector(state => state.characterEpisodesCharacterCap)
-    const relacionLocation = useSelector(state => state.characterLocation)
-    const relacionLocationResidents = useSelector(state => state.characterLocationResidents)
-    const relacionOrigin = useSelector(state => state.characterOrigin)
-    const relacionOriginResidents = useSelector(state => state.characterOriginResidents)
-
-    console.log(relacionOrigin)
+    // const relacionLocation = useSelector(state => state.characterLocation)
+    // const relacionLocationResidents = useSelector(state => state.characterLocationResidents)
+    // const relacionOrigin = useSelector(state => state.characterOrigin)
+    // const relacionOriginResidents = useSelector(state => state.characterOriginResidents)
 
     function handleClickCharacterCap(e) {
         e.preventDefault();
         dispatch(getRelacionEpisodesCharacterCap(e.target.value))
     }
 
-    function handleClickLocationResidents(e) {
+    // function handleClickLocationResidents(e) {
+    //     e.preventDefault();
+    //     dispatch(getRelacionLocationResidents(e.target.value))
+    // }
+
+    // function handleClickOriginResidents(e) {
+    //     e.preventDefault();
+    //     dispatch(getRelacionOriginResidents(e.target.value))
+    // }
+
+
+    function handleViewEpisodes(e){
         e.preventDefault();
-        dispatch(getRelacionLocationResidents(e.target.value))
+        if (viewEpisodes === true) {
+            setViewEpisodes(false);
+        } else {
+            setViewEpisodes(true);
+        }
     }
 
-    function handleClickOriginResidents(e) {
+    function handleViewLocation(e){
         e.preventDefault();
-        dispatch(getRelacionOriginResidents(e.target.value))
+        if (viewLocation === true) {
+            setViewLocation(false);
+        } else {
+            setViewLocation(true);
+        }
+    }
+
+    function handleViewOrigin(e){
+        e.preventDefault();
+        if (viewOrigin === true) {
+            setViewOrigin(false);
+        } else {
+            setViewOrigin(true);
+        }
     }
 
     useEffect(() => {
         dispatch(getCharacterById(id));
         dispatch(getRelacionEpisodes(id));
-        dispatch(getRelacionLocation(id));
-        dispatch(getRelacionOrigin(id));
+        // dispatch(getRelacionLocation(id));
+        // dispatch(getRelacionOrigin(id));
     }, [dispatch, id])
 
     return (
@@ -53,42 +83,48 @@ export default function Details({ darkMode }) {
                     <Card bg={darkMode === true ? "light" : "dark"} className="text-center">
                         <Card.Header id={darkMode === true ? null : "tittleDetails"} style={{ fontSize: "26px", paddingBottom: "20px" }} >{CharacterDetail.name}</Card.Header>
                         <div className="ContenedorDetail">
-                            <div>
+                            <div id="espacio1">
                                 <img className="imagenDetail" src={CharacterDetail.image} alt="Imagen Rick Y Morty" />
                                 <Card.Body>
-                                    <ListGroup variant={darkMode === true ? "primary" : "secondary"}>
+                                    <ListGroup style={{width: "300px"}} variant={darkMode === true ? "primary" : "secondary"}>
                                         <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Status: {CharacterDetail.status}</ListGroup.Item>
                                         <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Specie: {CharacterDetail.species} </ListGroup.Item>
                                         <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Gender: {CharacterDetail.gender}</ListGroup.Item>
                                     </ListGroup>
                                 </Card.Body>
                             </div>
-                            {/* <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Location Origin: {relacionOrigin[0].name}</ListGroup.Item> */}
-                            {/* <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Location: {relacionLocation[0].name}</ListGroup.Item> */}
 
-                            <div>
-                                <Dropdown >
-                                    <Dropdown.Toggle id="dropdown-button-dark-example1" variant={darkMode === true ? "primary" : "secondary"}>
-                                        Episodios
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu id="dropdooown" variant={darkMode === true ? "light" : "dark"}>
+                            <div id="espacio2">
+                                <div id="groupButtons">
+                                    <ButtonGroup aria-label="Basic example">
+                                        <Button onClick={e => handleViewEpisodes(e)} variant="secondary">Episodios</Button>
+                                        <Button onClick={e => handleViewLocation(e)} variant="secondary">Origin</Button>
+                                        <Button onClick={e => handleViewOrigin(e)} variant="secondary">Locaciones</Button>
+                                    </ButtonGroup>
+                                </div>
+
+                                <Dropdown.Menu show id="dropdowncentrado" variant={darkMode === true ? "light" : "dark"}>
+                                   {viewEpisodes === true? <Card.Body id="dropdooown">
                                         {
                                             relacionEpisodios.length > 0 ? relacionEpisodios.map(e => {
                                                 return (
                                                     <div key={e[0].id} >
-                                                        <Dropdown.Item variant={darkMode === true ? "primary" : "dark"}>Nombre: {e[0].name}</Dropdown.Item>
-                                                        <Dropdown.Item variant={darkMode === true ? "primary" : "dark"}>Temporada: {e[0].temporada}/ Capitulo:{e[0].capitulo}</Dropdown.Item>
-                                                        <Dropdown.Item variant={darkMode === true ? "primary" : "dark"}>Salio al aire: {e[0].air_date}</Dropdown.Item>
-                                                        <Button value={e[0].id} onClick={e => handleClickCharacterCap(e)}>Character Cap</Button>
-                                                        <Dropdown.Divider />
+                                                        <ListGroup variant={darkMode === true ? "primary" : "secondary"}>
+                                                            <ListGroup.Item style={{ textDecoration: "none" }} variant={darkMode === true ? "primary" : "dark"}>Nombre: {e[0].name}</ListGroup.Item>
+                                                            <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Temporada: {e[0].temporada}/ Capitulo:{e[0].capitulo}</ListGroup.Item>
+                                                            <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Salio al aire: {e[0].air_date}</ListGroup.Item>
+                                                            <Button value={e[0].id} onClick={e => handleClickCharacterCap(e)}>Character Cap</Button>
+                                                            <br />
+                                                        </ListGroup>
                                                     </div>
                                                 )
-                                            }) : null
-                                        }
-                                    </Dropdown.Menu>
-                                </Dropdown>
+                                            }) : <h5>No hay elementos a mostrar </h5 >
+                                        } 
+                                    </Card.Body> : <h5>Seleccione una opcion </h5 >} 
+                                </Dropdown.Menu>
 
-                                <Dropdown >
+
+                                {/* <Dropdown >
                                     <Dropdown.Toggle id="dropdown-button-dark-example1" variant={darkMode === true ? "primary" : "secondary"}>
                                         Origin
                                     </Dropdown.Toggle>
@@ -128,10 +164,10 @@ export default function Details({ darkMode }) {
                                             }) : null
                                         }
                                     </Dropdown.Menu>
-                                </Dropdown>
+                                </Dropdown> */}
                             </div>
 
-                            <div className="centradoimagenesDetails">
+                            <div className="espacio3">
                                 <div className="imagenesDetails">
                                     {
                                         relacionEpisodiosCharacterCap.length > 0 ? relacionEpisodiosCharacterCap.map(e => {
@@ -145,7 +181,7 @@ export default function Details({ darkMode }) {
                                     }
                                 </div>
 
-                                <div className="imagenesDetails">
+                                {/* <div className="imagenesDetails">
                                     {
                                         relacionOriginResidents.length > 0 ? relacionOriginResidents.map(e => {
                                             return (
@@ -156,9 +192,9 @@ export default function Details({ darkMode }) {
                                             )
                                         }) : null
                                     }
-                                </div>
+                                </div> */}
 
-                                <div className="imagenesDetails">
+                                {/* <div className="imagenesDetails">
                                     {
                                         relacionLocationResidents.length > 0 ? relacionLocationResidents.map(e => {
                                             return (
@@ -169,7 +205,7 @@ export default function Details({ darkMode }) {
                                             )
                                         }) : null
                                     }
-                                </div>
+                                </div> */}
 
                             </div>
                         </div>

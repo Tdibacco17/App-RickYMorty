@@ -16,12 +16,34 @@
     margin-top: 150px;
 }
 
-
 .ContenedorDetail {
     display: flex;
     justify-content: space-between;
-    width: 1400px;
-    height: 800px;
+    width: 1350px;
+    height: 510px;
+    padding: 0px;
+}
+
+#espacio1{
+    width: 350px;
+    /* height: 450px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#espacio2{
+    width: 550px;
+    /* height: 450px; */
+    display: flex;
+    justify-content: center;
+}
+
+#espacio3{
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    /* height: 450px; */
 }
 
 #tittleDetails {
@@ -29,63 +51,46 @@
 }
 
 .imagenDetail {
-    /* border-radius: 5px 0px 0px 5px; */
-    width: 375px;
-    height: 375px;
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 25px;
 }
 
-.cuerpo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 35px;
+#groupButtons{
+    margin-top: 20px;
+}
+#dropdowncentrado{
+    margin-top: 90px;
 }
 
-.cuerpoDark {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 35px;
-    color: white;
-}
-
-.cuerpoDark h4 {
-    padding-bottom: 5px;
-}
-
-.cuerpoDark h5 {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-
-.cuerpo h4 {
-    padding-bottom: 5px;
-}
-
-.cuerpo h5 {
-    padding-top: 5px;
-    padding-bottom: 5px;
+#dropdowncentrado h5{
+    padding: 5px 5px;
 }
 
 #dropdooown {
-    height: 400px;
+    height: 380px;
+    width: 475px;
     overflow-y: scroll;
+    font-size: 16px;
     
 }
 
-.centradoimagenesDetails{
-    display: flex;
-    flex-direction: column;
-}
-
 .imagenesDetails{
-    height: 400px;
+    margin-top: 20px;
+    height: 468px;
     width: 425px;
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll;
 }
+
+
+
+
+
+
+
 
 @media screen and (max-width: 720px) {
     .ContenedorDetail {

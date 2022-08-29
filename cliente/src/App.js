@@ -12,7 +12,7 @@ function App() {
 
   const [nameCharacter, setNameCharacter] = useState("");
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const [statusTrue, setStatusTrue] = useState(false)
   const [statusName, setStatusName] = useState("All")
