@@ -36,43 +36,29 @@ export default function Details({ darkMode }) {
     function handleClickCharacterCap(e) {
         e.preventDefault();
         dispatch(getRelacionEpisodesCharacterCap(e.target.value));
-        setViewImgLocation(false);
-        setViewImgOrigin(false);
-        if (viewImgEpisodes === true) {
-            setViewImgEpisodes(false);
-        } else {
-            setViewImgEpisodes(true);
-        }
+        setViewImgEpisodes(true);
     }
 
     function handleClickLocationResidents(e) {
         e.preventDefault();
         dispatch(getRelacionLocationResidents(e.target.value));
-        setViewImgEpisodes(false);
-        setViewImgOrigin(false);
-        if (viewImgLocation === true) {
-            setViewImgLocation(false);
-        } else {
-            setViewImgLocation(true);
-        }
+        setViewImgLocation(true);
+
     }
 
     function handleClickOriginResidents(e) {
         e.preventDefault();
-        setViewImgLocation(false);
-        setViewImgEpisodes(false);
         dispatch(getRelacionOriginResidents(e.target.value));
-        if (viewImgOrigin === true) {
-            setViewImgOrigin(false);
-        } else {
-            setViewImgOrigin(true);
-        }
+        setViewImgOrigin(true);
     }
 
     function handleViewEpisodes(e) {
         e.preventDefault();
         setViewLocation(false);
         setViewOrigin(false);
+        setViewImgLocation(false);
+        setViewImgOrigin(false);
+        setViewImgEpisodes(false);
         if (viewEpisodes === true) {
             setViewEpisodes(false);
         } else {
@@ -84,6 +70,9 @@ export default function Details({ darkMode }) {
         e.preventDefault();
         setViewEpisodes(false);
         setViewLocation(false);
+        setViewImgLocation(false);
+        setViewImgOrigin(false);
+        setViewImgEpisodes(false);
         if (viewOrigin === true) {
             setViewOrigin(false);
         } else {
@@ -95,6 +84,9 @@ export default function Details({ darkMode }) {
         e.preventDefault();
         setViewEpisodes(false);
         setViewOrigin(false);
+        setViewImgLocation(false);
+        setViewImgOrigin(false);
+        setViewImgEpisodes(false);
         if (viewLocation === true) {
             setViewLocation(false);
         } else {
@@ -191,7 +183,7 @@ export default function Details({ darkMode }) {
                                                 }) : <h5>No hay elementos a mostrar </h5 >
                                             }
                                         </Card.Body>
-                                    </Dropdown.Menu> : <div id={darkMode === true ? "centradoH5" : "centradoH5Dark"}><h5 style={{ fontSize: "16px"}}>Seleccione una opción</h5 > </div>
+                                    </Dropdown.Menu> : <div id={darkMode === true ? "centradoH5" : "centradoH5Dark"}><h5 style={{ fontSize: "16px" }}>Seleccione una opción</h5 > </div>
                                 }
                             </div>
 
@@ -231,7 +223,7 @@ export default function Details({ darkMode }) {
                                             }) : null
                                         }
                                     </div> : <div className="espacio3">
-                                        <div className="imagenesDetailsVacio"/>
+                                        <div className="imagenesDetailsVacio" />
                                     </div>
                                 }
                             </div>

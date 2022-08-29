@@ -43,7 +43,6 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
                 setGenderTrue={setGenderTrue}
                 genderName={genderName}
                 setGenderName={setGenderName} />
-            <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
             <br />
             <div className="CentradoCards">
                 {
@@ -56,6 +55,8 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
                     </div>
                 }
             </div>
+            <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
+            <br/><br/><br/><br/><br/>
         </div>
     )
 }
