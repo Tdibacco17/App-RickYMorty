@@ -85,6 +85,23 @@
     overflow-y: scroll;
 }
 
+.imagenesDetailsVacio{
+    margin-top: 20px;
+    height: 468px;
+    width: 425px;
+}
+
+#centradoH5{
+    position: absolute;
+    margin-top: 140px;
+}
+#centradoH5Dark{
+    position: absolute;
+    margin-top: 140px;
+    color: white;
+}
+
+
 
 
 
