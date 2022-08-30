@@ -44,6 +44,7 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
                 genderName={genderName}
                 setGenderName={setGenderName} />
             <br />
+                 <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
             <div className="CentradoCards">
                 {
                     currentPage.length > 0 ? currentPage.map(j => {

@@ -112,7 +112,7 @@ export default function Details({ darkMode }) {
                             <div id="espacio1">
                                 <img className="imagenDetail" src={CharacterDetail.image} alt="Imagen Rick Y Morty" />
                                 <Card.Body>
-                                    <ListGroup style={{ width: "300px" }} variant={darkMode === true ? "primary" : "secondary"}>
+                                    <ListGroup id="datosDetail" variant={darkMode === true ? "primary" : "secondary"}>
                                         <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Status: {CharacterDetail.status}</ListGroup.Item>
                                         <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Specie: {CharacterDetail.species} </ListGroup.Item>
                                         <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Gender: {CharacterDetail.gender}</ListGroup.Item>
@@ -122,10 +122,10 @@ export default function Details({ darkMode }) {
 
                             <div id="espacio2">
                                 <div id="groupButtons">
-                                    <ButtonGroup aria-label="Basic example">
-                                        <Button onClick={e => handleViewEpisodes(e)} variant={darkMode === true ? "primary" : "secondary"}>Episodios</Button>
-                                        <Button onClick={e => handleViewOrigin(e)} variant={darkMode === true ? "primary" : "secondary"}>Origin</Button>
-                                        <Button onClick={e => handleViewLocation(e)} variant={darkMode === true ? "primary" : "secondary"}>Locaciones</Button>
+                                    <ButtonGroup  aria-label="Basic example">
+                                        <Button id="tamañogroupButtons" onClick={e => handleViewEpisodes(e)} variant={darkMode === true ? "primary" : "secondary"}>Episodios</Button>
+                                        <Button id="tamañogroupButtons" onClick={e => handleViewOrigin(e)} variant={darkMode === true ? "primary" : "secondary"}>Origin</Button>
+                                        <Button id="tamañogroupButtons" onClick={e => handleViewLocation(e)} variant={darkMode === true ? "primary" : "secondary"}>Locaciones</Button>
                                     </ButtonGroup>
                                 </div>
                                 {
