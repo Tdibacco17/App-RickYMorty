@@ -12,6 +12,12 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
   native: false, 
 });
 
+// const { PGDATABASE, PGHOST, PGPASSWORD, PGPORT, PGUSER } = process.env;
+// const sequelize = new Sequelize(`postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}`, {
+//   logging: false, 
+//   native: false, 
+// });
+
 modelCharacter(sequelize);
 modelEpisode(sequelize);
 modelLocation(sequelize);
