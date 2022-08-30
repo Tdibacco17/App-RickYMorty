@@ -19,7 +19,7 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
     let lastCard = page * pageSize;
     let firstCard = lastCard - pageSize
     let currentPage = getAllChar.slice(firstCard, lastCard);
-    
+
     useEffect(() => {
         if (getAllChar.length === 0) {
             dispatch(getAllCharacters())
@@ -43,8 +43,7 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
                 setGenderTrue={setGenderTrue}
                 genderName={genderName}
                 setGenderName={setGenderName} />
-            <br />
-                 <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
+            <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
             <div className="CentradoCards">
                 {
                     currentPage.length > 0 ? currentPage.map(j => {
@@ -57,7 +56,7 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
                 }
             </div>
             <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
-            <br/><br/><br/><br/><br/>
+            <br /><br /><br /><br /><br />
         </div>
     )
 }

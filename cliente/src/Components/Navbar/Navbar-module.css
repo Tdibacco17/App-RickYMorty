@@ -194,10 +194,16 @@
     .titulo {
         margin-right: 15px;
     }
+    .titulo2 {
+        margin-right: 15px;
+    }
 }
 
 @media screen and (max-width: 300px) {
     .titulo {
+        display: none;
+    }
+    .titulo2 {
         display: none;
     }
 }

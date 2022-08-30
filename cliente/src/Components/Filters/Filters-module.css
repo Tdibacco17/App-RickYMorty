@@ -1,8 +1,8 @@
 .filterContainer {
    display: flex;
-   margin-top: 20px;
-   justify-content: center;
    margin-top: 30px;
+   justify-content: center;
+   margin-bottom: 30px;
 }
 
 .filtroStatus {
@@ -15,29 +15,34 @@
    margin-right: 10px;
 }
 
-.filtroGeneros{
+.filtroGeneros {
    margin-left: 10px;
    margin-right: 10px;
 }
 
-@media screen and (max-width: 485px)  {
-   .filterContainer{
-       flex-direction: column;
-       align-items: center;
+@media screen and (max-width: 485px) {
+   .filterContainer {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
    }
-   
-.filtroStatus {
-   margin-bottom: 15px;
-   margin-top: 15px;
-}
 
-.filtroSpecies {
-   margin-bottom: 15px;
-   margin-top: 15px;
-}
+   .filtroStatus {
+      margin-bottom: 15px;
+      margin-top: 15px;
+   }
 
-.filtroGeneros{
-   margin-bottom: 15px;
-   margin-top: 15px;
-}
+   .filtroSpecies {
+      margin-bottom: 15px;
+      margin-top: 15px;
+   }
+
+   .filtroGeneros {
+      margin-bottom: 15px;
+      margin-top: 15px;
+   }
+
+   #dropdown-button-dark-example1 {
+      font-size: 18px;
+   }
 }

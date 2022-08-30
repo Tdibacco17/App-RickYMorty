@@ -124,7 +124,7 @@ export default function Filters({ darkMode, setPage, nameCharacter, setStatusTru
             <div className="filtroGeneros">
                 <Dropdown>
                     <Dropdown.Toggle id="dropdown-button-dark-example1" variant={darkMode === true ? "primary" : "secondary"}>
-                        Status Filter
+                        Gender Filter
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu variant={darkMode === true ? "light" : "dark"}>

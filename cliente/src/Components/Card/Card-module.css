@@ -30,3 +30,17 @@
     }
 }
 
+@media screen and (max-width: 485px) {
+    .Tarjetas{
+        width: 17rem;
+        margin-bottom: 5%;
+        margin-top: 5%;
+    }
+    
+    .TarjetasDark{
+        width: 17rem;
+        margin-bottom: 5%;
+        margin-top: 5%;
+        color:white
+    }
+}
