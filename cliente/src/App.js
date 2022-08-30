@@ -12,7 +12,10 @@ function App() {
 
   const [nameCharacter, setNameCharacter] = useState("");
 
-  const [darkMode, setDarkMode] = useState(true);
+  
+  let local = localStorage.getItem("dark-Mode")
+
+  const [darkMode, setDarkMode] = useState(local === "true" ? true : false);
 
   const [statusTrue, setStatusTrue] = useState(false)
   const [statusName, setStatusName] = useState("All")

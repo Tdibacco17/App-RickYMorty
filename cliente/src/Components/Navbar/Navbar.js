@@ -76,12 +76,15 @@ export default function Header({ darkMode, setDarkMode, setPage, nameCharacter, 
             handleSubmit(e)
         }
     }
+
     function handleDark(e) {
         e.preventDefault();
         if (darkMode === true) {
             setDarkMode(false)
+            localStorage.setItem("dark-Mode", "false")
         } else {
             setDarkMode(true)
+            localStorage.setItem("dark-Mode", "true")
         }
     }
 
