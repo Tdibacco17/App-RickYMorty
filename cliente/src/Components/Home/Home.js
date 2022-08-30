@@ -43,7 +43,7 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
                 setGenderTrue={setGenderTrue}
                 genderName={genderName}
                 setGenderName={setGenderName} />
-            <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
+             {currentPage.length === 0 ? null : <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />}
             <div className="CentradoCards">
                 {
                     currentPage.length > 0 ? currentPage.map(j => {
@@ -51,11 +51,11 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
                             <Card darkMode={darkMode} key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} createdDay={j.createdDay} createdTime={j.createdTime} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
                         )
                     }) : <div>
-                        {currentPage.length === 0 ? <h4 style={{ color: "white" }}>No se encontraron Personajes</h4> : <Loading />}
+                        {currentPage.length === 0 ? <h4 style={{ color: "white" }}><br/><br/>No se encontraron Personajes</h4> : <Loading />}
                     </div>
                 }
             </div>
-            <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />
+            {currentPage.length === 0 ? null : <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />}
             <br /><br /><br /><br /><br />
         </div>
     )
