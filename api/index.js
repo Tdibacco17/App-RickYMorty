@@ -9,9 +9,6 @@ const HOST = process.env.HOST || "0.0.0.0";
 //     db.sync({ force: true });
 // });
 
-//FORCE FALSO QUEDA CARGADO
-//FORCE TRUE REINICIA
-
 db.sync({ force: false }).then(() => {
   console.log("Base de datos conectada!");
   app.listen(PORT, HOST, () => {
