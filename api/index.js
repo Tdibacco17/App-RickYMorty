@@ -1,6 +1,8 @@
 const app = require("./app");
 const { db } = require("./db");
 // const { PORT, PGPORT } = process.env;
+const PORT = process.env. PORT || 3000;
+
 
 // app.listen(PORT, () => {
 //     console.log(`Listening in http://localhost:${PORT}/`);
@@ -9,7 +11,6 @@ const { db } = require("./db");
 
 //FORCE FALSO QUEDA CARGADO
 //FORCE TRUE REINICIA
-const PORT = process.env. PORT || 3000;
 
 db.sync({ force: false }).then(() => {
   console.log("Base de datos conectada!");
