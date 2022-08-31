@@ -15,7 +15,7 @@ const { PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT } = process.env;
 const sequelize = new Sequelize(`postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}`, {
   logging: false, 
   native: false, 
-});
+}); 
 
 modelCharacter(sequelize);
 modelEpisode(sequelize);
