@@ -17,4 +17,4 @@ db.sync({ force: false }).then(() => {
     console.log(`Listening in http://localhost:${PORT}/`); // eslint-disable-line no-console
   });
 });
-
+ 
