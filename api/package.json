@@ -6,7 +6,7 @@
   "scripts": {
     "desarrollo": "nodemon index.js",
     "start": "node index.js",
-    "build": "CI=true react-scripts build"
+    "build": "CI=true node index.js build"
   },
   "keywords": [],
   "author": "",
