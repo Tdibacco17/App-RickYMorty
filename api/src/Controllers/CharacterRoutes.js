@@ -41,7 +41,7 @@ const routeGetCharacterDetail = async (req, res) => {
 const characterEpisodes = async (req, res) => {
     const { id } = req.params
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        // if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
         const personaje = await Character.findAll({
             where: { id: id }
         })
@@ -63,7 +63,7 @@ const characterEpisodesCap = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        // if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
         const episodio = await Episode.findAll({
             where: { id: id }
         })
@@ -85,7 +85,7 @@ const characterLocation = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        // if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
         const personaje = await Character.findAll({
             where: { id: id }
         })
@@ -107,7 +107,7 @@ const characterLocationResidents = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        // if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
         const location = await Location.findAll({
             where: { id: id }
         })
@@ -128,7 +128,7 @@ const characterOrigin = async (req, res) => {
     const { id } = req.params
     
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        // if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
         const personaje = await Character.findAll({
             where: { id: id }
         })
@@ -151,7 +151,7 @@ const characterOriginResidents = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        // if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
         const location = await Location.findAll({
             where: { id: id }
         })
