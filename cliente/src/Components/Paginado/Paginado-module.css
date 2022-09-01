@@ -31,11 +31,3 @@
     color: transparent;
     transition: 0.8s;
 }
-
-
-@media screen and (max-width: 485px)  {
-    .Paginado{
-        /* margin-top: 20px; */
-        /* margin-bottom: 20px; */
-    }
-}

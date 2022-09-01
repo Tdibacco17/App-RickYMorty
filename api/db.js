@@ -6,12 +6,6 @@ const modelEpisode = require("./src/Models/Episode");
 const modelLocation = require("./src/Models/Location")
 const { pg } = require('pg');
 
-// const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env; 
-
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
-//   logging: false, 
-//   native: false, 
-// });
 const { PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT } = process.env;
 const sequelize = new Sequelize(`postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}`, {
   logging: false,
