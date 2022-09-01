@@ -4,6 +4,7 @@ const { Sequelize } = require("sequelize");
 const modelCharacter = require("./src/Models/Character");
 const modelEpisode = require("./src/Models/Episode");
 const modelLocation = require("./src/Models/Location")
+const { pg } = require('pg');
 
 // const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env; 
 
@@ -11,11 +12,12 @@ const modelLocation = require("./src/Models/Location")
 //   logging: false, 
 //   native: false, 
 // });
-const { PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT } = process.env; 
+const { PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT } = process.env;
 const sequelize = new Sequelize(`postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}`, {
-  logging: false, 
-  native: false, 
-}); 
+  logging: false,
+  native: false,
+  dialectModule: pg
+});
 
 modelCharacter(sequelize);
 modelEpisode(sequelize);
