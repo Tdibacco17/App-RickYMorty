@@ -32,7 +32,7 @@ export default function Details({ darkMode }) {
 
     const relacionOrigin = useSelector(state => state.characterOrigin)
     const relacionOriginResidents = useSelector(state => state.characterOriginResidents)
-
+    console.log(relacionOrigin)
     function handleClickCharacterCap(e) {
         e.preventDefault();
         dispatch(getRelacionEpisodesCharacterCap(e.target.value));
