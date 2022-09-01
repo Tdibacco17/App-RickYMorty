@@ -12,7 +12,7 @@ function App() {
 
   const [nameCharacter, setNameCharacter] = useState("");
 
-  
+
   let local = localStorage.getItem("dark-Mode")
 
   const [darkMode, setDarkMode] = useState(local === "true" ? true : false);
@@ -49,6 +49,9 @@ function App() {
       <Routes>
         <Route exact path="/" element={
           <Home
+            statusTrue={statusTrue}
+            genderTrue={genderTrue}
+            speciesTrue={speciesTrue}
             darkMode={darkMode}
             page={page}
             setPage={setPage}
@@ -63,9 +66,9 @@ function App() {
             genderName={genderName}
             setGenderName={setGenderName} />}
         />
-        <Route exact path="/Details/:id" element={<Details darkMode={darkMode}/>} />
+        <Route exact path="/Details/:id" element={<Details darkMode={darkMode} />} />
       </Routes>
-      <Footer  darkMode={darkMode}/>
+      <Footer darkMode={darkMode} />
     </div>
   );
 }

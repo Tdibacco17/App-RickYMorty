@@ -102,6 +102,7 @@ export default function Details({ darkMode }) {
         dispatch(getRelacionOrigin(id));
     }, [dispatch, id])
 
+    console.log(relacionOrigin)
     return (
         <div className="Ubicacion">
             {
@@ -122,7 +123,7 @@ export default function Details({ darkMode }) {
 
                             <div id="espacio2">
                                 <div id="groupButtons">
-                                    <ButtonGroup  aria-label="Basic example">
+                                    <ButtonGroup aria-label="Basic example">
                                         <Button id="tamañogroupButtons" onClick={e => handleViewEpisodes(e)} variant={darkMode === true ? "primary" : "secondary"}>Episodios</Button>
                                         <Button id="tamañogroupButtons" onClick={e => handleViewOrigin(e)} variant={darkMode === true ? "primary" : "secondary"}>Origin</Button>
                                         <Button id="tamañogroupButtons" onClick={e => handleViewLocation(e)} variant={darkMode === true ? "primary" : "secondary"}>Locaciones</Button>
@@ -144,7 +145,10 @@ export default function Details({ darkMode }) {
                                                             </ListGroup>
                                                         </div>
                                                     )
-                                                }) : <h5>No hay elementos a mostrar </h5 >
+                                                }) : relacionOrigin.length > 0 && relacionLocation.length > 0 && relacionEpisodios.length === 0 ? <h5>No hay elementos a mostrar </h5 > :
+                                                <div className="CentradoDetailsLoading">
+                                                    <Loading />
+                                                </div>
                                             }
                                         </Card.Body>
                                     </Dropdown.Menu> : viewLocation === true ? <Dropdown.Menu show id="dropdowncentrado" variant={darkMode === true ? "light" : "dark"}>
@@ -162,10 +166,15 @@ export default function Details({ darkMode }) {
                                                             </ListGroup>
                                                         </div>
                                                     )
-                                                }) : <h5>No hay elementos a mostrar </h5 >
+                                                }) : relacionOrigin.length > 0 && relacionEpisodios.length > 0 && relacionLocation.length === 0 ? <h5>No hay elementos a mostrar </h5 > :
+                                                    <div className="CentradoDetailsLoading">
+                                                        <Loading />
+                                                    </div>
+
                                             }
                                         </Card.Body>
                                     </Dropdown.Menu> : viewOrigin === true ? <Dropdown.Menu show id="dropdowncentrado" variant={darkMode === true ? "light" : "dark"}>
+
                                         <Card.Body id="dropdooown">
                                             {
                                                 relacionOrigin.length > 0 ? relacionOrigin.map(e => {
@@ -180,9 +189,13 @@ export default function Details({ darkMode }) {
                                                             </ListGroup>
                                                         </div>
                                                     )
-                                                }) : <h5>No hay elementos a mostrar </h5 >
+                                                }) : relacionLocation.length > 0 && relacionEpisodios.length > 0 && relacionOrigin.length === 0 ? <h5>No hay elementos a mostrar </h5 > :
+                                                    <div className="CentradoDetailsLoading">
+                                                        <Loading />
+                                                    </div>
                                             }
                                         </Card.Body>
+
                                     </Dropdown.Menu> : <div id={darkMode === true ? "centradoH5" : "centradoH5Dark"}><h5 style={{ fontSize: "16px" }}>Seleccione una opción</h5 > </div>
                                 }
                             </div>
@@ -198,7 +211,7 @@ export default function Details({ darkMode }) {
                                                     </div>
 
                                                 )
-                                            }) : null
+                                            }) : <div className="loadingimagenes"><Loading /></div>
                                         }
                                     </div> : viewImgLocation === true ? <div className="imagenesDetails">
                                         {
@@ -209,7 +222,7 @@ export default function Details({ darkMode }) {
                                                     </div>
 
                                                 )
-                                            }) : null
+                                            }) : <div className="loadingimagenes"><Loading /></div>
                                         }
                                     </div> : viewImgOrigin === true ? <div className="imagenesDetails">
                                         {
@@ -220,7 +233,7 @@ export default function Details({ darkMode }) {
                                                     </div>
 
                                                 )
-                                            }) : null
+                                            }) : <div className="loadingimagenes"><Loading /></div>
                                         }
                                     </div> : <div className="espacio3">
                                         <div className="imagenesDetailsVacio" />

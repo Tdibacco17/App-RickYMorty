@@ -126,9 +126,9 @@ const characterLocationResidents = async (req, res) => {
 
 const characterOrigin = async (req, res) => {
     const { id } = req.params
-
+    
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        if (!id) return res.json({});
 
         const personaje = await Character.findAll({
             where: { id: id }
@@ -139,7 +139,6 @@ const characterOrigin = async (req, res) => {
         let result = await Location.findAll({
             where: { id: validacion }
         })
-
         return res.json(result)
     } catch (e) {
         return res.status(400).json({ msg: `Error 404 - ${e}` });

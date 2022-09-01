@@ -8,7 +8,7 @@ import Filters from "../Filters/Filters";
 import Carrusel from "../Carousel/Carousel";
 import "./Home-module.css"
 
-export default function Home({ darkMode, page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
+export default function Home({ darkMode, statusTrue, genderTrue, speciesTrue, page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
 
     const dispatch = useDispatch()
     const getAllChar = useSelector(state => state.characters)
@@ -25,6 +25,7 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
             dispatch(getAllCharacters())
         }
     }, [dispatch])
+
 
     return (
         <div>
@@ -43,7 +44,7 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
                 setGenderTrue={setGenderTrue}
                 genderName={genderName}
                 setGenderName={setGenderName} />
-             {currentPage.length === 0 ? null : <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />}
+            {currentPage.length === 0 ? null : <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />}
             <div className="CentradoCards">
                 {
                     currentPage.length > 0 ? currentPage.map(j => {
@@ -51,7 +52,11 @@ export default function Home({ darkMode, page, setPage, nameCharacter, setStatus
                             <Card darkMode={darkMode} key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} createdDay={j.createdDay} createdTime={j.createdTime} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
                         )
                     }) : <div>
-                        {currentPage.length === 0 ? <h4 style={{ color: "white" }}><br/><br/>No se encontraron Personajes</h4> : <Loading />}
+                        {statusTrue === true && genderTrue === true && speciesTrue === true && currentPage.length === 0 ||
+                            genderTrue === true && speciesTrue === true && currentPage.length === 0 ||
+                            genderTrue === true && statusTrue === true && currentPage.length === 0 ||
+                            statusTrue === true && speciesTrue === true && currentPage.length === 0 ? 
+                            <h4 style={{ color: "white" }}><br /><br />No se encontraron Personajes</h4> : <Loading />}
                     </div>
                 }
             </div>
