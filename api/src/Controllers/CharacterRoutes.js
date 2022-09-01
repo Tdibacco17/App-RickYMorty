@@ -91,7 +91,7 @@ const characterLocation = async (req, res) => {
         })
         let location = personaje[0].location
 
-        // if (location.id_location === "") return res.json([]);
+        if (location.id_location === "") return res.json([]);
 
         const result = await Location.findAll({
             where: { id: location.id_location }
