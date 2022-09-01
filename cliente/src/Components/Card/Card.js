@@ -18,7 +18,7 @@ export default function Cards({ darkMode, id, name, status, species, gender, ima
         setSpeciesTrue(false);
         setGenderTrue(false);
         dispatch(CleanDetails(""));
-        navigate(`/Details/${id}`);
+        navigate(`http://localhost:6031/Details/${id}`);
     }
 
     return (
