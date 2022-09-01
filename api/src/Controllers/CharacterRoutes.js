@@ -128,7 +128,7 @@ const characterOrigin = async (req, res) => {
     const { id } = req.params
     
     try {
-
+        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
         const personaje = await Character.findAll({
             where: { id: id }
         })

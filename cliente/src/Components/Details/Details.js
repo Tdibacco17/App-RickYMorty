@@ -123,9 +123,9 @@ export default function Details({ darkMode }) {
                             <div id="espacio2">
                                 <div id="groupButtons">
                                     <ButtonGroup aria-label="Basic example">
-                                        <Button id="tamañogroupButtons" onClick={e => handleViewEpisodes(e)} variant={darkMode === true ? "primary" : "secondary"}>Episodios</Button>
+                                        <Button id="tamañogroupButtons" onClick={e => handleViewEpisodes(e)} variant={darkMode === true ? "primary" : "secondary"}>Episodes</Button>
                                         <Button id="tamañogroupButtons" onClick={e => handleViewOrigin(e)} variant={darkMode === true ? "primary" : "secondary"}>Origin</Button>
-                                        <Button id="tamañogroupButtons" onClick={e => handleViewLocation(e)} variant={darkMode === true ? "primary" : "secondary"}>Locaciones</Button>
+                                        <Button id="tamañogroupButtons" onClick={e => handleViewLocation(e)} variant={darkMode === true ? "primary" : "secondary"}>Location</Button>
                                     </ButtonGroup>
                                 </div>
                                 {
@@ -136,15 +136,15 @@ export default function Details({ darkMode }) {
                                                     return (
                                                         <div key={e[0].id} >
                                                             <ListGroup variant={darkMode === true ? "primary" : "secondary"}>
-                                                                <ListGroup.Item style={{ textDecoration: "none" }} variant={darkMode === true ? "primary" : "dark"}>Nombre: {e[0].name}</ListGroup.Item>
-                                                                <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Temporada: {e[0].temporada}/ Capitulo:{e[0].capitulo}</ListGroup.Item>
-                                                                <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Salio al aire: {e[0].air_date}</ListGroup.Item>
+                                                                <ListGroup.Item style={{ textDecoration: "none" }} variant={darkMode === true ? "primary" : "dark"}>Name: {e[0].name}</ListGroup.Item>
+                                                                <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Season {e[0].temporada} - Chapter {e[0].capitulo}</ListGroup.Item>
+                                                                <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Air date: {e[0].air_date}</ListGroup.Item>
                                                                 <Button style={{ borderRadius: "0px 0px 5px 5px" }} variant={darkMode === true ? "primary" : "secondary"} value={e[0].id} onClick={e => handleClickCharacterCap(e)}>Character Cap</Button>
                                                                 <br />
                                                             </ListGroup>
                                                         </div>
                                                     )
-                                                }) : relacionOrigin.length > 0 && relacionLocation.length > 0 && relacionEpisodios.length === 0 ? <h5>No hay elementos a mostrar </h5 > :
+                                                }) : relacionOrigin.length > 0 && relacionLocation.length > 0 && relacionEpisodios.length === 0 ? <h5>There are no items to view</h5 > :
                                                 <div className="CentradoDetailsLoading">
                                                     <Loading />
                                                 </div>
@@ -157,15 +157,15 @@ export default function Details({ darkMode }) {
                                                     return (
                                                         <div key={e.id} >
                                                             <ListGroup variant={darkMode === true ? "primary" : "secondary"}>
-                                                                <ListGroup.Item style={{ textDecoration: "none" }} variant={darkMode === true ? "primary" : "dark"}>Nombre: {e.name}</ListGroup.Item>
-                                                                <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Tipo: {e.type}</ListGroup.Item>
+                                                                <ListGroup.Item style={{ textDecoration: "none" }} variant={darkMode === true ? "primary" : "dark"}>Name: {e.name}</ListGroup.Item>
+                                                                <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Type: {e.type}</ListGroup.Item>
                                                                 <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Dimension: {e.dimension}</ListGroup.Item>
-                                                                <Button style={{ borderRadius: "0px 0px 5px 5px" }} variant={darkMode === true ? "primary" : "secondary"} value={e.id} onClick={e => handleClickLocationResidents(e)}>Residentes</Button>
+                                                                <Button style={{ borderRadius: "0px 0px 5px 5px" }} variant={darkMode === true ? "primary" : "secondary"} value={e.id} onClick={e => handleClickLocationResidents(e)}>Residents</Button>
                                                                 <br />
                                                             </ListGroup>
                                                         </div>
                                                     )
-                                                }) : relacionOrigin.length > 0 && relacionEpisodios.length > 0 && relacionLocation.length === 0 ? <h5>No hay elementos a mostrar </h5 > :
+                                                }) : relacionOrigin.length > 0 && relacionEpisodios.length > 0 && relacionLocation.length === 0 ? <h5>There are no items to view</h5 > :
                                                     <div className="CentradoDetailsLoading">
                                                         <Loading />
                                                     </div>
@@ -180,22 +180,22 @@ export default function Details({ darkMode }) {
                                                     return (
                                                         <div key={e.id} >
                                                             <ListGroup variant={darkMode === true ? "primary" : "secondary"}>
-                                                                <ListGroup.Item style={{ textDecoration: "none" }} variant={darkMode === true ? "primary" : "dark"}>Nombre: {e.name}</ListGroup.Item>
-                                                                <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Tipo: {e.type}</ListGroup.Item>
+                                                                <ListGroup.Item style={{ textDecoration: "none" }} variant={darkMode === true ? "primary" : "dark"}>Name: {e.name}</ListGroup.Item>
+                                                                <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Type: {e.type}</ListGroup.Item>
                                                                 <ListGroup.Item variant={darkMode === true ? "primary" : "dark"}>Dimension: {e.dimension}</ListGroup.Item>
-                                                                <Button style={{ borderRadius: "0px 0px 5px 5px" }} variant={darkMode === true ? "primary" : "secondary"} value={e.id} onClick={e => handleClickOriginResidents(e)}>Residentes</Button>
+                                                                <Button style={{ borderRadius: "0px 0px 5px 5px" }} variant={darkMode === true ? "primary" : "secondary"} value={e.id} onClick={e => handleClickOriginResidents(e)}>Residents</Button>
                                                                 <br />
                                                             </ListGroup>
                                                         </div>
                                                     )
-                                                }) : relacionLocation.length > 0 && relacionEpisodios.length > 0 && relacionOrigin.length === 0 ? <h5>No hay elementos a mostrar </h5 > :
+                                                }) : relacionLocation.length > 0 && relacionEpisodios.length > 0 && relacionOrigin.length === 0 ? <h5>There are no items to view</h5 > :
                                                     <div className="CentradoDetailsLoading">
                                                         <Loading />
                                                     </div>
                                             }
                                         </Card.Body>
 
-                                    </Dropdown.Menu> : <div id={darkMode === true ? "centradoH5" : "centradoH5Dark"}><h5 style={{ fontSize: "16px" }}>Seleccione una opción</h5 > </div>
+                                    </Dropdown.Menu> : <div id={darkMode === true ? "centradoH5" : "centradoH5Dark"}><h5 style={{ fontSize: "16px" }}>Select option</h5 > </div>
                                 }
                             </div>
 
@@ -240,7 +240,7 @@ export default function Details({ darkMode }) {
                                 }
                             </div>
                         </div>
-                        <Card.Footer className="text-muted">Creado el {CharacterDetail.createdDay} a las {CharacterDetail.createdTime}</Card.Footer>
+                        <Card.Footer className="text-muted">Created {CharacterDetail.createdDay} at {CharacterDetail.createdTime}</Card.Footer>
                     </Card >
 
                 </div > : <div className="CentradoDetailsLoading">
