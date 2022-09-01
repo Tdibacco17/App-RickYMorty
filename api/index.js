@@ -14,7 +14,7 @@ const HOST = process.env.HOST || "0.0.0.0";
 db.sync({ force: false }).then(() => {
   console.log("Base de datos conectada!");
   app.listen(PORT, HOST, () => {
-    console.log(`Listening in http://localhost:${PORT}/`); // eslint-disable-line no-console
+    console.log(`Listening in ${PORT}/`); // eslint-disable-line no-console
   });
 });
  
