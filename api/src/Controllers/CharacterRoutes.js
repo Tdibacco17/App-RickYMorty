@@ -89,12 +89,11 @@ const characterLocation = async (req, res) => {
         const personaje = await Character.findAll({
             where: { id: id }
         })
-        let location = personaje[0].location
-
-        // if (location.id_location === "") return res.json([]);
+        let location = personaje[0].location.id_location
+        if (!location) return res.json([]);
 
         const result = await Location.findAll({
-            where: { id: location.id_location }
+            where: { id: location }
         })
 
         return res.json(result)
@@ -132,7 +131,6 @@ const characterOrigin = async (req, res) => {
             where: { id: id }
         })
         let validacion = personaje[0].origin.id_location 
-        console.log("asdasdsdasd",validacion)
         if(!validacion) return res.json([]);
         
         let result = await Location.findAll({

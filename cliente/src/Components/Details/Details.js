@@ -32,7 +32,7 @@ export default function Details({ darkMode }) {
 
     const relacionOrigin = useSelector(state => state.characterOrigin)
     const relacionOriginResidents = useSelector(state => state.characterOriginResidents)
-    console.log(relacionOrigin)
+
     function handleClickCharacterCap(e) {
         e.preventDefault();
         dispatch(getRelacionEpisodesCharacterCap(e.target.value));
@@ -144,7 +144,7 @@ export default function Details({ darkMode }) {
                                                             </ListGroup>
                                                         </div>
                                                     )
-                                                }) : relacionOrigin.length > 0 && relacionLocation.length > 0 && relacionEpisodios.length === 0 ? <h5>There are no items to view</h5 > :
+                                                }) : 
                                                 <div className="CentradoDetailsLoading">
                                                     <Loading />
                                                 </div>
@@ -165,7 +165,7 @@ export default function Details({ darkMode }) {
                                                             </ListGroup>
                                                         </div>
                                                     )
-                                                }) : relacionOrigin.length > 0 && relacionEpisodios.length > 0 && relacionLocation.length === 0 ? <h5>There are no items to view</h5 > :
+                                                }) : relacionEpisodios.length > 0 && relacionLocation.length === 0 ? <h5>There are no items to view</h5 > :
                                                     <div className="CentradoDetailsLoading">
                                                         <Loading />
                                                     </div>
@@ -188,7 +188,7 @@ export default function Details({ darkMode }) {
                                                             </ListGroup>
                                                         </div>
                                                     )
-                                                }) : relacionLocation.length > 0 && relacionEpisodios.length > 0 && relacionOrigin.length === 0 ? <h5>There are no items to view</h5 > :
+                                                }) :  relacionEpisodios.length > 0 && relacionOrigin.length === 0 ? <h5>There are no items to view</h5 > :
                                                     <div className="CentradoDetailsLoading">
                                                         <Loading />
                                                     </div>
