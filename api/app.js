@@ -14,12 +14,12 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(cors());
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // solucion del cors
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-  });
+  res.header(key = 'Access-Control-Allow-Origin', value = '*'); // solucion del cors
+  res.header(key = 'Access-Control-Allow-Credentials', value = 'true');
+  res.header(key = 'Access-Control-Allow-Headers', value = 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header(key = 'Access-Control-Allow-Methods', value = 'GET, POST, OPTIONS, PUT, DELETE');
+  next();
+});
 app.use("/", CharacterRoutes)
 
 module.exports = app;
