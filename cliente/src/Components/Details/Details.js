@@ -102,7 +102,6 @@ export default function Details({ darkMode }) {
         dispatch(getRelacionOrigin(id));
     }, [dispatch, id])
 
-    console.log(relacionOrigin)
     return (
         <div className="Ubicacion">
             {
