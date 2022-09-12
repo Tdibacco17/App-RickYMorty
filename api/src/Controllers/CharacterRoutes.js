@@ -6,6 +6,7 @@ const routeGetAllCharacters = async (req, res) => {
 
     try {
         let result;
+
         if (nameCharacter) {
             result = await Character.findAll({
                 where: {
@@ -14,6 +15,8 @@ const routeGetAllCharacters = async (req, res) => {
                     }
                 }
             })
+            if (result === undefined) return res.status(200).json([]);
+
             return res.json(result)
         }
 
@@ -52,7 +55,7 @@ const characterEpisodes = async (req, res) => {
                 where: { id: e }
             })
         })
-        
+
         return res.json(await Promise.all(result))
     } catch (e) {
         return res.status(400).json({ msg: `Error 404 - ${e}` });
@@ -125,15 +128,15 @@ const characterLocationResidents = async (req, res) => {
 
 const characterOrigin = async (req, res) => {
     const { id } = req.params
-    
+
     try {
         if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
         const personaje = await Character.findAll({
             where: { id: id }
         })
-        let validacion = personaje[0].origin.id_location 
-        if(!validacion) return res.json([]);
-        
+        let validacion = personaje[0].origin.id_location
+        if (!validacion) return res.json([]);
+
         let result = await Location.findAll({
             where: { id: validacion }
         })
