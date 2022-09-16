@@ -30,11 +30,11 @@ const routeGetAllCharacters = async (req, res) => {
 
 const routeGetCharacterDetail = async (req, res) => {
     const { id } = req.params;
-
+    
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        if (!id || id === ":id") return res.status(400).json([]);
         result = await Character.findByPk(id);
-        if (result === null) return res.status(404).send('Character not found');
+        if (result === null) return res.status(404).json([]);;
         return res.json(result)
     } catch (e) {
         return res.status(400).json({ msg: `Error 404 - ${e}` });

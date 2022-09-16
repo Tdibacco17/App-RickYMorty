@@ -7,7 +7,6 @@ describe("GET /Characters", ()=>{
   
   test("deberia retornar un formato json", async () => {
     await agent.get("/Characters")
-    .expect(200)
     .expect("Content-Type", /application\/json/)
   })
 
@@ -29,6 +28,30 @@ describe("GET /Characters", ()=>{
  
 })
 
+describe("GET /Details", ()=>{
+
+  test("deberia retornar un formato json", async () => {
+    await agent.get("/Details/:id")
+    .expect("Content-Type", /application\/json/)
+  })
+
+  test("deberia contestar con un status 200 si se envia un id", async () =>{
+    const response = await agent.get("/Details/1")
+    expect(response.statusCode).toBe(200);
+  })
+  test("deberia contestar con un status 400 si no se envia un id", async () =>{
+    const response = await agent.get("/Details/:id")
+    expect(response.statusCode).toBe(400);
+    expect(response.body).toStrictEqual([])
+    
+  })
+  test("deberia contestar con un status 404 si se envia un id y no encuentra nada", async () =>{
+    const response = await agent.get("/Details/2222222")
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toStrictEqual([])
+
+  })
+})
 
 
 
