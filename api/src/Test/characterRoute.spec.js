@@ -3,7 +3,7 @@ const app = require("../../app")
 
 const agent = request(app);
 
-describe("GET /Characters", ()=>{
+xdescribe("GET /Characters", ()=>{
   
   test("deberia retornar un formato json", async () => {
     await agent.get("/Characters")
@@ -38,42 +38,34 @@ describe("GET /Details", ()=>{
   test("deberia contestar con un status 200 si se envia un id", async () =>{
     const response = await agent.get("/Details/1")
     expect(response.statusCode).toBe(200);
+    expect(response.body.characterId).toBe(1);
   })
-  test("deberia contestar con un status 400 si no se envia un id", async () =>{
+  test("deberia contestar con un status 400 si no se envia un id y un msg: Error 400", async () =>{
     const response = await agent.get("/Details/:id")
     expect(response.statusCode).toBe(400);
-    expect(response.body).toStrictEqual([])
+    expect(response.body.msg).toBe("Error 400")
     
   })
-  test("deberia contestar con un status 404 si se envia un id y no encuentra nada", async () =>{
+  test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un msg: Error 404", async () =>{
     const response = await agent.get("/Details/2222222")
     expect(response.statusCode).toBe(404);
-    expect(response.body).toStrictEqual([])
+    expect(response.body.msg).toBe("Error 404")
 
   })
 })
 
-
-
-
-// describe("TEST DE RUTEO", () => {
-
-//   describe("GET /Characters", () => {
-//     it("responder con status 200", () => agent.get("/Characters").expect(200));
-//     it("responder con status 400 si nameCharacter no es un number",() => 
-//     agent.get("/Characters?nameCharacter=123").then((res) => {expect(res.body.msg).toBe("Dato de busqueda invalido")}));
-//       // expect(res.statusCode).toBe(400);
-//   })
+describe("GET /relacionesEpisodios/:id", ()=>{
   
-  
-// })
+  test("deberia retornar un formato json", async () => {
+    await agent.get("/relacionesEpisodios/:id")
+    .expect("Content-Type", /application\/json/)
+  })
+})
+
 
 /*
 agent.get("/test").then((res) => {
       expect(res.body.message).toEqual("test")
-
-/Characters
-/Details/:id"
 /Status/:status/:species/:gender"
 /relacionesEpisodios/:id"
 /relacionesEpisodiosCharacterCap/:id"

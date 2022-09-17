@@ -32,9 +32,9 @@ const routeGetCharacterDetail = async (req, res) => {
     const { id } = req.params;
     
     try {
-        if (!id || id === ":id") return res.status(400).json([]);
+        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
         result = await Character.findByPk(id);
-        if (result === null) return res.status(404).json([]);;
+        if (result === null) return res.status(404).json({msg: "Error 404"});;
         return res.json(result)
     } catch (e) {
         return res.status(400).json({ msg: `Error 404 - ${e}` });
@@ -43,6 +43,7 @@ const routeGetCharacterDetail = async (req, res) => {
 
 const characterEpisodes = async (req, res) => {
     const { id } = req.params
+    // console.log(id)
     try {
         if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
         const personaje = await Character.findAll({
