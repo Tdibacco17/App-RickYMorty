@@ -45,7 +45,7 @@ const characterEpisodes = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
+        if (!id || id === ":id") return res.status(400).json([]);
         const personaje = await Character.findAll({
             where: { id: id }
         })
@@ -68,7 +68,7 @@ const characterEpisodesCap = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
+        if (!id || id === ":id") return res.status(400).json([]);
         const episodio = await Episode.findAll({
             where: { id: id }
         })
@@ -90,7 +90,7 @@ const characterLocation = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
+        if (!id || id === ":id") return res.status(400).json([]);
         const personaje = await Character.findAll({
             where: { id: id }
         })
@@ -112,7 +112,7 @@ const characterLocationResidents = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
+        if (!id || id === ":id") return res.status(400).json([]);
         const location = await Location.findAll({
             where: { id: id }
         })
@@ -134,7 +134,7 @@ const characterOrigin = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
+        if (!id || id === ":id") return res.status(400).json([]);
         const personaje = await Character.findAll({
             where: { id: id }
         })
@@ -155,7 +155,7 @@ const characterOriginResidents = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
+        if (!id || id === ":id") return res.status(400).json([]);
         const location = await Location.findAll({
             where: { id: id }
         })
