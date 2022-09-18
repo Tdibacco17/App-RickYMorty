@@ -140,7 +140,7 @@ const routeFiltered = async (req, res) => {
             })
 
             return res.json(result)
-        } else {
+        } else { // no entra nunca pero es un caso x default
             result = await Character.findAll({
                 where: {
                     name: {
@@ -148,11 +148,11 @@ const routeFiltered = async (req, res) => {
                     }
                 }
             })
-
+            
             return res.json(result)
         }
     } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
+        return res.status(500).json({ msg: `Error 500 - ${e}` });
     };
 }
 

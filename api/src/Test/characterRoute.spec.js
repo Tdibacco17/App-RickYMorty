@@ -3,7 +3,7 @@ const app = require("../../app")
 
 const agent = request(app);
 
-describe("GET /Characters", () => {
+xdescribe("GET /Characters", () => {
 
   test("deberia retornar un formato json", async () => {
     await agent.get("/Characters")
@@ -28,7 +28,7 @@ describe("GET /Characters", () => {
 
 })
 
-describe("GET /Details", () => {
+xdescribe("GET /Details", () => {
 
   test("deberia retornar un formato json", async () => {
     await agent.get("/Details/:id")
@@ -55,7 +55,7 @@ describe("GET /Details", () => {
   })
 })
 
-describe("GET /relacionesEpisodios", () => {
+xdescribe("GET /relacionesEpisodios", () => {
 
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodios/:id")
@@ -82,7 +82,7 @@ describe("GET /relacionesEpisodios", () => {
   })
 })
 
-describe("GET /relacionesEpisodiosCharacterCap", () => {
+xdescribe("GET /relacionesEpisodiosCharacterCap", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -107,7 +107,7 @@ describe("GET /relacionesEpisodiosCharacterCap", () => {
   })
 })
 
-describe("GET /relacionesOrigin", () => {
+xdescribe("GET /relacionesOrigin", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -132,7 +132,7 @@ describe("GET /relacionesOrigin", () => {
   })
 })
 
-describe("GET /relacionesOriginResidents", () => {
+xdescribe("GET /relacionesOriginResidents", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -157,7 +157,7 @@ describe("GET /relacionesOriginResidents", () => {
   })
 })
 
-describe("GET /relacionesLocation", () => {
+xdescribe("GET /relacionesLocation", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -183,7 +183,7 @@ describe("GET /relacionesLocation", () => {
 
 })
 
-describe("GET /relacionesLocationResidents", () => {
+xdescribe("GET /relacionesLocationResidents", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -208,10 +208,65 @@ describe("GET /relacionesLocationResidents", () => {
   })
 
 })
-/*
-agent.get("/test").then((res) => {
-      expect(res.body.message).toEqual("test")
 
-/Status/:status/:species/:gender"
+describe("GET /Status/:status/:species/:gender", () => {
+  test("deberia retornar un formato json", async () => {
+    await agent.get("/Status/:status/:species/:gender")
+      .expect("Content-Type", /application\/json/)
+  })
 
-*/
+  test("deberia retornar un status 200 y el personaje pasado por query y parametros status:All, species:All, gender:All", async () => {
+    const response = await agent.get("/Status/All/All/All?nameCharacter=Annie")
+    expect(response.statusCode).toBe(200);
+    expect(response.body[0].characterId).toBe(17)
+  })
+
+  describe("1 solo parametro", () => {
+    test("deberia retornar un status 200 y el personaje pasado por query y parametros status:Alive, species:All, gender:All", async () => {
+      const response = await agent.get("/Status/Alive/All/All?nameCharacter=")
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toHaveLength(response.body.length);
+    })
+
+    test("deberia retornar un status 200 y el personaje pasado por query y parametros status:All, species:Human, gender:All", async () => {
+      const response = await agent.get("/Status/All/Human/All?nameCharacter=")
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toHaveLength(response.body.length);
+    })
+
+    test("deberia retornar un status 200 y el personaje pasado por query y parametros status:All, species:All, gender:Female", async () => {
+      const response = await agent.get("/Status/All/All/Female?nameCharacter=")
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toHaveLength(response.body.length);
+    })
+  })
+
+  describe("2 parametros", () => {
+    test("deberia retornar un status 200 y el personaje pasado por query y parametros status:Alive, species:Human, gender:All", async () => {
+      const response = await agent.get("/Status/Alive/Human/All?nameCharacter=")
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toHaveLength(response.body.length);
+    })
+
+    test("deberia retornar un status 200 y el personaje pasado por query y parametros status:Alive, species:All, gender:Female", async () => {
+      const response = await agent.get("/Status/Alive/All/Female?nameCharacter=")
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toHaveLength(response.body.length);
+    })
+
+    test("deberia retornar un status 200 y el personaje pasado por query y parametros status:All, species:Human, gender:Female", async () => {
+      const response = await agent.get("/Status/All/Human/Female?nameCharacter=")
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toHaveLength(response.body.length);
+    })
+  })
+
+  describe("3 solo parametro", () => {
+    test("deberia retornar un status 200 y el personaje pasado por query y parametros status:Alive, species:Human, gender:Female", async () => {
+      const response = await agent.get("/Status/Alive/Human/Female?nameCharacter=")
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toHaveLength(response.body.length);
+    })
+  })
+
+})
