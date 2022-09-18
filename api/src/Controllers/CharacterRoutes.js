@@ -24,7 +24,7 @@ const routeGetAllCharacters = async (req, res) => {
 
         return res.json(result)
     } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
+        return res.status(500).json({ msg: `Error 500 - ${e}` });
     };
 };
 
@@ -37,18 +37,19 @@ const routeGetCharacterDetail = async (req, res) => {
         if (result === null) return res.status(404).json({msg: "Error 404"});;
         return res.json(result)
     } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
+        return res.status(500).json({ msg: `Error 500 - ${e}` });
     };
 };
 
 const characterEpisodes = async (req, res) => {
     const { id } = req.params
-    // console.log(id)
+
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
         const personaje = await Character.findAll({
             where: { id: id }
         })
+        if (personaje.length === 0) return res.status(404).json({msg: "Error 404"});
 
         let result = await personaje[0].episode.map(async e => {
 
@@ -59,7 +60,7 @@ const characterEpisodes = async (req, res) => {
 
         return res.json(await Promise.all(result))
     } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
+        return res.status(500).json({ msg: `Error 500 - ${e}` });
     }
 }
 
@@ -67,11 +68,11 @@ const characterEpisodesCap = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
         const episodio = await Episode.findAll({
             where: { id: id }
         })
-
+        if (episodio.length === 0) return res.status(404).json({msg: "Error 404"});
         let result = await episodio[0].characters.map(async e => {
 
             return await Character.findAll({
@@ -81,7 +82,7 @@ const characterEpisodesCap = async (req, res) => {
 
         return res.json(await Promise.all(result))
     } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
+        return res.status(500).json({ msg: `Error 500 - ${e}` });
     }
 }
 
@@ -89,12 +90,13 @@ const characterLocation = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
         const personaje = await Character.findAll({
             where: { id: id }
         })
+        if (personaje.length === 0) return res.status(404).json([]);
+
         let location = personaje[0].location.id_location
-        if (!location) return res.json([]);
 
         const result = await Location.findAll({
             where: { id: location }
@@ -103,18 +105,19 @@ const characterLocation = async (req, res) => {
         return res.json(result)
 
     } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
+        return res.status(500).json({ msg: `Error 500 - ${e}` });
     }
 }
 const characterLocationResidents = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
         const location = await Location.findAll({
             where: { id: id }
         })
-
+        if (location.length === 0) return res.status(404).json([]);
+        
         let result = await location[0].residents.map(async e => {
             return await Character.findAll({
                 where: { id: e }
@@ -131,32 +134,32 @@ const characterOrigin = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
         const personaje = await Character.findAll({
             where: { id: id }
         })
+        if (personaje.length === 0) return res.status(404).json([]);
+
         let validacion = personaje[0].origin.id_location
-        if (!validacion) return res.json([]);
 
         let result = await Location.findAll({
             where: { id: validacion }
         })
         return res.json(result)
     } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
+        return res.status(500).json({ msg: `Error 500 - ${e}` });
     }
 }
-
-
 
 const characterOriginResidents = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id) return res.status(400).json({ msg: `Error 404 - ${e}` });
+        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
         const location = await Location.findAll({
             where: { id: id }
         })
+        if (location.length === 0) return res.status(404).json([]);
 
         let result = await location[0].residents.map(async e => {
             return await Character.findAll({
@@ -166,7 +169,7 @@ const characterOriginResidents = async (req, res) => {
 
         return res.json(await Promise.all(result))
     } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
+        return res.status(500).json({ msg: `Error 500 - ${e}` });
     }
 }
 
