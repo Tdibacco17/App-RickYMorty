@@ -45,11 +45,11 @@ const characterEpisodes = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json([]);
+        if (!id || id === ":id") return res.json([]);
         const personaje = await Character.findAll({
             where: { id: id }
         })
-        if (personaje.length === 0) return res.status(404).json([]);
+        if (personaje.length === 0) return res.json([]);
 
         let result = await personaje[0].episode.map(async e => {
 
@@ -68,11 +68,11 @@ const characterEpisodesCap = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json([]);
+        if (!id || id === ":id") return res.json([]);
         const episodio = await Episode.findAll({
             where: { id: id }
         })
-        if (episodio.length === 0) return res.status(404).json([]);
+        if (episodio.length === 0) return res.json([]);
         let result = await episodio[0].characters.map(async e => {
 
             return await Character.findAll({
@@ -90,11 +90,11 @@ const characterLocation = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json([]);
+        if (!id || id === ":id") return res.json([]);
         const personaje = await Character.findAll({
             where: { id: id }
         })
-        if (personaje.length === 0) return res.status(404).json([]);
+        if (personaje.length === 0) return res.json([]);
 
         let location = personaje[0].location.id_location
 
@@ -112,11 +112,11 @@ const characterLocationResidents = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json([]);
+        if (!id || id === ":id") return res.json([]);
         const location = await Location.findAll({
             where: { id: id }
         })
-        if (location.length === 0) return res.status(404).json([]);
+        if (location.length === 0) return res.json([]);
         
         let result = await location[0].residents.map(async e => {
             return await Character.findAll({
@@ -134,11 +134,11 @@ const characterOrigin = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json([]);
+        if (!id || id === ":id") return res.json([]);
         const personaje = await Character.findAll({
             where: { id: id }
         })
-        if (personaje.length === 0) return res.status(404).json([]);
+        if (personaje.length === 0) return res.json([]);
 
         let validacion = personaje[0].origin.id_location
 
@@ -155,11 +155,11 @@ const characterOriginResidents = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.status(400).json([]);
+        if (!id || id === ":id") return res.json([]);
         const location = await Location.findAll({
             where: { id: id }
         })
-        if (location.length === 0) return res.status(404).json([]);
+        if (location.length === 0) return res.json([]);
 
         let result = await location[0].residents.map(async e => {
             return await Character.findAll({

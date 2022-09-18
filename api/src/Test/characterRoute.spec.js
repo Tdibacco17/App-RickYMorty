@@ -70,14 +70,14 @@ describe("GET /relacionesEpisodios", () => {
 
   test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesEpisodios/:id")
-    expect(response.statusCode).toBe(400);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
 
   })
 
   test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesEpisodios/2222222")
-    expect(response.statusCode).toBe(404);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 })
@@ -96,13 +96,13 @@ describe("GET /relacionesEpisodiosCharacterCap", () => {
 
   test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesEpisodiosCharacterCap/:id")
-    expect(response.statusCode).toBe(400);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
   test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesEpisodiosCharacterCap/22222")
-    expect(response.statusCode).toBe(404);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 })
@@ -121,13 +121,13 @@ describe("GET /relacionesOrigin", () => {
 
   test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesOrigin/:id")
-    expect(response.statusCode).toBe(400);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
   test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesOrigin/22222")
-    expect(response.statusCode).toBe(404);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 })
@@ -146,13 +146,13 @@ describe("GET /relacionesOriginResidents", () => {
 
   test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesOriginResidents/:id")
-    expect(response.statusCode).toBe(400);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
   test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesOriginResidents/22222")
-    expect(response.statusCode).toBe(404);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 })
@@ -171,13 +171,13 @@ describe("GET /relacionesLocation", () => {
 
   test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesLocation/:id")
-    expect(response.statusCode).toBe(400);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
   test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesLocation/22222")
-    expect(response.statusCode).toBe(404);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
@@ -197,13 +197,13 @@ describe("GET /relacionesLocationResidents", () => {
 
   test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesLocationResidents/:id")
-    expect(response.statusCode).toBe(400);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
   test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesLocationResidents/22222")
-    expect(response.statusCode).toBe(404);
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
