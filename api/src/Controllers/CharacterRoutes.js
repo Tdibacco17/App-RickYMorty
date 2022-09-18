@@ -49,7 +49,7 @@ const characterEpisodes = async (req, res) => {
         const personaje = await Character.findAll({
             where: { id: id }
         })
-        if (personaje.length === 0) return res.status(404).json({msg: "Error 404"});
+        if (personaje.length === 0) return res.status(404).json([]);
 
         let result = await personaje[0].episode.map(async e => {
 
@@ -72,7 +72,7 @@ const characterEpisodesCap = async (req, res) => {
         const episodio = await Episode.findAll({
             where: { id: id }
         })
-        if (episodio.length === 0) return res.status(404).json({msg: "Error 404"});
+        if (episodio.length === 0) return res.status(404).json([]);
         let result = await episodio[0].characters.map(async e => {
 
             return await Character.findAll({

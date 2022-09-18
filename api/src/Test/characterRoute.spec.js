@@ -3,7 +3,7 @@ const app = require("../../app")
 
 const agent = request(app);
 
-xdescribe("GET /Characters", ()=>{
+describe("GET /Characters", ()=>{
   
   test("deberia retornar un formato json", async () => {
     await agent.get("/Characters")
@@ -28,7 +28,7 @@ xdescribe("GET /Characters", ()=>{
  
 })
 
-xdescribe("GET /Details", ()=>{
+describe("GET /Details", ()=>{
 
   test("deberia retornar un formato json", async () => {
     await agent.get("/Details/:id")
@@ -55,7 +55,7 @@ xdescribe("GET /Details", ()=>{
   })
 })
 
-xdescribe("GET /relacionesEpisodios", ()=>{
+describe("GET /relacionesEpisodios", ()=>{
   
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodios/:id")
@@ -78,11 +78,11 @@ xdescribe("GET /relacionesEpisodios", ()=>{
   test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un msg: Error 404", async () =>{
     const response = await agent.get("/relacionesEpisodios/2222222")
     expect(response.statusCode).toBe(404);
-    expect(response.body.msg).toBe("Error 404")
+    expect(response.body).toEqual([])
   })
 })
 
-xdescribe("GET /relacionesEpisodiosCharacterCap", () =>{
+describe("GET /relacionesEpisodiosCharacterCap", () =>{
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
     .expect("Content-Type", /application\/json/)
@@ -103,11 +103,11 @@ xdescribe("GET /relacionesEpisodiosCharacterCap", () =>{
   test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un msg: Error 404", async () =>{
     const response = await agent.get("/relacionesEpisodiosCharacterCap/22222")
     expect(response.statusCode).toBe(404);
-    expect(response.body.msg).toBe("Error 404")
+    expect(response.body).toEqual([])
   })
 })
 
-xdescribe("GET /relacionesOrigin", () =>{
+describe("GET /relacionesOrigin", () =>{
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
     .expect("Content-Type", /application\/json/)
@@ -132,7 +132,7 @@ xdescribe("GET /relacionesOrigin", () =>{
   })
 })
 
-xdescribe("GET /relacionesOriginResidents", () =>{
+describe("GET /relacionesOriginResidents", () =>{
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
     .expect("Content-Type", /application\/json/)
@@ -157,7 +157,7 @@ xdescribe("GET /relacionesOriginResidents", () =>{
   })
 })
 
-xdescribe("GET /relacionesLocation", () =>{
+describe("GET /relacionesLocation", () =>{
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
     .expect("Content-Type", /application\/json/)
@@ -183,7 +183,7 @@ xdescribe("GET /relacionesLocation", () =>{
 
 })
 
-xdescribe("GET /relacionesLocationResidents", () =>{
+describe("GET /relacionesLocationResidents", () =>{
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
     .expect("Content-Type", /application\/json/)
@@ -192,7 +192,6 @@ xdescribe("GET /relacionesLocationResidents", () =>{
   test("deberia contestar con un status 200 si se envia un id", async () =>{
     const response = await agent.get("/relacionesLocationResidents/1")
     expect(response.statusCode).toBe(200);
-    console.log(response.body)
     expect(response.body[0][0].characterId).toBe(38);
   })
 
