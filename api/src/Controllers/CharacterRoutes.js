@@ -32,9 +32,9 @@ const routeGetCharacterDetail = async (req, res) => {
     const { id } = req.params;
     
     try {
-        if (!id || id === ":id") return res.status(400).json({msg: "Error 400"});
+        if (!id || id === ":id") return res.json([]);
         result = await Character.findByPk(id);
-        if (result === null) return res.status(404).json({msg: "Error 404"});;
+        if (result === null) return res.json([]);;
         return res.json(result)
     } catch (e) {
         return res.status(500).json({ msg: `Error 500 - ${e}` });

@@ -41,16 +41,16 @@ describe("GET /Details", () => {
     expect(response.body.characterId).toBe(1);
   })
 
-  test("deberia contestar con un status 400 si no se envia un id y un msg: Error 400", async () => {
+  test("deberia contestar con un status 200 si no se envia un id y un msg: Error 400", async () => {
     const response = await agent.get("/Details/:id")
-    expect(response.statusCode).toBe(400);
-    expect(response.body.msg).toBe("Error 400")
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual([])
 
   })
-  test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un msg: Error 404", async () => {
+  test("deberia contestar con un status 200 si se envia un id y no encuentra nada con un msg: Error 404", async () => {
     const response = await agent.get("/Details/2222222")
-    expect(response.statusCode).toBe(404);
-    expect(response.body.msg).toBe("Error 404")
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual([])
 
   })
 })
@@ -68,14 +68,14 @@ describe("GET /relacionesEpisodios", () => {
     expect(response.body[0][0].episodeId).toBe(1);
   })
 
-  test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
+  test("deberia contestar con un status 200 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesEpisodios/:id")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
 
   })
 
-  test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
+  test("deberia contestar con un status 200 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesEpisodios/2222222")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
@@ -94,13 +94,13 @@ describe("GET /relacionesEpisodiosCharacterCap", () => {
     expect(response.body[0][0].characterId).toBe(1);
   })
 
-  test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
+  test("deberia contestar con un status 200 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesEpisodiosCharacterCap/:id")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
-  test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
+  test("deberia contestar con un status 200 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesEpisodiosCharacterCap/22222")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
@@ -119,13 +119,13 @@ describe("GET /relacionesOrigin", () => {
     expect(response.body[0].locationId).toBe(1);
   })
 
-  test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
+  test("deberia contestar con un status 200 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesOrigin/:id")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
-  test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
+  test("deberia contestar con un status 200 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesOrigin/22222")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
@@ -144,13 +144,13 @@ describe("GET /relacionesOriginResidents", () => {
     expect(response.body[0][0].characterId).toBe(38);
   })
 
-  test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
+  test("deberia contestar con un status 200 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesOriginResidents/:id")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
-  test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
+  test("deberia contestar con un status 200 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesOriginResidents/22222")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
@@ -169,13 +169,13 @@ describe("GET /relacionesLocation", () => {
     expect(response.body[0].locationId).toBe(3);
   })
 
-  test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
+  test("deberia contestar con un status 200 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesLocation/:id")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
-  test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
+  test("deberia contestar con un status 200 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesLocation/22222")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
@@ -195,13 +195,13 @@ describe("GET /relacionesLocationResidents", () => {
     expect(response.body[0][0].characterId).toBe(38);
   })
 
-  test("deberia contestar con un status 400 si no se envia un id y un json = []", async () => {
+  test("deberia contestar con un status 200 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesLocationResidents/:id")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
 
-  test("deberia contestar con un status 404 si se envia un id y no encuentra nada con un json = []", async () => {
+  test("deberia contestar con un status 200 si se envia un id y no encuentra nada con un json = []", async () => {
     const response = await agent.get("/relacionesLocationResidents/22222")
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
