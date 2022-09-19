@@ -3,7 +3,7 @@ const app = require("../../app")
 
 const agent = request(app);
 
-describe("GET /Characters", () => {
+xdescribe("GET /Characters", () => {
 
   test("deberia retornar un formato json", async () => {
     await agent.get("/Characters")
@@ -28,7 +28,7 @@ describe("GET /Characters", () => {
 
 })
 
-describe("GET /Details", () => {
+xdescribe("GET /Details", () => {
 
   test("deberia retornar un formato json", async () => {
     await agent.get("/Details/:id")
@@ -55,7 +55,7 @@ describe("GET /Details", () => {
   })
 })
 
-describe("GET /relacionesEpisodios", () => {
+xdescribe("GET /relacionesEpisodios", () => {
 
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodios/:id")
@@ -82,7 +82,7 @@ describe("GET /relacionesEpisodios", () => {
   })
 })
 
-describe("GET /relacionesEpisodiosCharacterCap", () => {
+xdescribe("GET /relacionesEpisodiosCharacterCap", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -119,6 +119,12 @@ describe("GET /relacionesOrigin", () => {
     expect(response.body[0].locationId).toBe(1);
   })
 
+  test("deberia contestar con un status 200 si id_location esta vacio y un json = []", async () => {
+    const response = await agent.get("/relacionesOrigin/2")
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual([])
+  })
+
   test("deberia contestar con un status 200 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesOrigin/:id")
     expect(response.statusCode).toBe(200);
@@ -132,7 +138,7 @@ describe("GET /relacionesOrigin", () => {
   })
 })
 
-describe("GET /relacionesOriginResidents", () => {
+xdescribe("GET /relacionesOriginResidents", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -169,6 +175,12 @@ describe("GET /relacionesLocation", () => {
     expect(response.body[0].locationId).toBe(3);
   })
 
+  test("deberia contestar con un status 200 si id_location esta vacio y un json = []", async () => {
+    const response = await agent.get("/relacionesOrigin/123")
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual([])
+  })
+
   test("deberia contestar con un status 200 si no se envia un id y un json = []", async () => {
     const response = await agent.get("/relacionesLocation/:id")
     expect(response.statusCode).toBe(200);
@@ -183,7 +195,7 @@ describe("GET /relacionesLocation", () => {
 
 })
 
-describe("GET /relacionesLocationResidents", () => {
+xdescribe("GET /relacionesLocationResidents", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -209,7 +221,7 @@ describe("GET /relacionesLocationResidents", () => {
 
 })
 
-describe("GET /Status/:status/:species/:gender", () => {
+xdescribe("GET /Status/:status/:species/:gender", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/Status/:status/:species/:gender")
       .expect("Content-Type", /application\/json/)

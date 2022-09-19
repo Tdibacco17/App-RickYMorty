@@ -94,12 +94,10 @@ const characterLocation = async (req, res) => {
         const personaje = await Character.findAll({
             where: { id: id }
         })
-        if (personaje.length === 0) return res.json([]);
-
-        let location = personaje[0].location.id_location
+        if (personaje.length === 0 || personaje[0].location.id_location === "") return res.json([]);
 
         const result = await Location.findAll({
-            where: { id: location }
+            where: { id: personaje[0].location.id_location }
         })
 
         return res.json(result)
@@ -140,12 +138,11 @@ const characterOrigin = async (req, res) => {
         const personaje = await Character.findAll({
             where: { id: id }
         })
-        if (personaje.length === 0) return res.json([]);
 
-        let validacion = personaje[0].origin.id_location
-
+        if (personaje.length === 0 || personaje[0].origin.id_location === "") return res.json([]);
+        
         let result = await Location.findAll({
-            where: { id: validacion }
+            where: { id: personaje[0].origin.id_location }
         })
         return res.json(result)
     } catch (e) {
