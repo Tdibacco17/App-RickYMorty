@@ -107,7 +107,7 @@ xdescribe("GET /relacionesEpisodiosCharacterCap", () => {
   })
 })
 
-describe("GET /relacionesOrigin", () => {
+xdescribe("GET /relacionesOrigin", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -163,7 +163,7 @@ xdescribe("GET /relacionesOriginResidents", () => {
   })
 })
 
-describe("GET /relacionesLocation", () => {
+xdescribe("GET /relacionesLocation", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
