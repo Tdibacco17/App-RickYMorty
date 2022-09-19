@@ -95,11 +95,11 @@ const characterLocation = async (req, res) => {
             where: { id: id }
         })
         if (personaje.length === 0 || personaje[0].location.id_location === "") return res.json([]);
-
+        
         const result = await Location.findAll({
             where: { id: personaje[0].location.id_location }
         })
-
+        
         return res.json(result)
 
     } catch (e) {
