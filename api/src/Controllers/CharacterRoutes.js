@@ -32,7 +32,7 @@ const routeGetCharacterDetail = async (req, res) => {
     const { id } = req.params;
     
     try {
-        if (!id || id === ":id") return res.json([]);
+        if (!id || isNaN(id)) return res.json([]);
         result = await Character.findByPk(id);
         if (result === null) return res.json([]);;
         return res.json(result)
@@ -45,7 +45,7 @@ const characterEpisodes = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.json([]);
+        if (!id || isNaN(id)) return res.json([]);
         const personaje = await Character.findAll({
             where: { id: id }
         })
@@ -68,7 +68,7 @@ const characterEpisodesCap = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.json([]);
+        if (!id || isNaN(id)) return res.json([]);
         const episodio = await Episode.findAll({
             where: { id: id }
         })
@@ -90,7 +90,7 @@ const characterLocation = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.json([]);
+        if (!id || isNaN(id)) return res.json([]);
         const personaje = await Character.findAll({
             where: { id: id }
         })
@@ -108,11 +108,12 @@ const characterLocation = async (req, res) => {
         return res.status(500).json({ msg: `Error 500 - ${e}` });
     }
 }
+
 const characterLocationResidents = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.json([]);
+        if (!id || isNaN(id)) return res.json([]);
         const location = await Location.findAll({
             where: { id: id }
         })
@@ -134,7 +135,8 @@ const characterOrigin = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.json([]);
+
+        if (!id || isNaN(id)) return res.json([]);
         const personaje = await Character.findAll({
             where: { id: id }
         })
@@ -155,7 +157,7 @@ const characterOriginResidents = async (req, res) => {
     const { id } = req.params
 
     try {
-        if (!id || id === ":id") return res.json([]);
+        if (!id || isNaN(id)) return res.json([]);
         const location = await Location.findAll({
             where: { id: id }
         })

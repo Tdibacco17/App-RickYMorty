@@ -3,7 +3,7 @@ const app = require("../../app")
 
 const agent = request(app);
 
-xdescribe("GET /Characters", () => {
+describe("GET /Characters", () => {
 
   test("deberia retornar un formato json", async () => {
     await agent.get("/Characters")
@@ -28,7 +28,7 @@ xdescribe("GET /Characters", () => {
 
 })
 
-xdescribe("GET /Details", () => {
+describe("GET /Details", () => {
 
   test("deberia retornar un formato json", async () => {
     await agent.get("/Details/:id")
@@ -55,7 +55,7 @@ xdescribe("GET /Details", () => {
   })
 })
 
-xdescribe("GET /relacionesEpisodios", () => {
+describe("GET /relacionesEpisodios", () => {
 
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodios/:id")
@@ -82,7 +82,7 @@ xdescribe("GET /relacionesEpisodios", () => {
   })
 })
 
-xdescribe("GET /relacionesEpisodiosCharacterCap", () => {
+describe("GET /relacionesEpisodiosCharacterCap", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -107,7 +107,7 @@ xdescribe("GET /relacionesEpisodiosCharacterCap", () => {
   })
 })
 
-xdescribe("GET /relacionesOrigin", () => {
+describe("GET /relacionesOrigin", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -132,7 +132,7 @@ xdescribe("GET /relacionesOrigin", () => {
   })
 })
 
-xdescribe("GET /relacionesOriginResidents", () => {
+describe("GET /relacionesOriginResidents", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -157,7 +157,7 @@ xdescribe("GET /relacionesOriginResidents", () => {
   })
 })
 
-xdescribe("GET /relacionesLocation", () => {
+describe("GET /relacionesLocation", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
@@ -183,7 +183,7 @@ xdescribe("GET /relacionesLocation", () => {
 
 })
 
-xdescribe("GET /relacionesLocationResidents", () => {
+describe("GET /relacionesLocationResidents", () => {
   test("deberia retornar un formato json", async () => {
     await agent.get("/relacionesEpisodiosCharacterCap/:id")
       .expect("Content-Type", /application\/json/)
