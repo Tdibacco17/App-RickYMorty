@@ -80,6 +80,7 @@ xdescribe("GET /relacionesEpisodios", () => {
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual([])
   })
+
 })
 
 xdescribe("GET /relacionesEpisodiosCharacterCap", () => {

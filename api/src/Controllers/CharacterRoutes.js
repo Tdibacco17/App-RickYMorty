@@ -24,7 +24,8 @@ const routeGetAllCharacters = async (req, res) => {
 
         return res.json(result)
     } catch (e) {
-        return res.status(500).json({ msg: `Error 500 - ${e}` });
+        console.log(e)
+        return res.json([]);
     };
 };
 
@@ -37,19 +38,20 @@ const routeGetCharacterDetail = async (req, res) => {
         if (result === null) return res.json([]);;
         return res.json(result)
     } catch (e) {
-        return res.status(500).json({ msg: `Error 500 - ${e}` });
+        console.log(e)
+        return res.json([]);
     };
 };
 
 const characterEpisodes = async (req, res) => {
     const { id } = req.params
-
+    console.log(id)
     try {
         if (!id || isNaN(id)) return res.json([]);
         const personaje = await Character.findAll({
             where: { id: id }
         })
-        if (personaje.length === 0) return res.json([]);
+        if (personaje.length === 0 ) return res.json([]);
 
         let result = await personaje[0].episode.map(async e => {
 
@@ -60,7 +62,8 @@ const characterEpisodes = async (req, res) => {
 
         return res.json(await Promise.all(result))
     } catch (e) {
-        return res.status(500).json({ msg: `Error 500 - ${e}` });
+        console.log(e)
+        return res.json([]);
     }
 }
 
@@ -82,7 +85,8 @@ const characterEpisodesCap = async (req, res) => {
 
         return res.json(await Promise.all(result))
     } catch (e) {
-        return res.status(500).json({ msg: `Error 500 - ${e}` });
+        console.log(e)
+        return res.json([]);
     }
 }
 
@@ -103,7 +107,8 @@ const characterLocation = async (req, res) => {
         return res.json(result)
 
     } catch (e) {
-        return res.status(500).json({ msg: `Error 500 - ${e}` });
+        console.log(e)
+        return res.json([]);
     }
 }
 
@@ -125,7 +130,8 @@ const characterLocationResidents = async (req, res) => {
 
         return res.json(await Promise.all(result))
     } catch (e) {
-        return res.status(400).json({ msg: `Error 404 - ${e}` });
+        console.log(e)
+        return res.json([]);
     }
 }
 
@@ -146,7 +152,8 @@ const characterOrigin = async (req, res) => {
         })
         return res.json(result)
     } catch (e) {
-        return res.status(500).json({ msg: `Error 500 - ${e}` });
+        console.log(e)
+        return res.json([]);
     }
 }
 
@@ -168,7 +175,8 @@ const characterOriginResidents = async (req, res) => {
 
         return res.json(await Promise.all(result))
     } catch (e) {
-        return res.status(500).json({ msg: `Error 500 - ${e}` });
+        console.log(e)
+        return res.json([]);
     }
 }
 
