@@ -16,8 +16,8 @@ router.get("/relacionesLocationResidents/:id", characterLocationResidents)
 
 
 //------------------------------------------------------------
-const { characterDataBase } = require("../Controllers/Database/DataBase")  // base de datos "no tocar "
+// const { characterDataBase } = require("../Controllers/Database/DataBase")  // base de datos "no tocar "
 
-router.get("/dataBase", characterDataBase) // base de datos "no tocar "
+// router.get("/dataBase", characterDataBase) // base de datos "no tocar "
 
 module.exports = router;
