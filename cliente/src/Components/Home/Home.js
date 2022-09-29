@@ -30,7 +30,7 @@ export default function Home({ darkMode, statusTrue, genderTrue, speciesTrue, pa
     return (
         <div>
             <Carrusel />
-            {currentPage === 0 ? null : <Filters
+            {currentPage.length === 0 ? null : <Filters
                 className="Filtros"
                 darkMode={darkMode}
                 setPage={setPage}
