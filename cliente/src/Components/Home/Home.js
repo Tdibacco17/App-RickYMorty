@@ -56,7 +56,7 @@ export default function Home({ darkMode, statusTrue, genderTrue, speciesTrue, pa
                             (genderTrue === true && speciesTrue === true && currentPage.length === 0) ||
                             (genderTrue === true && statusTrue === true && currentPage.length === 0) ||
                             (statusTrue === true && speciesTrue === true && currentPage.length === 0) ?
-                            (<h4 style={{ color: "white" }}><br /><br />No se encontraron Personajes</h4>) : <Loading style={{marginTop:"50px" }} />}
+                            (<h4 style={{ color: "white" }}><br /><br />No se encontraron Personajes</h4>) :<Loading/>}
                     </div>
                 }
             </div>
