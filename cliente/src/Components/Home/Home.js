@@ -30,7 +30,7 @@ export default function Home({ darkMode, statusTrue, genderTrue, speciesTrue, pa
     return (
         <div>
             <Carrusel />
-            <Filters
+            {currentPage === 0 ? null : <Filters
                 className="Filtros"
                 darkMode={darkMode}
                 setPage={setPage}
@@ -43,7 +43,7 @@ export default function Home({ darkMode, statusTrue, genderTrue, speciesTrue, pa
                 setSpeciesName={setSpeciesName}
                 setGenderTrue={setGenderTrue}
                 genderName={genderName}
-                setGenderName={setGenderName} />
+                setGenderName={setGenderName} />}
             {currentPage.length === 0 ? null : <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />}
             <div className="CentradoCards">
                 {
@@ -52,10 +52,10 @@ export default function Home({ darkMode, statusTrue, genderTrue, speciesTrue, pa
                             <Card darkMode={darkMode} key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} createdDay={j.createdDay} createdTime={j.createdTime} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
                         )
                     }) : <div>
-                        {(statusTrue === true && genderTrue === true && speciesTrue === true && currentPage.length === 0 )||
+                        {(statusTrue === true && genderTrue === true && speciesTrue === true && currentPage.length === 0) ||
                             (genderTrue === true && speciesTrue === true && currentPage.length === 0) ||
                             (genderTrue === true && statusTrue === true && currentPage.length === 0) ||
-                            (statusTrue === true && speciesTrue === true && currentPage.length === 0 )? 
+                            (statusTrue === true && speciesTrue === true && currentPage.length === 0) ?
                             (<h4 style={{ color: "white" }}><br /><br />No se encontraron Personajes</h4>) : <Loading />}
                     </div>
                 }
