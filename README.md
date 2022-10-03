@@ -5,7 +5,7 @@
 
 
 
- <a href="https://rickymorty-app-tdb.vercel.app/" rel="noopener noreferrer" target="_blank">Sitio WEB</a>
+ <a href="https://rick-y-morty-tomas-di-bacco.vercel.app/" rel="noopener noreferrer" target="_blank">Sitio WEB</a>
 <p>Te invito a visitar la pagina!</p>
 <img src="https://github.com/Tdibacco17/Rick-y-Morty/blob/main/captura%20rick.png" alt="background" width="500px" height="250px"/>
 <img src="https://github.com/Tdibacco17/Rick-y-Morty/blob/main/captura%20rick%202.png" alt="background" width="500px" height="250px"/>
