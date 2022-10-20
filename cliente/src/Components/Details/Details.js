@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCharacterById, getRelacionEpisodes, getRelacionLocation, getRelacionOrigin, getRelacionOriginResidents, getRelacionEpisodesCharacterCap, getRelacionLocationResidents } from "../../Actions/index";
@@ -10,7 +10,11 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-export default function Details({ darkMode }) {
+import  DarkMOdeContext  from "../../Context/context";
+
+export default function Details() {
+
+    const {darkMode} = useContext(DarkMOdeContext)
 
     const dispatch = useDispatch();
     const { id } = useParams();

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Button from 'react-bootstrap/Button';
 import "./Paginado-module.css"
 
-export default function Paginado({ darkMode, page, pageSize, setPage, totalCount, setInput, input }) {
+import DarkMOdeContext from '../../Context/context';
 
+export default function Paginado({ page, pageSize, setPage, totalCount, setInput, input }) {
+
+    const {darkMode} = useContext(DarkMOdeContext)
+    
     const totalPages = Math.ceil(totalCount / pageSize);
-
+    
     const prevPage = () => {
         setInput(input - 1)
         setPage(page - 1)

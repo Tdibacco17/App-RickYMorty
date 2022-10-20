@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
 import { useNavigate } from 'react-router-dom';
@@ -7,8 +7,11 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { useDispatch } from "react-redux";
 import { CleanDetails } from "../../Actions/index"
 
-export default function Cards({ darkMode, id, name, status, species, gender, image, setStatusTrue, setSpeciesTrue, setGenderTrue }) {
+import DarkMOdeContext from "../../Context/context";
 
+export default function Cards({ id, name, status, species, gender, image, setStatusTrue, setSpeciesTrue, setGenderTrue }) {
+
+    const {darkMode} = useContext(DarkMOdeContext)
     let navigate = useNavigate();
     let dispatch = useDispatch()
 

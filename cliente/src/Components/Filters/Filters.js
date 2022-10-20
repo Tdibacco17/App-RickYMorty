@@ -1,11 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { getFilter } from "../../Actions/index"
 import { useDispatch } from "react-redux";
 import "./Filters-module.css"
 
-export default function Filters({ darkMode, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
+import DarkMOdeContext from "../../Context/context";
 
+export default function Filters({ setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
+
+    const {darkMode} = useContext(DarkMOdeContext)
     const dispatch = useDispatch()
 
     function handleState(e) {

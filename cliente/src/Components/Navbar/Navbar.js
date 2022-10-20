@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -11,9 +11,12 @@ import { getSearchbar, getFilter } from "../../Actions/index"
 import { Link, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
+import DarkMOdeContext from "../../Context/context";
 
-export default function Header({ darkMode, setDarkMode, setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName, genderTrue, setGenderTrue, genderName, setGenderName }) {
+export default function Header({ setPage, nameCharacter, setNameCharacter, statusTrue, setStatusTrue, statusName, setStatusName, speciesTrue, setSpeciesTrue, speciesName, setSpeciesName, genderTrue, setGenderTrue, genderName, setGenderName }) {
 
+    const {darkMode, setDarkMode} = useContext(DarkMOdeContext)
+    
     const dispatch = useDispatch()
     let navigate = useNavigate();
 

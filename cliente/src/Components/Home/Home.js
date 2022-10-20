@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card"
 import { getAllCharacters } from "../../Actions/index";
@@ -8,8 +8,12 @@ import Filters from "../Filters/Filters";
 import Carrusel from "../Carousel/Carousel";
 import "./Home-module.css"
 
-export default function Home({ darkMode, statusTrue, genderTrue, speciesTrue, page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
+import DarkMOdeContext from "../../Context/context";
 
+export default function Home({ statusTrue, genderTrue, speciesTrue, page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
+
+    const {darkMode} = useContext(DarkMOdeContext)
+    
     const dispatch = useDispatch()
     const getAllChar = useSelector(state => state.characters)
 
@@ -32,7 +36,6 @@ export default function Home({ darkMode, statusTrue, genderTrue, speciesTrue, pa
             <Carrusel />
             {currentPage.length === 0 ? null : <Filters
                 className="Filtros"
-                darkMode={darkMode}
                 setPage={setPage}
                 nameCharacter={nameCharacter}
                 setStatusTrue={setStatusTrue}
@@ -44,12 +47,12 @@ export default function Home({ darkMode, statusTrue, genderTrue, speciesTrue, pa
                 setGenderTrue={setGenderTrue}
                 genderName={genderName}
                 setGenderName={setGenderName} />}
-            {currentPage.length === 0 ? null : <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />}
+            {currentPage.length === 0 ? null : <Paginado pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />}
             <div className="CentradoCards">
                 {
                     currentPage.length > 0 ? currentPage.map(j => {
                         return (
-                            <Card darkMode={darkMode} key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} createdDay={j.createdDay} createdTime={j.createdTime} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
+                            <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} createdDay={j.createdDay} createdTime={j.createdTime} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
                         )
                     }) : <div>
                         {(statusTrue === true && genderTrue === true && speciesTrue === true && currentPage.length === 0) ||
@@ -60,7 +63,7 @@ export default function Home({ darkMode, statusTrue, genderTrue, speciesTrue, pa
                     </div>
                 }
             </div>
-            {currentPage.length === 0 ? null : <Paginado darkMode={darkMode} pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />}
+            {currentPage.length === 0 ? null : <Paginado pageSize={pageSize} setInput={setInput} input={input} setPage={setPage} totalCount={getAllChar.length} page={page} />}
             <br /><br /><br /><br /><br />
         </div>
     )

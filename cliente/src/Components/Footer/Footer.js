@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext} from "react";
 import { SiGmail, SiGithub, SiLinkedin } from "react-icons/si";
 import "./Footer-module.css"
 
-export default function Footer({darkMode}) {
+import  DarkMOdeContext from "../../Context/context";
+
+export default function Footer() {
+
+    const {darkMode} = useContext(DarkMOdeContext)
     return (
         <div className={darkMode === true ? "Footer" : "FooterDark" }>
             <div>

@@ -6,17 +6,14 @@ import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer"
 import "./index.css"
 
+import {DarkMOdeContext} from "./Context/context";
+
 function App() {
 
   const [page, setPage] = useState(1);
 
   const [nameCharacter, setNameCharacter] = useState("");
   
-  
-  let local = localStorage.getItem("dark-Mode")
-
-  const [darkMode, setDarkMode] = useState(local === "false" ? false : true);
-
   const [statusTrue, setStatusTrue] = useState(false)
   const [statusName, setStatusName] = useState("All")
 
@@ -27,10 +24,9 @@ function App() {
   const [genderName, setGenderName] = useState("All")
 
   return (
+    <DarkMOdeContext>
     <div >
       <Navbar
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
         setPage={setPage}
         nameCharacter={nameCharacter}
         setNameCharacter={setNameCharacter}
@@ -52,7 +48,6 @@ function App() {
             statusTrue={statusTrue}
             genderTrue={genderTrue}
             speciesTrue={speciesTrue}
-            darkMode={darkMode}
             page={page}
             setPage={setPage}
             nameCharacter={nameCharacter}
@@ -66,10 +61,11 @@ function App() {
             genderName={genderName}
             setGenderName={setGenderName} />}
         />
-        <Route exact path="/Details/:id" element={<Details darkMode={darkMode} />} />
+        <Route exact path="/Details/:id" element={<Details />} />
       </Routes>
-      <Footer darkMode={darkMode} />
+      <Footer />
     </div>
+    </DarkMOdeContext>
   );
 }
 
