@@ -9,7 +9,7 @@ import { store } from './Store/index'
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3000";
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:6032";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
