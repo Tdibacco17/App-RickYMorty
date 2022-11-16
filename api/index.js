@@ -10,6 +10,6 @@ const PORT = process.env.PORT || 6032;
 db.sync({ force: false }).then(() => {
   console.log("Base de datos conectada!");
   app.listen(PORT, () => {
-    console.log(`Listening in ${PORT}/`); // eslint-disable-line no-console
+    console.log(`Listening in ${PORT}`); // eslint-disable-line no-console
   });
 });
