@@ -8,7 +8,7 @@ const { pg } = require('pg');
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,
   PGUSER, PGPASSWORD, PGHOST, PGPORT, PGDATABASE } = process.env;
-const sequelize = new Sequelize(`postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}`, {
+const sequelize = new Sequelize(`postgresql://postgres:L0oBqmrjwgrYpFkMHkCu@containers-us-west-121.railway.app:6032/railway`, {
   logging: false,
   native: false,
   dialectModule: pg
