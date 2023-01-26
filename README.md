@@ -1,13 +1,25 @@
-<h4>🧪 Aplicación Proyecto Personal:</h4>
-<p>Es una aplicacion realizada por cuenta propia para reforzar los conocimientos aprendidos en el bootcamp de Henry.</br>
-  Desarrollada con tecnologias como React, Redux, Bootstrap para el front FrontEnd, NodeJs, Express, Sequelize para el BackEnd y PostgreSQL para la base de datos.</p>
+### 🧪 Full-Stack Developer - [RICK Y MORTY](https://rick-y-morty-tomas-di-bacco.vercel.app/)
+
+
+>  ##### Proyecto individual
+>  
+>  *Es una aplicación de página única, basada en la api de rick y morty "The Rick and Morty API" con el fin de repasar los conocimientos aprendidos en el Bootcamp realizando diferentes funcionalidades.*
+>
+> +  **Desarrollo del BackEnd con Javascript, consumiendo datos desde una API, manejo de sistema CRUD y modelado de la base de datos con Node.Js y PostgreSQL.**
+> +  **Desarrollo del FrontEnd con Javascript, modelado y creación de componentes responsive en React utilizando Redux.**
+
+---
+
 </br>
 
+###### *Imagenes por si la pagina no carga!*
 
+</br>
 
- <a href="https://rick-y-morty-tomas-di-bacco.vercel.app/" rel="noopener noreferrer" target="_blank">Sitio WEB</a>
-<p>Te invito a visitar la pagina!</p>
-<img src="https://github.com/Tdibacco17/Rick-y-Morty/blob/main/Imagenes/captura%20rick.png" alt="background" width="500px" height="250px"/>
-<img src="https://github.com/Tdibacco17/Rick-y-Morty/blob/main/Imagenes/captura%20rick%202.png" alt="background" width="500px" height="250px"/>
+<a href="https://rick-y-morty-tomas-di-bacco.vercel.app/" rel="noopener noreferrer" target="_blank">
+   <img  width="450" height="225" src="https://github.com/Tdibacco17/Rick-y-Morty/blob/main/Imagenes/captura%20rick.png">
+</a>
 
-
+<a href="https://rick-y-morty-tomas-di-bacco.vercel.app/" rel="noopener noreferrer" target="_blank">
+   <img width="450" height="225" src="https://github.com/Tdibacco17/Rick-y-Morty/blob/main/Imagenes/captura%20rick%202.png">
+</a>
