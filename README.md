@@ -1,4 +1,4 @@
-### 🧪 Full-Stack Developer - [RICK Y MORTY](https://rick-y-morty-tomas-di-bacco.vercel.app/)
+## 🧪 Full-Stack Developer - [RICK Y MORTY](https://rick-y-morty-tomas-di-bacco.vercel.app/)
 
 
 <details>
