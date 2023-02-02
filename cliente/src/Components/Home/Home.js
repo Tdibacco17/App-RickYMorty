@@ -12,8 +12,8 @@ import DarkMOdeContext from "../../Context/context";
 
 export default function Home({ statusTrue, genderTrue, speciesTrue, page, setPage, nameCharacter, setStatusTrue, statusName, setStatusName, setSpeciesTrue, speciesName, setSpeciesName, setGenderTrue, genderName, setGenderName }) {
 
-    const {darkMode} = useContext(DarkMOdeContext)
-    
+    const { darkMode } = useContext(DarkMOdeContext)
+
     const dispatch = useDispatch()
     const getAllChar = useSelector(state => state.characters)
 
@@ -55,11 +55,13 @@ export default function Home({ statusTrue, genderTrue, speciesTrue, page, setPag
                             <Card key={j.id} id={j.id} name={j.name} status={j.status} species={j.species} gender={j.gender} image={j.image} createdDay={j.createdDay} createdTime={j.createdTime} setStatusTrue={setStatusTrue} setSpeciesTrue={setSpeciesTrue} setGenderTrue={setGenderTrue} />
                         )
                     }) : <div>
-                        {(statusTrue === true && genderTrue === true && speciesTrue === true && currentPage.length === 0) ||
-                            (genderTrue === true && speciesTrue === true && currentPage.length === 0) ||
-                            (genderTrue === true && statusTrue === true && currentPage.length === 0) ||
-                            (statusTrue === true && speciesTrue === true && currentPage.length === 0) ?
-                            (<h4 style={{ color: "white" }}><br /><br />No se encontraron Personajes</h4>) :<Loading/>}
+                        {
+                            (statusTrue === true && genderTrue === true && speciesTrue === true && currentPage.length === 0) ||
+                                (genderTrue === true && speciesTrue === true && currentPage.length === 0) ||
+                                (genderTrue === true && statusTrue === true && currentPage.length === 0) ||
+                                (statusTrue === true && speciesTrue === true && currentPage.length === 0) ?
+                                (<h4 style={{ color: "white" }}><br /><br />No se encontraron Personajes</h4>) : <Loading />
+                        }
                     </div>
                 }
             </div>
