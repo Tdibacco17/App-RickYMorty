@@ -15,7 +15,7 @@ export default function Footer() {
                 <a href="https://www.linkedin.com/in/tomas-di-bacco/" rel="noopener noreferrer" target="_blank"><SiLinkedin className={darkMode === true ? "iconosFooter" : "iconosFooterDark" }/></a>
             </div>
             <div>
-                <h5 className={darkMode === true ? "tituloFooter" : "tituloFooterDark" }>By Tomas Di Bacco</h5>
+                <h5 className={darkMode === true ? "tituloFooter" : "tituloFooterDark" }>By Tomas Di Bacco - Made in July - 2022</h5>
             </div>
         </div>
     )
